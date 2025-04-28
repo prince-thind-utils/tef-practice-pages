@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Vocabulary Lists</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50; /* Midnight Blue */
+            --secondary-color: #3498db; /* Peter River Blue */
+            --accent-color: #e74c3c; /* Alizarin Crimson */
+            --background-color: #ecf0f1; /* Clouds White */
+            --text-color: #34495e; /* Wet Asphalt */
+            --table-header-bg: #3498db;
+            --table-header-text: #ffffff;
+            --table-row-even-bg: #f8f9f9;
+            --table-row-odd-bg: #ffffff;
+            --spoiler-bg: #2d3436; /* Dark Gray/Black */
+            --spoiler-text-hidden: #2d3436; /* Same as bg to hide */
+            --border-color: #bdc3c7; /* Silver */
+
+            /* Color Coding */
+            --noun-m-color: #2980b9; /* Belize Hole Blue */
+            --noun-f-color: #e74c3c; /* Alizarin Crimson */
+            --verb-color: #27ae60; /* Nephritis Green */
+            --adj-color: #f39c12; /* Orange */
+            --adv-color: #8e44ad; /* Wisteria Purple */
+            --prep-color: #d35400; /* Pumpkin Orange */
+            --art-color: #7f8c8d; /* Asbestos Gray */
+            --other-color: #c0392b; /* Pomegranate Red */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent-color);
+            font-size: 1.8em;
+        }
+
+        .topic-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: #fdfefe;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        /* Legend Styling */
+        .legend {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .legend h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            text-align: left;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            background-color: #fff;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+
+        .legend-color {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 3px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .legend-text {
+            font-size: 0.9em;
+        }
+
+        /* Applying colors to legend swatches */
+        .legend-color.noun-m { background-color: var(--noun-m-color); }
+        .legend-color.noun-f { background-color: var(--noun-f-color); }
+        .legend-color.verb { background-color: var(--verb-color); }
+        .legend-color.adj { background-color: var(--adj-color); }
+        .legend-color.adv { background-color: var(--adv-color); }
+        .legend-color.prep { background-color: var(--prep-color); }
+        .legend-color.art { background-color: var(--art-color); }
+        .legend-color.other { background-color: var(--other-color); }
+
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-radius: 6px;
+            overflow: hidden; /* Ensures border-radius applies to corners */
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--table-header-bg);
+            color: var(--table-header-text);
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: var(--table-row-even-bg);
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: var(--table-row-odd-bg);
+        }
+
+        tbody tr:hover {
+            background-color: #eaf2f8; /* Light blue on hover */
+        }
+
+        td:first-child {
+             /*width: 45%;*/
+            font-weight: 600;
+             color: var(--primary-color);
+        }
+         td:last-child {
+             /*width: 55%;*/
+         }
+
+
+        /* Spoiler Text Styling */
+        .spoiler {
+            background-color: var(--spoiler-bg);
+            color: var(--spoiler-text-hidden); /* Text color same as background to hide */
+            padding: 3px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition for text color */
+            display: inline-block; /* Ensures background covers only the text */
+            line-height: 1.4; /* Adjust line height if needed */
+        }
+
+        /* Spoiler Hover State - Reveal Color based on class */
+        .spoiler.noun-m:hover { color: var(--noun-m-color); background-color: var(--spoiler-bg); }
+        .spoiler.noun-f:hover { color: var(--noun-f-color); background-color: var(--spoiler-bg); }
+        .spoiler.verb:hover { color: var(--verb-color); background-color: var(--spoiler-bg); }
+        .spoiler.adj:hover { color: var(--adj-color); background-color: var(--spoiler-bg); }
+        .spoiler.adv:hover { color: var(--adv-color); background-color: var(--spoiler-bg); }
+        .spoiler.prep:hover { color: var(--prep-color); background-color: var(--spoiler-bg); }
+        .spoiler.art:hover { color: var(--art-color); background-color: var(--spoiler-bg); }
+        .spoiler.other:hover { color: var(--other-color); background-color: var(--spoiler-bg); }
+
+        /* Fallback hover if no specific class is assigned (though all should have one) */
+        .spoiler:hover {
+            color: #ffffff; /* Default white reveal color */
+            background-color: var(--spoiler-bg);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>French Vocabulary Companion</h1>
+
+        <!-- Color Legend -->
+        <div class="legend">
+            <h3>Vocabulary Color Legend</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <span class="legend-color noun-m"></span>
+                    <span class="legend-text">Noun (Masculine)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color noun-f"></span>
+                    <span class="legend-text">Noun (Feminine)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color verb"></span>
+                    <span class="legend-text">Verb</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color adj"></span>
+                    <span class="legend-text">Adjective</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color adv"></span>
+                    <span class="legend-text">Adverb</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color prep"></span>
+                    <span class="legend-text">Preposition</span>
+                </div>
+                 <div class="legend-item">
+                    <span class="legend-color art"></span>
+                    <span class="legend-text">Article / Determiner</span>
+                </div>
+                 <div class="legend-item">
+                    <span class="legend-color other"></span>
+                    <span class="legend-text">Other (Pronoun, Conjunction...)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1. SPORTS / AVENTURE -->
+        <section class="topic-section">
+            <h2>1. Sports / Adventure</h2>
+
+            <!-- 1a. Ski School -->
+            <h3>1a. Convince a friend to take ski lessons</h3>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Ski</td><td><span class="spoiler noun-m">le ski</span></td></tr>
+                    <tr><td>Snow</td><td><span class="spoiler noun-f">la neige</span></td></tr>
+                    <tr><td>Mountain</td><td><span class="spoiler noun-f">la montagne</span></td></tr>
+                    <tr><td>Ski resort</td><td><span class="spoiler noun-f">la station de ski</span></td></tr>
+                    <tr><td>Ski school</td><td><span class="spoiler noun-f">l'école de ski</span></td></tr>
+                    <tr><td>Lesson / Course</td><td><span class="spoiler noun-m">le cours</span></td></tr>
+                    <tr><td>Instructor</td><td><span class="spoiler noun-m">le moniteur / la monitrice</span></td></tr>
+                    <tr><td>Beginner</td><td><span class="spoiler noun-m adj">le débutant / la débutante</span></td></tr>
+                    <tr><td>Advanced</td><td><span class="spoiler adj">avancé(e)</span></td></tr>
+                    <tr><td>To ski</td><td><span class="spoiler verb">skier</span></td></tr>
+                    <tr><td>To learn</td><td><span class="spoiler verb">apprendre</span></td></tr>
+                    <tr><td>To try</td><td><span class="spoiler verb">essayer</span></td></tr>
+                    <tr><td>Equipment</td><td><span class="spoiler noun-m">l'équipement</span></td></tr>
+                    <tr><td>Skis</td><td><span class="spoiler noun-m pl">les skis</span></td></tr>
+                    <tr><td>Ski boots</td><td><span class="spoiler noun-f pl">les chaussures de ski</span></td></tr>
+                    <tr><td>Helmet</td><td><span class="spoiler noun-m">le casque</span></td></tr>
+                    <tr><td>Gloves</td><td><span class="spoiler noun-m pl">les gants</span></td></tr>
+                    <tr><td>Slope / Track</td><td><span class="spoiler noun-f">la piste</span></td></tr>
+                    <tr><td>Ski lift</td><td><span class="spoiler noun-m">le téléski / la remontée mécanique</span></td></tr>
+                    <tr><td>Fun</td><td><span class="spoiler adj">amusant(e) / drôle</span></td></tr>
+                    <tr><td>Exciting</td><td><span class="spoiler adj">passionnant(e) / excitant(e)</span></td></tr>
+                    <tr><td>Scared / Afraid</td><td><span class="spoiler adj">effrayé(e) / avoir peur</span></td></tr>
+                    <tr><td>Safe / Safety</td><td><span class="spoiler adj noun-f">sûr(e) / la sécurité</span></td></tr>
+                    <tr><td>Experience</td><td><span class="spoiler noun-f">l'expérience</span></td></tr>
+                    <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                    <tr><td>To persuade</td><td><span class="spoiler verb">persuader</span></td></tr>
+                    <tr><td>To join</td><td><span class="spoiler verb">rejoindre</span></td></tr>
+                    <tr><td>Together</td><td><span class="spoiler adv">ensemble</span></td></tr>
+                    <tr><td>Winter</td><td><span class="spoiler noun-m">l'hiver</span></td></tr>
+                    <tr><td>Cold</td><td><span class="spoiler adj">froid(e)</span></td></tr>
+                </tbody>
+            </table>
+
+            <!-- 1b. Bike Ride -->
+            <h3>1b. Convince a friend for a bike ride (rando vélo)</h3>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                     <tr><td>Bike ride / Cycling trip</td><td><span class="spoiler noun-f">la randonnée à vélo / la rando vélo</span></td></tr>
+                     <tr><td>Bicycle / Bike</td><td><span class="spoiler noun-m">le vélo</span></td></tr>
+                     <tr><td>To cycle / To bike</td><td><span class="spoiler verb">faire du vélo / pédaler</span></td></tr>
+                     <tr><td>Path / Trail</td><td><span class="spoiler noun-m">le sentier / le chemin</span></td></tr>
+                     <tr><td>Cycle path</td><td><span class="spoiler noun-f">la piste cyclable</span></td></tr>
+                     <tr><td>Countryside</td><td><span class="spoiler noun-f">la campagne</span></td></tr>
+                     <tr><td>Nature</td><td><span class="spoiler noun-f">la nature</span></td></tr>
+                     <tr><td>Fresh air</td><td><span class="spoiler noun-m">l'air frais</span></td></tr>
+                     <tr><td>Exercise</td><td><span class="spoiler noun-m">l'exercice</span></td></tr>
+                     <tr><td>Healthy</td><td><span class="spoiler adj">sain(e) / bon(ne) pour la santé</span></td></tr>
+                     <tr><td>Helmet</td><td><span class="spoiler noun-m">le casque</span></td></tr>
+                     <tr><td>Water bottle</td><td><span class="spoiler noun-f">la gourde / la bouteille d'eau</span></td></tr>
+                     <tr><td>Snack</td><td><span class="spoiler noun-m">le goûter / l'en-cas</span></td></tr>
+                     <tr><td>Map</td><td><span class="spoiler noun-f">la carte</span></td></tr>
+                     <tr><td>Scenery / Landscape</td><td><span class="spoiler noun-m">le paysage</span></td></tr>
+                     <tr><td>Beautiful</td><td><span class="spoiler adj">beau / bel / belle</span></td></tr>
+                     <tr><td>Relaxing</td><td><span class="spoiler adj">relaxant(e) / reposant(e)</span></td></tr>
+                     <tr><td>Distance</td><td><span class="spoiler noun-f">la distance</span></td></tr>
+                     <tr><td>Speed</td><td><span class="spoiler noun-f">la vitesse</span></td></tr>
+                     <tr><td>Hill</td><td><span class="spoiler noun-f">la colline / la côte</span></td></tr>
+                     <tr><td>Flat</td><td><span class="spoiler adj">plat(e)</span></td></tr>
+                     <tr><td>Tired</td><td><span class="spoiler adj">fatigué(e)</span></td></tr>
+                     <tr><td>Motivation</td><td><span class="spoiler noun-f">la motivation</span></td></tr>
+                     <tr><td>To propose / To suggest</td><td><span class="spoiler verb">proposer / suggérer</span></td></tr>
+                     <tr><td>To accompany</td><td><span class="spoiler verb">accompagner</span></td></tr>
+                     <tr><td>Weekend</td><td><span class="spoiler noun-m">le week-end</span></td></tr>
+                     <tr><td>Weather</td><td><span class="spoiler noun-m">le temps / la météo</span></td></tr>
+                     <tr><td>Sunny</td><td><span class="spoiler adj">ensoleillé(e)</span></td></tr>
+                     <tr><td>Rent (a bike)</td><td><span class="spoiler verb">louer (un vélo)</span></td></tr>
+                     <tr><td>Adventure</td><td><span class="spoiler noun-f">l'aventure</span></td></tr>
+                </tbody>
+            </table>
+
+             <!-- 1c. Floating Tent Camping -->
+            <h3>1c. Camping in floating tents on a lake</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Camping</td><td><span class="spoiler noun-m">le camping</span></td></tr>
+                     <tr><td>Tent</td><td><span class="spoiler noun-f">la tente</span></td></tr>
+                     <tr><td>Floating</td><td><span class="spoiler adj">flottant(e)</span></td></tr>
+                     <tr><td>Lake</td><td><span class="spoiler noun-m">le lac</span></td></tr>
+                     <tr><td>Water</td><td><span class="spoiler noun-f">l'eau</span></td></tr>
+                     <tr><td>To float</td><td><span class="spoiler verb">flotter</span></td></tr>
+                     <tr><td>Original / Unique</td><td><span class="spoiler adj">original(e) / unique</span></td></tr>
+                     <tr><td>Unusual</td><td><span class="spoiler adj">insolite</span></td></tr>
+                     <tr><td>Night</td><td><span class="spoiler noun-f">la nuit</span></td></tr>
+                     <tr><td>Stars</td><td><span class="spoiler noun-f pl">les étoiles</span></td></tr>
+                     <tr><td>Quiet / Calm</td><td><span class="spoiler adj">calme / tranquille</span></td></tr>
+                     <tr><td>Nature</td><td><span class="spoiler noun-f">la nature</span></td></tr>
+                     <tr><td>Sleeping bag</td><td><span class="spoiler noun-m">le sac de couchage</span></td></tr>
+                     <tr><td>Mosquito repellent</td><td><span class="spoiler noun-m">l'anti-moustique</span></td></tr>
+                     <tr><td>Fishing</td><td><span class="spoiler noun-f">la pêche</span></td></tr>
+                     <tr><td>To fish</td><td><span class="spoiler verb">pêcher</span></td></tr>
+                     <tr><td>Swimming</td><td><span class="spoiler noun-f">la baignade</span></td></tr>
+                     <tr><td>To swim</td><td><span class="spoiler verb">nager / se baigner</span></td></tr>
+                     <tr><td>Sunrise</td><td><span class="spoiler noun-m">le lever du soleil</span></td></tr>
+                     <tr><td>Sunset</td><td><span class="spoiler noun-m">le coucher du soleil</span></td></tr>
+                     <tr><td>Reflection (in water)</td><td><span class="spoiler noun-m">le reflet</span></td></tr>
+                     <tr><td>Peaceful</td><td><span class="spoiler adj">paisible</span></td></tr>
+                     <tr><td>Memorable</td><td><span class="spoiler adj">mémorable</span></td></tr>
+                     <tr><td>Booking / Reservation</td><td><span class="spoiler noun-f">la réservation</span></td></tr>
+                     <tr><td>To book / To reserve</td><td><span class="spoiler verb">réserver</span></td></tr>
+                     <tr><td>Experience</td><td><span class="spoiler noun-f">l'expérience</span></td></tr>
+                     <tr><td>Gentle rocking</td><td><span class="spoiler noun-m">le doux balancement</span></td></tr>
+                     <tr><td>Life jacket</td><td><span class="spoiler noun-m">le gilet de sauvetage</span></td></tr>
+                     <tr><td>Platform</td><td><span class="spoiler noun-f">la plateforme</span></td></tr>
+                     <tr><td>Access</td><td><span class="spoiler noun-m">l'accès</span></td></tr>
+                 </tbody>
+             </table>
+
+             <!-- 1d. Horseback Riding -->
+             <h3>1d. Go horseback riding</h3>
+             <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Horseback riding</td><td><span class="spoiler noun-f">l'équitation / la randonnée à cheval</span></td></tr>
+                    <tr><td>Horse</td><td><span class="spoiler noun-m">le cheval</span> (pl: <span class="spoiler noun-m pl">chevaux</span>)</td></tr>
+                    <tr><td>Mare</td><td><span class="spoiler noun-f">la jument</span></td></tr>
+                    <tr><td>Pony</td><td><span class="spoiler noun-m">le poney</span></td></tr>
+                    <tr><td>Saddle</td><td><span class="spoiler noun-f">la selle</span></td></tr>
+                    <tr><td>Reins</td><td><span class="spoiler noun-f pl">les rênes</span></td></tr>
+                    <tr><td>To ride (a horse)</td><td><span class="spoiler verb">monter (à cheval)</span></td></tr>
+                    <tr><td>Rider</td><td><span class="spoiler noun-m">le cavalier / la cavalière</span></td></tr>
+                    <tr><td>Stable / Riding school</td><td><span class="spoiler noun-m">le centre équestre / l'écurie</span></td></tr>
+                    <tr><td>Trail / Path</td><td><span class="spoiler noun-m">le sentier / le chemin</span></td></tr>
+                    <tr><td>Forest</td><td><span class="spoiler noun-f">la forêt</span></td></tr>
+                    <tr><td>Field</td><td><span class="spoiler noun-m">le champ</span></td></tr>
+                    <tr><td>Countryside</td><td><span class="spoiler noun-f">la campagne</span></td></tr>
+                    <tr><td>Guide</td><td><span class="spoiler noun-m">le guide / l'accompagnateur</span></td></tr>
+                    <tr><td>Helmet</td><td><span class="spoiler noun-m">la bombe / le casque</span></td></tr>
+                    <tr><td>Boots</td><td><span class="spoiler noun-f pl">les bottes</span></td></tr>
+                    <tr><td>Walk (gait)</td><td><span class="spoiler noun-m">le pas</span></td></tr>
+                    <tr><td>Trot (gait)</td><td><span class="spoiler noun-m">le trot</span></td></tr>
+                    <tr><td>Canter / Gallop (gait)</td><td><span class="spoiler noun-m">le galop</span></td></tr>
+                    <tr><td>Beginner</td><td><span class="spoiler noun-m adj">débutant(e)</span></td></tr>
+                    <tr><td>Experienced</td><td><span class="spoiler adj">expérimenté(e) / confirmé(e)</span></td></tr>
+                    <tr><td>Animal</td><td><span class="spoiler noun-m">l'animal</span> (pl: <span class="spoiler noun-m pl">animaux</span>)</td></tr>
+                    <tr><td>Connection / Bond</td><td><span class="spoiler noun-f">la connexion / le lien</span></td></tr>
+                    <tr><td>Nature</td><td><span class="spoiler noun-f">la nature</span></td></tr>
+                    <tr><td>Relaxing</td><td><span class="spoiler adj">relaxant(e)</span></td></tr>
+                    <tr><td>Beautiful view</td><td><span class="spoiler noun-f">la belle vue</span></td></tr>
+                    <tr><td>To book / To reserve</td><td><span class="spoiler verb">réserver</span></td></tr>
+                    <tr><td>Duration</td><td><span class="spoiler noun-f">la durée</span></td></tr>
+                    <tr><td>Price / Cost</td><td><span class="spoiler noun-m">le prix / le tarif</span></td></tr>
+                    <tr><td>Group</td><td><span class="spoiler noun-m">le groupe</span></td></tr>
+                </tbody>
+            </table>
+
+             <!-- 1e. Donkey Trekking -->
+             <h3>1e. Go donkey trekking</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Donkey trekking</td><td><span class="spoiler noun-f">la randonnée avec un âne</span></td></tr>
+                     <tr><td>Donkey</td><td><span class="spoiler noun-m">l'âne</span></td></tr>
+                     <tr><td>To walk</td><td><span class="spoiler verb">marcher</span></td></tr>
+                     <tr><td>Hiking / Trekking</td><td><span class="spoiler noun-f">la randonnée (pédestre)</span></td></tr>
+                     <tr><td>Trail / Path</td><td><span class="spoiler noun-m">le sentier / le chemin</span></td></tr>
+                     <tr><td>Mountain</td><td><span class="spoiler noun-f">la montagne</span></td></tr>
+                     <tr><td>Countryside</td><td><span class="spoiler noun-f">la campagne</span></td></tr>
+                     <tr><td>To carry</td><td><span class="spoiler verb">porter</span></td></tr>
+                     <tr><td>Luggage / Bags</td><td><span class="spoiler noun-m pl">les bagages / les sacs</span></td></tr>
+                     <tr><td>Packsaddle / Panniers</td><td><span class="spoiler noun-m">le bât</span></td></tr>
+                     <tr><td>Gentle / Docile</td><td><span class="spoiler adj">doux / douce / docile</span></td></tr>
+                     <tr><td>Slow pace</td><td><span class="spoiler noun-m">le rythme lent</span></td></tr>
+                     <tr><td>Family activity</td><td><span class="spoiler noun-f">l'activité familiale</span></td></tr>
+                     <tr><td>Children</td><td><span class="spoiler noun-m pl">les enfants</span></td></tr>
+                     <tr><td>Fun</td><td><span class="spoiler adj">amusant(e) / ludique</span></td></tr>
+                     <tr><td>Company</td><td><span class="spoiler noun-f">la compagnie</span></td></tr>
+                     <tr><td>Animal</td><td><span class="spoiler noun-m">l'animal</span></td></tr>
+                     <tr><td>Guide (person)</td><td><span class="spoiler noun-m">le guide / l'accompagnateur</span></td></tr>
+                     <tr><td>Map / Itinerary</td><td><span class="spoiler noun-f noun-m">la carte / l'itinéraire</span></td></tr>
+                     <tr><td>Picnic</td><td><span class="spoiler noun-m">le pique-nique</span></td></tr>
+                     <tr><td>Break / Pause</td><td><span class="spoiler noun-f">la pause</span></td></tr>
+                     <tr><td>Rent (a donkey)</td><td><span class="spoiler verb">louer (un âne)</span></td></tr>
+                     <tr><td>Day trip</td><td><span class="spoiler noun-f">l'excursion d'une journée</span></td></tr>
+                     <tr><td>Multi-day trek</td><td><span class="spoiler noun-f">la randonnée sur plusieurs jours</span></td></tr>
+                     <tr><td>Accommodation / Lodging</td><td><span class="spoiler noun-m">l'hébergement / le gîte</span></td></tr>
+                     <tr><td>Nature</td><td><span class="spoiler noun-f">la nature</span></td></tr>
+                     <tr><td>Discovery</td><td><span class="spoiler noun-f">la découverte</span></td></tr>
+                     <tr><td>Effort</td><td><span class="spoiler noun-m">l'effort</span></td></tr>
+                     <tr><td>Rewarding</td><td><span class="spoiler adj">gratifiant(e)</span></td></tr>
+                     <tr><td>Stubborn (cliché)</td><td><span class="spoiler adj">têtu(e)</span></td></tr>
+                 </tbody>
+             </table>
+
+             <!-- 1f. Weekend at an Equestrian Camp -->
+             <h3>1f. Spend a weekend at an equestrian camp</h3>
+             <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Weekend</td><td><span class="spoiler noun-m">le week-end / la fin de semaine</span></td></tr>
+                    <tr><td>Equestrian camp</td><td><span class="spoiler noun-m">le camp équestre / le stage d'équitation</span></td></tr>
+                    <tr><td>Equestrian / Horse riding</td><td><span class="spoiler adj">équestre</span> / <span class="spoiler noun-f">l'équitation</span></td></tr>
+                    <tr><td>Horse</td><td><span class="spoiler noun-m">le cheval</span></td></tr>
+                    <tr><td>Riding lessons</td><td><span class="spoiler noun-m pl">les cours d'équitation</span></td></tr>
+                    <tr><td>Instructor</td><td><span class="spoiler noun-m">le moniteur / la monitrice</span></td></tr>
+                    <tr><td>Riding arena / Manège</td><td><span class="spoiler noun-m">le manège / la carrière</span></td></tr>
+                    <tr><td>Trail ride</td><td><span class="spoiler noun-f">la promenade à cheval / la balade</span></td></tr>
+                    <tr><td>Horse care</td><td><span class="spoiler noun-m pl">les soins aux chevaux</span></td></tr>
+                    <tr><td>Grooming</td><td><span class="spoiler noun-m">le pansage</span></td></tr>
+                    <tr><td>Feeding</td><td><span class="spoiler noun-m">le nourrissage</span></td></tr>
+                    <tr><td>Stable</td><td><span class="spoiler noun-f">l'écurie / le box</span></td></tr>
+                    <tr><td>Accommodation / Lodging</td><td><span class="spoiler noun-m">l'hébergement</span></td></tr>
+                    <tr><td>Dormitory</td><td><span class="spoiler noun-m">le dortoir</span></td></tr>
+                    <tr><td>Room</td><td><span class="spoiler noun-f">la chambre</span></td></tr>
+                    <tr><td>Meals</td><td><span class="spoiler noun-m pl">les repas</span></td></tr>
+                    <tr><td>Full board</td><td><span class="spoiler noun-f">la pension complète</span></td></tr>
+                    <tr><td>Activities</td><td><span class="spoiler noun-f pl">les activités / les animations</span></td></tr>
+                    <tr><td>Atmosphere / Ambiance</td><td><span class="spoiler noun-f">l'ambiance / l'atmosphère</span></td></tr>
+                    <tr><td>Friendly</td><td><span class="spoiler adj">convivial(e) / sympathique</span></td></tr>
+                    <tr><td>Group</td><td><span class="spoiler noun-m">le groupe</span></td></tr>
+                    <tr><td>All levels</td><td><span class="spoiler noun-m pl">tous niveaux</span></td></tr>
+                    <tr><td>Beginner</td><td><span class="spoiler noun-m adj">débutant(e)</span></td></tr>
+                    <tr><td>Advanced</td><td><span class="spoiler adj">confirmé(e) / avancé(e)</span></td></tr>
+                    <tr><td>Immersion</td><td><span class="spoiler noun-f">l'immersion</span></td></tr>
+                    <tr><td>Passion</td><td><span class="spoiler noun-f">la passion</span></td></tr>
+                    <tr><td>To register / To sign up</td><td><span class="spoiler verb">s'inscrire</span></td></tr>
+                    <tr><td>Cost / Price</td><td><span class="spoiler noun-m">le coût / le prix</span></td></tr>
+                    <tr><td>Equipment provided</td><td><span class="spoiler noun-m">le matériel fourni</span></td></tr>
+                    <tr><td>Unforgettable</td><td><span class="spoiler adj">inoubliable</span></td></tr>
+                </tbody>
+             </table>
+
+             <!-- 1g. Treehouse Cabin Weekend -->
+            <h3>1g. Rent a treehouse cabin for a relaxing weekend</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Rent</td><td><span class="spoiler verb">louer</span></td></tr>
+                     <tr><td>Cabin</td><td><span class="spoiler noun-f">la cabane</span></td></tr>
+                     <tr><td>Treehouse</td><td><span class="spoiler noun-f">perchée dans les arbres</span></td></tr>
+                     <tr><td>Tree</td><td><span class="spoiler noun-m">l'arbre</span></td></tr>
+                     <tr><td>Weekend</td><td><span class="spoiler noun-m">le week-end</span></td></tr>
+                     <tr><td>Relaxing</td><td><span class="spoiler adj">détente / relaxant</span></td></tr>
+                     <tr><td>Activities</td><td><span class="spoiler noun-f pl">les activités</span></td></tr>
+                     <tr><td>Hiking / Walk</td><td><span class="spoiler noun-f">la randonnée / la promenade</span></td></tr>
+                     <tr><td>Nature</td><td><span class="spoiler noun-f">la nature</span></td></tr>
+                     <tr><td>Forest</td><td><span class="spoiler noun-f">la forêt</span></td></tr>
+                     <tr><td>Quiet / Calm</td><td><span class="spoiler adj">calme / tranquille</span></td></tr>
+                     <tr><td>View</td><td><span class="spoiler noun-f">la vue</span></td></tr>
+                     <tr><td>Height</td><td><span class="spoiler noun-f">la hauteur</span></td></tr>
+                     <tr><td>Access (stairs, bridge)</td><td><span class="spoiler noun-m">l'accès (escalier, pont)</span></td></tr>
+                     <tr><td>Comfortable</td><td><span class="spoiler adj">confortable</span></td></tr>
+                     <tr><td>Cosy / Snug</td><td><span class="spoiler adj">douillet(te) / cosy</span></td></tr>
+                     <tr><td>Breakfast basket</td><td><span class="spoiler noun-m">le panier petit-déjeuner</span></td></tr>
+                     <tr><td>Terrace / Balcony</td><td><span class="spoiler noun-f">la terrasse / le balcon</span></td></tr>
+                     <tr><td>Romantic</td><td><span class="spoiler adj">romantique</span></td></tr>
+                     <tr><td>Unusual / Atypical</td><td><span class="spoiler adj">insolite / atypique</span></td></tr>
+                     <tr><td>Disconnect</td><td><span class="spoiler verb">déconnecter</span></td></tr>
+                     <tr><td>Recharge batteries</td><td><span class="spoiler verb">recharger les batteries</span></td></tr>
+                     <tr><td>Booking</td><td><span class="spoiler noun-f">la réservation</span></td></tr>
+                     <tr><td>Availability</td><td><span class="spoiler noun-f">la disponibilité</span></td></tr>
+                     <tr><td>Price per night</td><td><span class="spoiler noun-m">le prix par nuit</span></td></tr>
+                     <tr><td>Experience</td><td><span class="spoiler noun-f">l'expérience</span></td></tr>
+                     <tr><td>Escape</td><td><span class="spoiler noun-f">l'évasion</span></td></tr>
+                     <tr><td>Adventure park (nearby)</td><td><span class="spoiler noun-m">le parc aventure (à proximité)</span></td></tr>
+                     <tr><td>Local products</td><td><span class="spoiler noun-m pl">les produits locaux</span></td></tr>
+                     <tr><td>Peace</td><td><span class="spoiler noun-f">la paix / la tranquillité</span></td></tr>
+                 </tbody>
+             </table>
+
+             <!-- 1h. Nighttime Event (Obscurity) -->
+             <h3>1h. Convince a friend to join a nighttime/darkness event</h3>
+             <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                     <tr><td>Evening / Night event</td><td><span class="spoiler noun-f">la soirée / l'événement nocturne</span></td></tr>
+                     <tr><td>Darkness / Obscurity</td><td><span class="spoiler noun-f">l'obscurité / le noir</span></td></tr>
+                     <tr><td>Night</td><td><span class="spoiler noun-f">la nuit</span></td></tr>
+                     <tr><td>To accompany</td><td><span class="spoiler verb">accompagner</span></td></tr>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>Mysterious</td><td><span class="spoiler adj">mystérieux / mystérieuse</span></td></tr>
+                     <tr><td>Intriguing</td><td><span class="spoiler adj">intrigant(e)</span></td></tr>
+                     <tr><td>Sensory experience</td><td><span class="spoiler noun-f">l'expérience sensorielle</span></td></tr>
+                     <tr><td>Different senses</td><td><span class="spoiler noun-m pl">les autres sens</span> (ouïe, toucher, odorat)</td></tr>
+                     <tr><td>Hearing</td><td><span class="spoiler noun-f">l'ouïe</span></td></tr>
+                     <tr><td>Touch</td><td><span class="spoiler noun-m">le toucher</span></td></tr>
+                     <tr><td>Smell</td><td><span class="spoiler noun-m">l'odorat</span></td></tr>
+                     <tr><td>Blindfolded</td><td><span class="spoiler adj">les yeux bandés</span></td></tr>
+                     <tr><td>Guided tour (in the dark)</td><td><span class="spoiler noun-f">la visite guidée (dans le noir)</span></td></tr>
+                     <tr><td>Meal in the dark</td><td><span class="spoiler noun-m">le repas dans le noir</span></td></tr>
+                     <tr><td>Concert in the dark</td><td><span class="spoiler noun-m">le concert dans le noir</span></td></tr>
+                     <tr><td>Unusual / Original</td><td><span class="spoiler adj">insolite / original(e)</span></td></tr>
+                     <tr><td>Fun</td><td><span class="spoiler adj">amusant(e) / drôle</span></td></tr>
+                     <tr><td>Surprising</td><td><span class="spoiler adj">surprenant(e)</span></td></tr>
+                     <tr><td>Trust</td><td><span class="spoiler noun-f">la confiance</span></td></tr>
+                     <tr><td>To trust</td><td><span class="spoiler verb">faire confiance</span></td></tr>
+                     <tr><td>Fear of the dark</td><td><span class="spoiler noun-f">la peur du noir</span></td></tr>
+                     <tr><td>To overcome fear</td><td><span class="spoiler verb">surmonter sa peur</span></td></tr>
+                     <tr><td>Safe environment</td><td><span class="spoiler noun-m">l'environnement sécurisé</span></td></tr>
+                     <tr><td>Let's try!</td><td><span class="spoiler other">Essayons ! / Tentons l'expérience !</span></td></tr>
+                     <tr><td>It will be memorable</td><td><span class="spoiler other">Ce sera mémorable</span></td></tr>
+                     <tr><td>Curiosity</td><td><span class="spoiler noun-f">la curiosité</span></td></tr>
+                     <tr><td>Tickets / Booking</td><td><span class="spoiler noun-m pl noun-f">les billets / la réservation</span></td></tr>
+                     <tr><td>Limited places</td><td><span class="spoiler noun-f pl">les places limitées</span></td></tr>
+                     <tr><td>New sensations</td><td><span class="spoiler noun-f pl">les sensations nouvelles</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 1i. Eco-responsible Organized Trip -->
+            <h3>1i. Convince a friend about an eco-responsible organized trip</h3>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Trip / Journey</td><td><span class="spoiler noun-m">le voyage</span></td></tr>
+                    <tr><td>Organized trip / Package tour</td><td><span class="spoiler noun-m">le voyage organisé</span></td></tr>
+                    <tr><td>Eco-responsible / Sustainable</td><td><span class="spoiler adj">éco-responsable / durable</span></td></tr>
+                    <tr><td>Ecology / Environment</td><td><span class="spoiler noun-f noun-m">l'écologie / l'environnement</span></td></tr>
+                    <tr><td>Respectful (of nature)</td><td><span class="spoiler adj">respectueux / respectueuse (de la nature)</span></td></tr>
+                    <tr><td>Low impact</td><td><span class="spoiler noun-m">le faible impact</span></td></tr>
+                    <tr><td>Carbon footprint</td><td><span class="spoiler noun-f">l'empreinte carbone</span></td></tr>
+                    <tr><td>Responsible tourism</td><td><span class="spoiler noun-m">le tourisme responsable</span></td></tr>
+                    <tr><td>Travel agency</td><td><span class="spoiler noun-f">l'agence de voyage</span></td></tr>
+                    <tr><td>Itinerary</td><td><span class="spoiler noun-m">l'itinéraire</span></td></tr>
+                    <tr><td>Activities</td><td><span class="spoiler noun-f pl">les activités</span></td></tr>
+                    <tr><td>Accommodation</td><td><span class="spoiler noun-m">l'hébergement</span> (éco-lodge, gîte rural)</td></tr>
+                    <tr><td>Transport</td><td><span class="spoiler noun-m">le transport</span> (train, bus, vélo)</td></tr>
+                    <tr><td>Local community</td><td><span class="spoiler noun-f">la communauté locale</span></td></tr>
+                    <tr><td>Support local economy</td><td><span class="spoiler verb">soutenir l'économie locale</span></td></tr>
+                    <tr><td>Authentic experience</td><td><span class="spoiler noun-f">l'expérience authentique</span></td></tr>
+                    <tr><td>Nature discovery</td><td><span class="spoiler noun-f">la découverte de la nature</span></td></tr>
+                    <tr><td>Hiking</td><td><span class="spoiler noun-f">la randonnée</span></td></tr>
+                    <tr><td>Wildlife observation</td><td><span class="spoiler noun-f">l'observation de la faune</span></td></tr>
+                    <tr><td>Waste reduction</td><td><span class="spoiler noun-f">la réduction des déchets</span></td></tr>
+                    <tr><td>Water conservation</td><td><span class="spoiler noun-f">la conservation de l'eau</span></td></tr>
+                    <tr><td>Awareness</td><td><span class="spoiler noun-f">la sensibilisation</span></td></tr>
+                    <tr><td>Make a difference</td><td><span class="spoiler verb">faire une différence</span></td></tr>
+                    <tr><td>Travel differently</td><td><span class="spoiler verb">voyager différemment</span></td></tr>
+                    <tr><td>Meaningful</td><td><span class="spoiler adj">porteur de sens / significatif</span></td></tr>
+                    <tr><td>Ethical</td><td><span class="spoiler adj">éthique</span></td></tr>
+                    <tr><td>Convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                    <tr><td>Offer / Package</td><td><span class="spoiler noun-f">l'offre / le forfait</span></td></tr>
+                    <tr><td>Price</td><td><span class="spoiler noun-m">le prix</span></td></tr>
+                    <tr><td>Let's go!</td><td><span class="spoiler other">On y va ! / Allons-y !</span></td></tr>
+                </tbody>
+            </table>
+
+            <!-- 1j. Tele-Meditation -->
+            <h3>1j. Try to convince a friend to practice Tele-Meditation</h3>
+            <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Meditation</td><td><span class="spoiler noun-f">la méditation</span></td></tr>
+                     <tr><td>Tele-meditation / Online meditation</td><td><span class="spoiler noun-f">la télé-méditation / la méditation en ligne</span></td></tr>
+                     <tr><td>To practice</td><td><span class="spoiler verb">pratiquer</span></td></tr>
+                     <tr><td>To try</td><td><span class="spoiler verb">essayer</span></td></tr>
+                     <tr><td>Relaxation</td><td><span class="spoiler noun-f">la relaxation / la détente</span></td></tr>
+                     <tr><td>Stress</td><td><span class="spoiler noun-m">le stress</span></td></tr>
+                     <tr><td>To reduce stress</td><td><span class="spoiler verb">réduire le stress</span></td></tr>
+                     <tr><td>Well-being</td><td><span class="spoiler noun-m">le bien-être</span></td></tr>
+                     <tr><td>Mindfulness</td><td><span class="spoiler noun-f">la pleine conscience</span></td></tr>
+                     <tr><td>Guided meditation</td><td><span class="spoiler noun-f">la méditation guidée</span></td></tr>
+                     <tr><td>Instructor / Guide</td><td><span class="spoiler noun-m">l'instructeur / le guide</span></td></tr>
+                     <tr><td>Online platform / App</td><td><span class="spoiler noun-f">la plateforme en ligne / l'application (appli)</span></td></tr>
+                     <tr><td>Video conference / Zoom</td><td><span class="spoiler noun-f">la visioconférence / Zoom</span></td></tr>
+                     <tr><td>From home</td><td><span class="spoiler adv">depuis chez soi / à domicile</span></td></tr>
+                     <tr><td>Convenient / Practical</td><td><span class="spoiler adj">pratique / commode</span></td></tr>
+                     <tr><td>Flexible schedule</td><td><span class="spoiler noun-m">l'horaire flexible</span></td></tr>
+                     <tr><td>Session</td><td><span class="spoiler noun-f">la séance / la session</span></td></tr>
+                     <tr><td>Beginner</td><td><span class="spoiler noun-m adj">débutant(e)</span></td></tr>
+                     <tr><td>Accessible</td><td><span class="spoiler adj">accessible</span></td></tr>
+                     <tr><td>Concentration</td><td><span class="spoiler noun-f">la concentration</span></td></tr>
+                     <tr><td>To focus</td><td><span class="spoiler verb">se concentrer</span></td></tr>
+                     <tr><td>Breathing</td><td><span class="spoiler noun-f">la respiration</span></td></tr>
+                     <tr><td>To breathe</td><td><span class="spoiler verb">respirer</span></td></tr>
+                     <tr><td>Calm / Serenity</td><td><span class="spoiler noun-m noun-f">le calme / la sérénité</span></td></tr>
+                     <tr><td>Mental health</td><td><span class="spoiler noun-f">la santé mentale</span></td></tr>
+                     <tr><td>Benefits</td><td><span class="spoiler noun-m pl">les bienfaits / les avantages</span></td></tr>
+                     <tr><td>Free trial</td><td><span class="spoiler noun-m">l'essai gratuit</span></td></tr>
+                     <tr><td>Group session</td><td><span class="spoiler noun-f">la séance de groupe</span></td></tr>
+                     <tr><td>Community</td><td><span class="spoiler noun-f">la communauté</span></td></tr>
+                     <tr><td>Give it a try!</td><td><span class="spoiler other">Essaie ! / Tente le coup !</span></td></tr>
+                 </tbody>
+             </table>
+
+        </section>
+
+        <!-- 2. BÉNÉVOLAT -->
+        <section class="topic-section">
+            <h2>2. Volunteering (Bénévolat)</h2>
+
+             <!-- 2a. Neighborhood Gardening -->
+             <h3>2a. Participate in neighborhood gardening</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Volunteering</td><td><span class="spoiler noun-m">le bénévolat</span></td></tr>
+                     <tr><td>Volunteer</td><td><span class="spoiler noun-m">le/la bénévole</span></td></tr>
+                     <tr><td>To participate</td><td><span class="spoiler verb">participer (à)</span></td></tr>
+                     <tr><td>Gardening</td><td><span class="spoiler noun-m">le jardinage</span></td></tr>
+                     <tr><td>Garden</td><td><span class="spoiler noun-m">le jardin</span></td></tr>
+                     <tr><td>Neighborhood / District</td><td><span class="spoiler noun-m">le quartier</span></td></tr>
+                     <tr><td>Community garden</td><td><span class="spoiler noun-m">le jardin communautaire / partagé</span></td></tr>
+                     <tr><td>Plants</td><td><span class="spoiler noun-f pl">les plantes</span></td></tr>
+                     <tr><td>Flowers</td><td><span class="spoiler noun-f pl">les fleurs</span></td></tr>
+                     <tr><td>Vegetables</td><td><span class="spoiler noun-m pl">les légumes</span></td></tr>
+                     <tr><td>To plant</td><td><span class="spoiler verb">planter</span></td></tr>
+                     <tr><td>To water</td><td><span class="spoiler verb">arroser</span></td></tr>
+                     <tr><td>To weed</td><td><span class="spoiler verb">désherber</span></td></tr>
+                     <tr><td>Soil / Earth</td><td><span class="spoiler noun-f">la terre</span></td></tr>
+                     <tr><td>Tools (shovel, rake)</td><td><span class="spoiler noun-m pl">les outils (pelle, râteau)</span></td></tr>
+                     <tr><td>Seeds</td><td><span class="spoiler noun-f pl">les graines</span></td></tr>
+                     <tr><td>To sow / To seed</td><td><span class="spoiler verb">semer</span></td></tr>
+                     <tr><td>Harvest</td><td><span class="spoiler noun-f">la récolte</span></td></tr>
+                     <tr><td>To harvest / To pick</td><td><span class="spoiler verb">récolter / cueillir</span></td></tr>
+                     <tr><td>Green space</td><td><span class="spoiler noun-m">l'espace vert</span></td></tr>
+                     <tr><td>To beautify</td><td><span class="spoiler verb">embellir</span></td></tr>
+                     <tr><td>Environment</td><td><span class="spoiler noun-m">l'environnement</span></td></tr>
+                     <tr><td>Community spirit</td><td><span class="spoiler noun-m">l'esprit communautaire</span></td></tr>
+                     <tr><td>Meet neighbors</td><td><span class="spoiler verb">rencontrer les voisins</span></td></tr>
+                     <tr><td>Good atmosphere</td><td><span class="spoiler noun-f">la bonne ambiance</span></td></tr>
+                     <tr><td>Useful</td><td><span class="spoiler adj">utile</span></td></tr>
+                     <tr><td>Rewarding</td><td><span class="spoiler adj">gratifiant(e)</span></td></tr>
+                     <tr><td>Outside / Outdoors</td><td><span class="spoiler adv">dehors / en plein air</span></td></tr>
+                     <tr><td>Commitment</td><td><span class="spoiler noun-m">l'engagement</span></td></tr>
+                     <tr><td>Project</td><td><span class="spoiler noun-m">le projet</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 2b. Community Kitchen -->
+            <h3>2b. Convince a friend to join the community kitchen</h3>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Community kitchen</td><td><span class="spoiler noun-f">la cuisine communautaire / collective</span></td></tr>
+                    <tr><td>Volunteering</td><td><span class="spoiler noun-m">le bénévolat</span></td></tr>
+                    <tr><td>Volunteer</td><td><span class="spoiler noun-m">le/la bénévole</span></td></tr>
+                    <tr><td>To cook / To kitchen</td><td><span class="spoiler verb">cuisiner / faire la cuisine</span></td></tr>
+                    <tr><td>Meals</td><td><span class="spoiler noun-m pl">les repas</span></td></tr>
+                    <tr><td>Healthy</td><td><span class="spoiler adj">sain(e) / équilibré(e)</span></td></tr>
+                    <tr><td>Affordable / Cheap</td><td><span class="spoiler adj">abordable / pas cher</span></td></tr>
+                    <tr><td>To prepare</td><td><span class="spoiler verb">préparer</span></td></tr>
+                    <tr><td>Ingredients</td><td><span class="spoiler noun-m pl">les ingrédients</span></td></tr>
+                    <tr><td>Recipe</td><td><span class="spoiler noun-f">la recette</span></td></tr>
+                    <tr><td>To share</td><td><span class="spoiler verb">partager</span></td></tr>
+                    <tr><td>Skills / Know-how</td><td><span class="spoiler noun-m pl">les compétences / le savoir-faire</span></td></tr>
+                    <tr><td>To learn</td><td><span class="spoiler verb">apprendre</span></td></tr>
+                    <tr><td>Teamwork</td><td><span class="spoiler noun-m">le travail d'équipe</span></td></tr>
+                    <tr><td>Solidarity / Mutual aid</td><td><span class="spoiler noun-f">la solidarité / l'entraide</span></td></tr>
+                    <tr><td>Community</td><td><span class="spoiler noun-f">la communauté</span></td></tr>
+                    <tr><td>To help</td><td><span class="spoiler verb">aider</span></td></tr>
+                    <tr><td>People in need</td><td><span class="spoiler noun-f pl">les personnes dans le besoin</span></td></tr>
+                    <tr><td>Social connection</td><td><span class="spoiler noun-m">le lien social</span></td></tr>
+                    <tr><td>Friendly atmosphere</td><td><span class="spoiler noun-f">l'ambiance conviviale</span></td></tr>
+                    <tr><td>Fight food waste</td><td><span class="spoiler verb">lutter contre le gaspillage alimentaire</span></td></tr>
+                    <tr><td>Surplus food</td><td><span class="spoiler noun-m pl">les surplus alimentaires</span></td></tr>
+                    <tr><td>Budget</td><td><span class="spoiler noun-m">le budget</span></td></tr>
+                    <tr><td>To save money</td><td><span class="spoiler verb">économiser de l'argent</span></td></tr>
+                    <tr><td>Workshop</td><td><span class="spoiler noun-m">l'atelier</span></td></tr>
+                    <tr><td>Registration / Sign-up</td><td><span class="spoiler noun-f">l'inscription</span></td></tr>
+                    <tr><td>Schedule / Timetable</td><td><span class="spoiler noun-m">l'horaire / le planning</span></td></tr>
+                    <tr><td>Useful and pleasant</td><td><span class="spoiler adj">utile et agréable</span></td></tr>
+                    <tr><td>Contribution</td><td><span class="spoiler noun-f">la contribution</span></td></tr>
+                    <tr><td>Together</td><td><span class="spoiler adv">ensemble</span></td></tr>
+                </tbody>
+            </table>
+
+             <!-- 2c. Botanical Garden Volunteering -->
+             <h3>2c. Volunteer at a botanical garden</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Volunteer</td><td><span class="spoiler verb noun-m">faire du bénévolat / le/la bénévole</span></td></tr>
+                     <tr><td>Botanical garden</td><td><span class="spoiler noun-m">le jardin botanique</span></td></tr>
+                     <tr><td>Wonderful setting</td><td><span class="spoiler noun-m">le cadre merveilleux / magnifique</span></td></tr>
+                     <tr><td>Training offered</td><td><span class="spoiler noun-f pl">les formations offertes</span></td></tr>
+                     <tr><td>Possibility / Opportunity</td><td><span class="spoiler noun-f">la possibilité / l'opportunité</span></td></tr>
+                     <tr><td>To guide visitors</td><td><span class="spoiler verb">guider les visiteurs</span></td></tr>
+                     <tr><td>Visitor / Tourist</td><td><span class="spoiler noun-m">le visiteur / la visiteuse / le/la touriste</span></td></tr>
+                     <tr><td>Gardening</td><td><span class="spoiler noun-m">le jardinage</span></td></tr>
+                     <tr><td>Maintenance</td><td><span class="spoiler noun-m">l'entretien</span></td></tr>
+                     <tr><td>Plants / Species</td><td><span class="spoiler noun-f pl">les plantes / les espèces</span></td></tr>
+                     <tr><td>Botany</td><td><span class="spoiler noun-f">la botanique</span></td></tr>
+                     <tr><td>To learn about plants</td><td><span class="spoiler verb">apprendre sur les plantes</span></td></tr>
+                     <tr><td>Collections</td><td><span class="spoiler noun-f pl">les collections</span> (tropicales, médicinales...)</td></tr>
+                     <tr><td>Greenhouse</td><td><span class="spoiler noun-f">la serre</span></td></tr>
+                     <tr><td>Conservation</td><td><span class="spoiler noun-f">la conservation</span></td></tr>
+                     <tr><td>Biodiversity</td><td><span class="spoiler noun-f">la biodiversité</span></td></tr>
+                     <tr><td>Outdoor work</td><td><span class="spoiler noun-m">le travail en plein air</span></td></tr>
+                     <tr><td>Team</td><td><span class="spoiler noun-f">l'équipe</span></td></tr>
+                     <tr><td>Passionate people</td><td><span class="spoiler noun-m pl">les passionnés</span></td></tr>
+                     <tr><td>Knowledge sharing</td><td><span class="spoiler noun-m">le partage de connaissances</span></td></tr>
+                     <tr><td>Public / Audience</td><td><span class="spoiler noun-m">le public</span></td></tr>
+                     <tr><td>Welcome / Reception</td><td><span class="spoiler noun-m">l'accueil</span></td></tr>
+                     <tr><td>Information</td><td><span class="spoiler noun-f pl">les informations / les renseignements</span></td></tr>
+                     <tr><td>Events / Workshops</td><td><span class="spoiler noun-m pl">les événements / les ateliers</span></td></tr>
+                     <tr><td>Educational</td><td><span class="spoiler adj">éducatif / pédagogique</span></td></tr>
+                     <tr><td>Relaxing environment</td><td><span class="spoiler noun-m">l'environnement relaxant</span></td></tr>
+                     <tr><td>Commitment</td><td><span class="spoiler noun-m">l'engagement</span></td></tr>
+                     <tr><td>Skills development</td><td><span class="spoiler noun-m">le développement de compétences</span></td></tr>
+                     <tr><td>Enriching</td><td><span class="spoiler adj">enrichissant(e)</span></td></tr>
+                     <tr><td>Application</td><td><span class="spoiler noun-f">la candidature</span></td></tr>
+                 </tbody>
+             </table>
+
+             <!-- 2d. Mill Restoration Volunteering -->
+             <h3>2d. Volunteer to restore a mill during summer vacation</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Volunteer project / Work camp</td><td><span class="spoiler noun-m">le chantier de bénévoles / le camp de travail</span></td></tr>
+                     <tr><td>Restoration</td><td><span class="spoiler noun-f">la restauration</span></td></tr>
+                     <tr><td>Mill (watermill, windmill)</td><td><span class="spoiler noun-m">le moulin (à eau, à vent)</span></td></tr>
+                     <tr><td>Summer vacation / holidays</td><td><span class="spoiler noun-f pl">les vacances d'été</span></td></tr>
+                     <tr><td>Heritage / Patrimony</td><td><span class="spoiler noun-m">le patrimoine</span></td></tr>
+                     <tr><td>Historic building</td><td><span class="spoiler noun-m">le bâtiment historique</span></td></tr>
+                     <tr><td>Preservation</td><td><span class="spoiler noun-f">la préservation / la sauvegarde</span></td></tr>
+                     <tr><td>Manual labor / Work</td><td><span class="spoiler noun-m">le travail manuel</span></td></tr>
+                     <tr><td>Masonry</td><td><span class="spoiler noun-f">la maçonnerie</span></td></tr>
+                     <tr><td>Carpentry</td><td><span class="spoiler noun-f">la charpenterie / la menuiserie</span></td></tr>
+                     <tr><td>Painting</td><td><span class="spoiler noun-f">la peinture</span></td></tr>
+                     <tr><td>Cleaning</td><td><span class="spoiler noun-m">le nettoyage</span></td></tr>
+                     <tr><td>Techniques</td><td><span class="spoiler noun-f pl">les techniques</span> (traditionnelles)</td></tr>
+                     <tr><td>To learn new skills</td><td><span class="spoiler verb">apprendre de nouvelles compétences</span></td></tr>
+                     <tr><td>Craftsman / Artisan</td><td><span class="spoiler noun-m">l'artisan</span></td></tr>
+                     <tr><td>Supervision / Guidance</td><td><span class="spoiler noun-f">l'encadrement</span></td></tr>
+                     <tr><td>International group</td><td><span class="spoiler noun-m">le groupe international</span></td></tr>
+                     <tr><td>Cultural exchange</td><td><span class="spoiler noun-m">l'échange culturel</span></td></tr>
+                     <tr><td>Teamwork</td><td><span class="spoiler noun-m">le travail d'équipe</span></td></tr>
+                     <tr><td>Accommodation (often basic)</td><td><span class="spoiler noun-m">l'hébergement (souvent simple)</span></td></tr>
+                     <tr><td>Meals provided</td><td><span class="spoiler noun-m pl">les repas fournis</span></td></tr>
+                     <tr><td>Rural setting</td><td><span class="spoiler noun-m">le cadre rural</span></td></tr>
+                     <tr><td>History</td><td><span class="spoiler noun-f">l'histoire</span></td></tr>
+                     <tr><td>Concrete result</td><td><span class="spoiler noun-m">le résultat concret</span></td></tr>
+                     <tr><td>Contribution</td><td><span class="spoiler noun-f">la contribution</span></td></tr>
+                     <tr><td>Memorable experience</td><td><span class="spoiler noun-f">l'expérience mémorable</span></td></tr>
+                     <tr><td>Physical effort</td><td><span class="spoiler noun-m">l'effort physique</span></td></tr>
+                     <tr><td>Association / Organization</td><td><span class="spoiler noun-f">l'association / l'organisation</span></td></tr>
+                     <tr><td>Registration fee</td><td><span class="spoiler noun-m pl">les frais d'inscription</span></td></tr>
+                     <tr><td>Motivation</td><td><span class="spoiler noun-f">la motivation</span></td></tr>
+                 </tbody>
+             </table>
+
+             <!-- 2e. Neighborhood Gardening Operation (Seeds Offered) -->
+             <h3>2e. Volunteer gardening operation in the neighborhood (seeds offered)</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Volunteering operation</td><td><span class="spoiler noun-f">l'opération bénévolat</span></td></tr>
+                     <tr><td>Gardening</td><td><span class="spoiler noun-m">le jardinage</span></td></tr>
+                     <tr><td>Neighborhood</td><td><span class="spoiler noun-m">le quartier</span></td></tr>
+                     <tr><td>Seeds</td><td><span class="spoiler noun-f pl">les graines</span></td></tr>
+                     <tr><td>Offered / Free</td><td><span class="spoiler adj">offert(e)s / gratuites</span></td></tr>
+                     <tr><td>Goal / Aim</td><td><span class="spoiler noun-m">le but / l'objectif</span></td></tr>
+                     <tr><td>To convince a friend</td><td><span class="spoiler verb">convaincre un(e) ami(e)</span></td></tr>
+                     <tr><td>To participate</td><td><span class="spoiler verb">participer</span></td></tr>
+                     <tr><td>Community project</td><td><span class="spoiler noun-m">le projet communautaire</span></td></tr>
+                     <tr><td>To beautify the neighborhood</td><td><span class="spoiler verb">embellir le quartier</span></td></tr>
+                     <tr><td>Green spaces</td><td><span class="spoiler noun-m pl">les espaces verts</span></td></tr>
+                     <tr><td>Flower beds / Planters</td><td><span class="spoiler noun-m pl">les parterres / les jardinières</span></td></tr>
+                     <tr><td>Tree bases</td><td><span class="spoiler noun-m pl">les pieds d'arbres</span></td></tr>
+                     <tr><td>Planting</td><td><span class="spoiler noun-m">la plantation</span></td></tr>
+                     <tr><td>Sowing</td><td><span class="spoiler noun-m">le semis</span></td></tr>
+                     <tr><td>Easy</td><td><span class="spoiler adj">facile</span></td></tr>
+                     <tr><td>Accessible to all</td><td><span class="spoiler adj">accessible à tous</span></td></tr>
+                     <tr><td>No experience needed</td><td><span class="spoiler other">pas besoin d'expérience</span></td></tr>
+                     <tr><td>Tools provided</td><td><span class="spoiler noun-m pl">les outils fournis</span></td></tr>
+                     <tr><td>Friendly moment</td><td><span class="spoiler noun-m">le moment convivial</span></td></tr>
+                     <tr><td>Meet people</td><td><span class="spoiler verb">rencontrer du monde</span></td></tr>
+                     <tr><td>Good for morale</td><td><span class="spoiler adj">bon pour le moral</span></td></tr>
+                     <tr><td>Contact with nature</td><td><span class="spoiler noun-m">le contact avec la nature</span></td></tr>
+                     <tr><td>Small gesture</td><td><span class="spoiler noun-m">le petit geste</span> (pour l'environnement)</td></tr>
+                     <tr><td>Local initiative</td><td><span class="spoiler noun-f">l'initiative locale</span></td></tr>
+                     <tr><td>Let's do it together!</td><td><span class="spoiler other">Faisons-le ensemble !</span></td></tr>
+                     <tr><td>It will be fun!</td><td><span class="spoiler other">Ce sera sympa !</span></td></tr>
+                     <tr><td>Information session</td><td><span class="spoiler noun-f">la séance d'information</span></td></tr>
+                     <tr><td>Meeting point</td><td><span class="spoiler noun-m">le point de rendez-vous</span></td></tr>
+                     <tr><td>Date and time</td><td><span class="spoiler noun-f">la date et l'heure</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 2f. Forest Cleanup After Storm -->
+            <h3>2f. Convince a friend to join an association to clean the forest after a storm</h3>
+            <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>Friend</td><td><span class="spoiler noun-m">un ami / une amie</span></td></tr>
+                     <tr><td>To join</td><td><span class="spoiler verb">rejoindre / adhérer à</span></td></tr>
+                     <tr><td>Association / Organization</td><td><span class="spoiler noun-f">une association / une organisation</span></td></tr>
+                     <tr><td>To clean</td><td><span class="spoiler verb">nettoyer</span></td></tr>
+                     <tr><td>Forest</td><td><span class="spoiler noun-f">la forêt</span></td></tr>
+                     <tr><td>Storm</td><td><span class="spoiler noun-f">la tempête</span></td></tr>
+                     <tr><td>Damage</td><td><span class="spoiler noun-m pl">les dégâts</span></td></tr>
+                     <tr><td>Fallen trees</td><td><span class="spoiler noun-m pl">les arbres tombés / couchés</span></td></tr>
+                     <tr><td>Broken branches</td><td><span class="spoiler noun-f pl">les branches cassées</span></td></tr>
+                     <tr><td>Debris / Waste</td><td><span class="spoiler noun-m pl">les débris / les déchets</span></td></tr>
+                     <tr><td>Help / Aid</td><td><span class="spoiler noun-f">l'aide</span></td></tr>
+                     <tr><td>Volunteering day</td><td><span class="spoiler noun-f">la journée de bénévolat</span></td></tr>
+                     <tr><td>Nature conservation</td><td><span class="spoiler noun-f">la protection de la nature</span></td></tr>
+                     <tr><td>Environment</td><td><span class="spoiler noun-m">l'environnement</span></td></tr>
+                     <tr><td>Useful action</td><td><span class="spoiler noun-f">l'action utile / concrète</span></td></tr>
+                     <tr><td>Teamwork</td><td><span class="spoiler noun-m">le travail d'équipe</span></td></tr>
+                     <tr><td>Solidarity</td><td><span class="spoiler noun-f">la solidarité</span></td></tr>
+                     <tr><td>Equipment (gloves, bags)</td><td><span class="spoiler noun-m">l'équipement (gants, sacs)</span></td></tr>
+                     <tr><td>Safety instructions</td><td><span class="spoiler noun-f pl">les consignes de sécurité</span></td></tr>
+                     <tr><td>Supervision</td><td><span class="spoiler noun-m">l'encadrement</span></td></tr>
+                     <tr><td>Physical work</td><td><span class="spoiler noun-m">le travail physique</span></td></tr>
+                     <tr><td>Fresh air</td><td><span class="spoiler noun-m">le grand air / l'air frais</span></td></tr>
+                     <tr><td>Make a difference</td><td><span class="spoiler verb">faire une différence</span></td></tr>
+                     <tr><td>Restore the site</td><td><span class="spoiler verb">restaurer le site</span></td></tr>
+                     <tr><td>Accessible paths</td><td><span class="spoiler noun-m pl">les chemins accessibles</span></td></tr>
+                     <tr><td>Good cause</td><td><span class="spoiler noun-f">la bonne cause</span></td></tr>
+                     <tr><td>Sign up / Register</td><td><span class="spoiler verb">s'inscrire</span></td></tr>
+                     <tr><td>Meeting point</td><td><span class="spoiler noun-m">le point de rendez-vous</span></td></tr>
+                     <tr><td>Let's help together!</td><td><span class="spoiler other">Aidons ensemble !</span></td></tr>
+                 </tbody>
+            </table>
+
+            <!-- 2g. Adopt a Pet -->
+            <h3>2g. Convince a friend to adopt an abandoned pet</h3>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                    <tr><td>To adopt</td><td><span class="spoiler verb">adopter</span></td></tr>
+                    <tr><td>Pet / Companion animal</td><td><span class="spoiler noun-m">l'animal de compagnie</span></td></tr>
+                    <tr><td>Abandoned / Neglected</td><td><span class="spoiler adj">abandonné(e) / délaissé(e)</span></td></tr>
+                    <tr><td>To save</td><td><span class="spoiler verb">sauver</span></td></tr>
+                    <tr><td>Animal shelter</td><td><span class="spoiler noun-m">le refuge pour animaux / la SPA</span> (Société Protectrice des Animaux)</td></tr>
+                    <tr><td>Dog</td><td><span class="spoiler noun-m">le chien / la chienne</span></td></tr>
+                    <tr><td>Cat</td><td><span class="spoiler noun-m">le chat / la chatte</span></td></tr>
+                    <tr><td>Give a second chance</td><td><span class="spoiler verb">donner une seconde chance</span></td></tr>
+                    <tr><td>Loving home</td><td><span class="spoiler noun-m">le foyer aimant</span></td></tr>
+                    <tr><td>Responsibility</td><td><span class="spoiler noun-f">la responsabilité</span></td></tr>
+                    <tr><td>Commitment</td><td><span class="spoiler noun-m">l'engagement</span></td></tr>
+                    <tr><td>Company / Companionship</td><td><span class="spoiler noun-f">la compagnie</span></td></tr>
+                    <tr><td>Affection / Love</td><td><span class="spoiler noun-f noun-m">l'affection / l'amour</span></td></tr>
+                    <tr><td>Joy / Happiness</td><td><span class="spoiler noun-f noun-m">la joie / le bonheur</span></td></tr>
+                    <tr><td>Good deed / Action</td><td><span class="spoiler noun-f">la bonne action</span></td></tr>
+                    <tr><td>Consider the implications</td><td><span class="spoiler verb">réfléchir aux implications</span></td></tr>
+                    <tr><td>Time</td><td><span class="spoiler noun-m">le temps</span></td></tr>
+                    <tr><td>Space</td><td><span class="spoiler noun-m">l'espace</span></td></tr>
+                    <tr><td>Budget (food, vet)</td><td><span class="spoiler noun-m">le budget (nourriture, vétérinaire)</span></td></tr>
+                    <tr><td>Veterinarian / Vet</td><td><span class="spoiler noun-m">le vétérinaire</span></td></tr>
+                    <tr><td>Vaccination</td><td><span class="spoiler noun-f">la vaccination</span></td></tr>
+                    <tr><td>Sterilization / Neutering</td><td><span class="spoiler noun-f">la stérilisation</span></td></tr>
+                    <tr><td>Microchip</td><td><span class="spoiler noun-f">la puce électronique / l'identification</span></td></tr>
+                    <tr><td>Adoption fees</td><td><span class="spoiler noun-m pl">les frais d'adoption</span></td></tr>
+                    <tr><td>Visit the shelter</td><td><span class="spoiler verb">visiter le refuge</span></td></tr>
+                    <tr><td>Meet the animals</td><td><span class="spoiler verb">rencontrer les animaux</span></td></tr>
+                    <tr><td>Personality / Character</td><td><span class="spoiler noun-f noun-m">la personnalité / le caractère</span></td></tr>
+                    <tr><td>Think about it</td><td><span class="spoiler verb">réfléchis-y</span></td></tr>
+                    <tr><td>Life changing</td><td><span class="spoiler adj">qui change la vie</span></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 3. QUELQUE CHOSE EN LIGNE -->
+        <section class="topic-section">
+            <h2>3. Online Activities / Services</h2>
+
+            <!-- 3a. Online Grocery Shopping -->
+            <h3>3a. Convince a friend to try online grocery shopping</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Online shopping</td><td><span class="spoiler noun-m pl">les achats en ligne</span></td></tr>
+                     <tr><td>Groceries / Food</td><td><span class="spoiler noun-f pl noun-f">les courses / la nourriture</span></td></tr>
+                     <tr><td>Vegetables</td><td><span class="spoiler noun-m pl">les légumes</span></td></tr>
+                     <tr><td>Fruits</td><td><span class="spoiler noun-m pl">les fruits</span></td></tr>
+                     <tr><td>Website / Online site</td><td><span class="spoiler noun-m">le site Internet / le site en ligne</span></td></tr>
+                     <tr><td>To order</td><td><span class="spoiler verb">commander</span></td></tr>
+                     <tr><td>Order</td><td><span class="spoiler noun-f">la commande</span></td></tr>
+                     <tr><td>Home delivery</td><td><span class="spoiler noun-f">la livraison à domicile</span></td></tr>
+                     <tr><td>To receive</td><td><span class="spoiler verb">recevoir</span></td></tr>
+                     <tr><td>At home / To your place</td><td><span class="spoiler adv prep">chez soi / chez toi</span></td></tr>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To try</td><td><span class="spoiler verb">essayer</span></td></tr>
+                     <tr><td>Method / Way</td><td><span class="spoiler noun-f">la méthode / la façon</span></td></tr>
+                     <tr><td>Instead of</td><td><span class="spoiler prep">au lieu de</span></td></tr>
+                     <tr><td>To go / To travel to</td><td><span class="spoiler verb">se déplacer</span></td></tr>
+                     <tr><td>Supermarket / Large store</td><td><span class="spoiler noun-f pl">les grandes surfaces / le supermarché</span></td></tr>
+                     <tr><td>Save time</td><td><span class="spoiler verb">gagner du temps</span></td></tr>
+                     <tr><td>Convenient / Practical</td><td><span class="spoiler adj">pratique / commode</span></td></tr>
+                     <tr><td>Easy</td><td><span class="spoiler adj">facile</span></td></tr>
+                     <tr><td>Wide choice / Selection</td><td><span class="spoiler noun-m">le large choix / la sélection</span></td></tr>
+                     <tr><td>Fresh products</td><td><span class="spoiler noun-m pl">les produits frais</span></td></tr>
+                     <tr><td>Quality</td><td><span class="spoiler noun-f">la qualité</span></td></tr>
+                     <tr><td>Delivery slot</td><td><span class="spoiler noun-m">le créneau de livraison</span></td></tr>
+                     <tr><td>Delivery fees</td><td><span class="spoiler noun-m pl">les frais de livraison</span></td></tr>
+                     <tr><td>Minimum order</td><td><span class="spoiler noun-m">le minimum de commande</span></td></tr>
+                     <tr><td>Avoid queues</td><td><span class="spoiler verb">éviter les files d'attente</span></td></tr>
+                     <tr><td>Avoid crowds</td><td><span class="spoiler verb">éviter la foule</span></td></tr>
+                     <tr><td>Payment online</td><td><span class="spoiler noun-m">le paiement en ligne</span></td></tr>
+                     <tr><td>Secure</td><td><span class="spoiler adj">sécurisé(e)</span></td></tr>
+                     <tr><td>Give it a go!</td><td><span class="spoiler other">Fais un essai !</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 3b. Online Language Course -->
+            <h3>3b. Learn a language online</h3>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To learn</td><td><span class="spoiler verb">apprendre</span></td></tr>
+                    <tr><td>Language</td><td><span class="spoiler noun-f">la langue</span></td></tr>
+                    <tr><td>Course / Lesson</td><td><span class="spoiler noun-m">le cours</span></td></tr>
+                    <tr><td>Online</td><td><span class="spoiler adv">en ligne / sur Internet</span></td></tr>
+                    <tr><td>Platform / Website</td><td><span class="spoiler noun-f noun-m">la plateforme / le site web</span></td></tr>
+                    <tr><td>Application / App</td><td><span class="spoiler noun-f">l'application (l'appli)</span></td></tr>
+                    <tr><td>Flexible</td><td><span class="spoiler adj">flexible / souple</span></td></tr>
+                    <tr><td>At your own pace</td><td><span class="spoiler adv">à son propre rythme</span></td></tr>
+                    <tr><td>From home</td><td><span class="spoiler adv">depuis chez soi</span></td></tr>
+                    <tr><td>Teacher / Tutor</td><td><span class="spoiler noun-m">le professeur / le tuteur</span></td></tr>
+                    <tr><td>Native speaker</td><td><span class="spoiler noun-m">le locuteur natif / la locutrice native</span></td></tr>
+                    <tr><td>Video lessons</td><td><span class="spoiler noun-f pl">les leçons vidéo</span></td></tr>
+                    <tr><td>Interactive exercises</td><td><span class="spoiler noun-m pl">les exercices interactifs</span></td></tr>
+                    <tr><td>Quiz / Test</td><td><span class="spoiler noun-m">le quiz / le test</span></td></tr>
+                    <tr><td>Vocabulary</td><td><span class="spoiler noun-m">le vocabulaire</span></td></tr>
+                    <tr><td>Grammar</td><td><span class="spoiler noun-f">la grammaire</span></td></tr>
+                    <tr><td>Pronunciation</td><td><span class="spoiler noun-f">la prononciation</span></td></tr>
+                    <tr><td>Listening comprehension</td><td><span class="spoiler noun-f">la compréhension orale</span></td></tr>
+                    <tr><td>Speaking practice</td><td><span class="spoiler noun-f">la pratique de l'oral</span></td></tr>
+                    <tr><td>Writing</td><td><span class="spoiler noun-f">l'écriture / l'expression écrite</span></td></tr>
+                    <tr><td>Level (beginner, intermediate, advanced)</td><td><span class="spoiler noun-m">le niveau (débutant, intermédiaire, avancé)</span></td></tr>
+                    <tr><td>Certificate</td><td><span class="spoiler noun-m">le certificat</span></td></tr>
+                    <tr><td>Free resources</td><td><span class="spoiler noun-f pl">les ressources gratuites</span></td></tr>
+                    <tr><td>Subscription / Fee</td><td><span class="spoiler noun-m noun-m pl">l'abonnement / les frais</span></td></tr>
+                    <tr><td>Community / Forum</td><td><span class="spoiler noun-f noun-m">la communauté / le forum</span></td></tr>
+                    <tr><td>Motivation</td><td><span class="spoiler noun-f">la motivation</span></td></tr>
+                    <tr><td>Progress</td><td><span class="spoiler noun-m pl">les progrès</span></td></tr>
+                    <tr><td>To improve</td><td><span class="spoiler verb">améliorer / progresser</span></td></tr>
+                    <tr><td>Convenient</td><td><span class="spoiler adj">pratique</span></td></tr>
+                    <tr><td>Accessible</td><td><span class="spoiler adj">accessible</span></td></tr>
+                </tbody>
+            </table>
+
+            <!-- 3c. Online Meditation Courses -->
+            <h3>3c. Practice online meditation courses</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To practice</td><td><span class="spoiler verb">pratiquer</span></td></tr>
+                     <tr><td>Meditation</td><td><span class="spoiler noun-f">la méditation</span></td></tr>
+                     <tr><td>Course / Class</td><td><span class="spoiler noun-m">le cours</span></td></tr>
+                     <tr><td>Online</td><td><span class="spoiler adv">en ligne</span></td></tr>
+                     <tr><td>Guided meditation</td><td><span class="spoiler noun-f">la méditation guidée</span></td></tr>
+                     <tr><td>Mindfulness</td><td><span class="spoiler noun-f">la pleine conscience</span></td></tr>
+                     <tr><td>Relaxation</td><td><span class="spoiler noun-f">la relaxation / la détente</span></td></tr>
+                     <tr><td>Stress reduction</td><td><span class="spoiler noun-f">la réduction du stress</span></td></tr>
+                     <tr><td>Well-being</td><td><span class="spoiler noun-m">le bien-être</span></td></tr>
+                     <tr><td>Instructor / Teacher</td><td><span class="spoiler noun-m">l'instructeur / l'enseignant(e)</span></td></tr>
+                     <tr><td>App / Platform</td><td><span class="spoiler noun-f">l'application (appli) / la plateforme</span></td></tr>
+                     <tr><td>Live session</td><td><span class="spoiler noun-f">la séance en direct / live</span></td></tr>
+                     <tr><td>Recorded session</td><td><span class="spoiler noun-f">la séance enregistrée</span></td></tr>
+                     <tr><td>Audio guide</td><td><span class="spoiler noun-m">le guide audio</span></td></tr>
+                     <tr><td>Video guide</td><td><span class="spoiler noun-m">le guide vidéo</span></td></tr>
+                     <tr><td>From home</td><td><span class="spoiler adv">depuis chez soi</span></td></tr>
+                     <tr><td>Comfort</td><td><span class="spoiler noun-m">le confort</span></td></tr>
+                     <tr><td>Flexibility</td><td><span class="spoiler noun-f">la flexibilité / la souplesse</span></td></tr>
+                     <tr><td>Schedule</td><td><span class="spoiler noun-m">l'emploi du temps / l'horaire</span></td></tr>
+                     <tr><td>Daily practice</td><td><span class="spoiler noun-f">la pratique quotidienne</span></td></tr>
+                     <tr><td>Breathing exercises</td><td><span class="spoiler noun-m pl">les exercices de respiration</span></td></tr>
+                     <tr><td>Body scan</td><td><span class="spoiler noun-m">le scan corporel / balayage corporel</span></td></tr>
+                     <tr><td>Focus / Concentration</td><td><span class="spoiler noun-f">la concentration / l'attention</span></td></tr>
+                     <tr><td>Calm / Peace</td><td><span class="spoiler noun-m noun-f">le calme / la paix intérieure</span></td></tr>
+                     <tr><td>Mental health</td><td><span class="spoiler noun-f">la santé mentale</span></td></tr>
+                     <tr><td>Benefits</td><td><span class="spoiler noun-m pl">les bienfaits / les avantages</span></td></tr>
+                     <tr><td>Subscription</td><td><span class="spoiler noun-m">l'abonnement</span></td></tr>
+                     <tr><td>Free trial</td><td><span class="spoiler noun-m">l'essai gratuit</span></td></tr>
+                     <tr><td>Community</td><td><span class="spoiler noun-f">la communauté</span></td></tr>
+                     <tr><td>Accessible</td><td><span class="spoiler adj">accessible</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 3d. Object Rental Site -->
+            <h3>3d. Convince a friend to rent out objects on a rental site</h3>
+            <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Rental site / platform</td><td><span class="spoiler noun-m noun-f">le site / la plateforme de location</span></td></tr>
+                     <tr><td>Object / Item</td><td><span class="spoiler noun-m">l'objet</span></td></tr>
+                     <tr><td>To rent out / To lease</td><td><span class="spoiler verb">mettre en location / louer</span></td></tr>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>Friend</td><td><span class="spoiler noun-m">un ami / une amie</span></td></tr>
+                     <tr><td>Camera</td><td><span class="spoiler noun-m">l'appareil photo</span></td></tr>
+                     <tr><td>Clothes (specific types)</td><td><span class="spoiler noun-m pl">les vêtements</span> (robe de soirée, costume)</td></tr>
+                     <tr><td>Tools (drill, ladder)</td><td><span class="spoiler noun-m pl">les outils</span> (perceuse, échelle)</td></tr>
+                     <tr><td>Sports equipment</td><td><span class="spoiler noun-m">le matériel de sport</span> (skis, vélo)</td></tr>
+                     <tr><td>Party equipment</td><td><span class="spoiler noun-m">le matériel de fête</span> (sono, lumières)</td></tr>
+                     <tr><td>Earn money</td><td><span class="spoiler verb">gagner de l'argent</span></td></tr>
+                     <tr><td>Extra income</td><td><span class="spoiler noun-m">le revenu supplémentaire / complémentaire</span></td></tr>
+                     <tr><td>Make profitable / Monetize</td><td><span class="spoiler verb">rentabiliser / monétiser</span></td></tr>
+                     <tr><td>Unused objects</td><td><span class="spoiler noun-m pl">les objets inutilisés / qui dorment</span></td></tr>
+                     <tr><td>Sharing economy</td><td><span class="spoiler noun-f">l'économie collaborative / du partage</span></td></tr>
+                     <tr><td>Ecological / Sustainable</td><td><span class="spoiler adj">écologique / durable</span></td></tr>
+                     <tr><td>Reduce consumption</td><td><span class="spoiler verb">réduire la consommation</span></td></tr>
+                     <tr><td>Easy to use</td><td><span class="spoiler adj">facile à utiliser</span></td></tr>
+                     <tr><td>Create an ad / listing</td><td><span class="spoiler verb">créer une annonce</span></td></tr>
+                     <tr><td>Photos</td><td><span class="spoiler noun-f pl">les photos</span></td></tr>
+                     <tr><td>Description</td><td><span class="spoiler noun-f">la description</span></td></tr>
+                     <tr><td>Rental price</td><td><span class="spoiler noun-m">le prix de location</span></td></tr>
+                     <tr><td>Availability calendar</td><td><span class="spoiler noun-m">le calendrier des disponibilités</span></td></tr>
+                     <tr><td>Insurance</td><td><span class="spoiler noun-f">l'assurance</span></td></tr>
+                     <tr><td>Deposit / Security deposit</td><td><span class="spoiler noun-f">la caution</span></td></tr>
+                     <tr><td>Reviews / Ratings</td><td><span class="spoiler noun-m pl">les avis / les évaluations</span></td></tr>
+                     <tr><td>Communication with renters</td><td><span class="spoiler noun-f">la communication avec les locataires</span></td></tr>
+                     <tr><td>Platform fees / Commission</td><td><span class="spoiler noun-m pl noun-f">les frais de plateforme / la commission</span></td></tr>
+                     <tr><td>Safe / Secure</td><td><span class="spoiler adj">sûr / sécurisé</span></td></tr>
+                     <tr><td>Why not try?</td><td><span class="spoiler other">Pourquoi ne pas essayer ?</span></td></tr>
+                 </tbody>
+             </table>
+        </section>
+
+         <!-- 4. TRAVAIL -->
+        <section class="topic-section">
+            <h2>4. Work / Opportunities</h2>
+
+             <!-- 4a. Mystery Shopper -->
+             <h3>4a. Work occasionally as a mystery shopper</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To work</td><td><span class="spoiler verb">travailler</span></td></tr>
+                     <tr><td>Occasionally / From time to time</td><td><span class="spoiler adv">occasionnellement / de temps en temps</span></td></tr>
+                     <tr><td>As / In the capacity of</td><td><span class="spoiler prep">en tant que</span></td></tr>
+                     <tr><td>Mystery shopper / client</td><td><span class="spoiler noun-m">le client mystère</span></td></tr>
+                     <tr><td>Mission / Assignment</td><td><span class="spoiler noun-f">la mission</span></td></tr>
+                     <tr><td>Store / Shop</td><td><span class="spoiler noun-m">le magasin / la boutique</span></td></tr>
+                     <tr><td>Restaurant</td><td><span class="spoiler noun-m">le restaurant</span></td></tr>
+                     <tr><td>Hotel</td><td><span class="spoiler noun-m">l'hôtel</span></td></tr>
+                     <tr><td>Service</td><td><span class="spoiler noun-m">le service</span></td></tr>
+                     <tr><td>Evaluate / Assess</td><td><span class="spoiler verb">évaluer / apprécier</span></td></tr>
+                     <tr><td>Quality of service</td><td><span class="spoiler noun-f">la qualité du service</span></td></tr>
+                     <tr><td>Welcome / Reception</td><td><span class="spoiler noun-m">l'accueil</span></td></tr>
+                     <tr><td>Cleanliness</td><td><span class="spoiler noun-f">la propreté</span></td></tr>
+                     <tr><td>Staff / Personnel</td><td><span class="spoiler noun-m">le personnel</span></td></tr>
+                     <tr><td>Advice / Counsel</td><td><span class="spoiler noun-m pl">les conseils</span></td></tr>
+                     <tr><td>Product presentation</td><td><span class="spoiler noun-f">la présentation des produits</span></td></tr>
+                     <tr><td>Waiting time</td><td><span class="spoiler noun-m">le temps d'attente</span></td></tr>
+                     <tr><td>Scenario</td><td><span class="spoiler noun-m">le scénario</span></td></tr>
+                     <tr><td>Observation</td><td><span class="spoiler noun-f">l'observation</span></td></tr>
+                     <tr><td>Discreet / Anonymous</td><td><span class="spoiler adj">discret / discrète / anonyme</span></td></tr>
+                     <tr><td>Report / Feedback</td><td><span class="spoiler noun-m">le rapport / le compte rendu</span></td></tr>
+                     <tr><td>Questionnaire</td><td><span class="spoiler noun-m">le questionnaire</span></td></tr>
+                     <tr><td>Remuneration / Payment</td><td><span class="spoiler noun-f">la rémunération / le paiement</span></td></tr>
+                     <tr><td>Reimbursement (for purchase)</td><td><span class="spoiler noun-m">le remboursement (de l'achat)</span></td></tr>
+                     <tr><td>Compensation</td><td><span class="spoiler noun-f">le dédommagement / la compensation</span></td></tr>
+                     <tr><td>Flexibility</td><td><span class="spoiler noun-f">la flexibilité / la souplesse</span></td></tr>
+                     <tr><td>Choose assignments</td><td><span class="spoiler verb">choisir ses missions</span></td></tr>
+                     <tr><td>Interesting</td><td><span class="spoiler adj">intéressant(e)</span></td></tr>
+                     <tr><td>Register on a platform</td><td><span class="spoiler verb">s'inscrire sur une plateforme</span></td></tr>
+                     <tr><td>Side job / Gig</td><td><span class="spoiler noun-m">le petit boulot / le job d'appoint</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 4b. Entrepreneurship Forum -->
+            <h3>4b. Join an entrepreneurship forum</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To join</td><td><span class="spoiler verb">se joindre à / participer à</span></td></tr>
+                     <tr><td>Forum</td><td><span class="spoiler noun-m">le forum</span></td></tr>
+                     <tr><td>Entrepreneurship</td><td><span class="spoiler noun-m">l'entrepreneuriat</span></td></tr>
+                     <tr><td>Entrepreneur</td><td><span class="spoiler noun-m">l'entrepreneur / l'entrepreneuse</span></td></tr>
+                     <tr><td>Business creation</td><td><span class="spoiler noun-f">la création d'entreprise</span></td></tr>
+                     <tr><td>Startup</td><td><span class="spoiler noun-f">la start-up</span></td></tr>
+                     <tr><td>Networking</td><td><span class="spoiler noun-m">le réseautage / networking</span></td></tr>
+                     <tr><td>Meet people</td><td><span class="spoiler verb">rencontrer du monde</span></td></tr>
+                     <tr><td>Contacts</td><td><span class="spoiler noun-m pl">les contacts</span></td></tr>
+                     <tr><td>Partners</td><td><span class="spoiler noun-m pl">les partenaires</span></td></tr>
+                     <tr><td>Investors</td><td><span class="spoiler noun-m pl">les investisseurs</span></td></tr>
+                     <tr><td>Conferences / Talks</td><td><span class="spoiler noun-f pl">les conférences</span></td></tr>
+                     <tr><td>Workshops</td><td><span class="spoiler noun-m pl">les ateliers</span></td></tr>
+                     <tr><td>Round tables</td><td><span class="spoiler noun-f pl">les tables rondes</span></td></tr>
+                     <tr><td>Experts</td><td><span class="spoiler noun-m pl">les experts</span></td></tr>
+                     <tr><td>Advice / Tips</td><td><span class="spoiler noun-m pl">les conseils</span></td></tr>
+                     <tr><td>Information</td><td><span class="spoiler noun-f pl">les informations</span></td></tr>
+                     <tr><td>Financing / Funding</td><td><span class="spoiler noun-m">le financement</span></td></tr>
+                     <tr><td>Business plan</td><td><span class="spoiler noun-m">le business plan / plan d'affaires</span></td></tr>
+                     <tr><td>Marketing</td><td><span class="spoiler noun-m">le marketing</span></td></tr>
+                     <tr><td>Innovation</td><td><span class="spoiler noun-f">l'innovation</span></td></tr>
+                     <tr><td>Inspiration</td><td><span class="spoiler noun-f">l'inspiration</span></td></tr>
+                     <tr><td>Motivation</td><td><span class="spoiler noun-f">la motivation</span></td></tr>
+                     <tr><td>Project idea</td><td><span class="spoiler noun-f">l'idée de projet</span></td></tr>
+                     <tr><td>Develop your project</td><td><span class="spoiler verb">développer son projet</span></td></tr>
+                     <tr><td>Pitch / Presentation</td><td><span class="spoiler noun-m">le pitch / la présentation</span></td></tr>
+                     <tr><td>Exhibitors / Stands</td><td><span class="spoiler noun-m pl">les exposants / les stands</span></td></tr>
+                     <tr><td>Registration</td><td><span class="spoiler noun-f">l'inscription</span></td></tr>
+                     <tr><td>Program / Schedule</td><td><span class="spoiler noun-m">le programme</span></td></tr>
+                     <tr><td>Opportunity</td><td><span class="spoiler noun-f">l'opportunité</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 4c. Paid Parapharmaceutical Tests -->
+            <h3>4c. Convince a friend to do paid tests for parapharmaceutical products</h3>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>Paid tests</td><td><span class="spoiler noun-m pl">les tests rémunérés</span></td></tr>
+                     <tr><td>Parapharmaceutical products</td><td><span class="spoiler noun-m pl">les produits parapharmaceutiques</span></td></tr>
+                     <tr><td>Cosmetics</td><td><span class="spoiler noun-m pl">les cosmétiques</span></td></tr>
+                     <tr><td>Creams</td><td><span class="spoiler noun-f pl">les crèmes</span></td></tr>
+                     <tr><td>Shampoos</td><td><span class="spoiler noun-m pl">les shampooings</span></td></tr>
+                     <tr><td>Dietary supplements</td><td><span class="spoiler noun-m pl">les compléments alimentaires</span></td></tr>
+                     <tr><td>To test / To try</td><td><span class="spoiler verb">tester / essayer</span></td></tr>
+                     <tr><td>At home</td><td><span class="spoiler adv">à domicile / chez soi</span></td></tr>
+                     <tr><td>In a laboratory / center</td><td><span class="spoiler prep noun-m">en laboratoire / en centre</span></td></tr>
+                     <tr><td>Consumer test</td><td><span class="spoiler noun-m">le test consommateur</span></td></tr>
+                     <tr><td>Clinical study (non-drug)</td><td><span class="spoiler noun-f">l'étude clinique (non-médicament)</span></td></tr>
+                     <tr><td>Evaluation</td><td><span class="spoiler noun-f">l'évaluation</span></td></tr>
+                     <tr><td>Effectiveness</td><td><span class="spoiler noun-f">l'efficacité</span></td></tr>
+                     <tr><td>Tolerance / Reaction</td><td><span class="spoiler noun-f">la tolérance / la réaction</span></td></tr>
+                     <tr><td>Texture</td><td><span class="spoiler noun-f">la texture</span></td></tr>
+                     <tr><td>Smell / Fragrance</td><td><span class="spoiler noun-f noun-m">l'odeur / le parfum</span></td></tr>
+                     <tr><td>Opinion / Feedback</td><td><span class="spoiler noun-m">l'avis / le retour</span></td></tr>
+                     <tr><td>Questionnaire</td><td><span class="spoiler noun-m">le questionnaire</span></td></tr>
+                     <tr><td>Compensation / Payment</td><td><span class="spoiler noun-f noun-m">l'indemnisation / le dédommagement / la rémunération</span></td></tr>
+                     <tr><td>Vouchers / Gift cards</td><td><span class="spoiler noun-m pl">les bons d'achat</span></td></tr>
+                     <tr><td>Free products</td><td><span class="spoiler noun-m pl">les produits gratuits</span></td></tr>
+                     <tr><td>Earn some money</td><td><span class="spoiler verb">gagner un peu d'argent</span></td></tr>
+                     <tr><td>Easy</td><td><span class="spoiler adj">facile</span></td></tr>
+                     <tr><td>Not very demanding</td><td><span class="spoiler adj">peu contraignant</span></td></tr>
+                     <tr><td>Profile / Criteria</td><td><span class="spoiler noun-m noun-m pl">le profil / les critères</span> (âge, type de peau...)</td></tr>
+                     <tr><td>To register / Sign up</td><td><span class="spoiler verb">s'inscrire</span></td></tr>
+                     <tr><td>Database</td><td><span class="spoiler noun-f">la base de données</span></td></tr>
+                     <tr><td>Confidentiality</td><td><span class="spoiler noun-f">la confidentialité</span></td></tr>
+                     <tr><td>Safe / Controlled</td><td><span class="spoiler adj">sûr / contrôlé</span></td></tr>
+                 </tbody>
+             </table>
+
+             <!-- 4d. Drug Tester for Lab -->
+            <h3>4d. Convince a friend to apply as a drug tester for an international lab</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To apply</td><td><span class="spoiler verb">postuler</span></td></tr>
+                     <tr><td>Job / Position</td><td><span class="spoiler noun-m">le poste</span></td></tr>
+                     <tr><td>Drug tester / Clinical trial volunteer</td><td><span class="spoiler noun-m">le testeur de médicament / le volontaire d'essai clinique</span></td></tr>
+                     <tr><td>Laboratory</td><td><span class="spoiler noun-m">le laboratoire</span></td></tr>
+                     <tr><td>International</td><td><span class="spoiler adj">international(e)</span></td></tr>
+                     <tr><td>Clinical trial / study</td><td><span class="spoiler noun-m noun-f">l'essai clinique / l'étude clinique</span></td></tr>
+                     <tr><td>New drug / treatment</td><td><span class="spoiler noun-m">le nouveau médicament / traitement</span></td></tr>
+                     <tr><td>Healthy volunteer</td><td><span class="spoiler noun-m">le volontaire sain</span></td></tr>
+                     <tr><td>Patient volunteer</td><td><span class="spoiler noun-m">le volontaire malade</span></td></tr>
+                     <tr><td>Medical research</td><td><span class="spoiler noun-f">la recherche médicale</span></td></tr>
+                     <tr><td>Contribute to science</td><td><span class="spoiler verb">contribuer à la science</span></td></tr>
+                     <tr><td>Help patients</td><td><span class="spoiler verb">aider les patients</span></td></tr>
+                     <tr><td>Compensation / Indemnity</td><td><span class="spoiler noun-f">l'indemnisation / l'indemnité</span></td></tr>
+                     <tr><td>Significant amount</td><td><span class="spoiler noun-m">le montant significatif / important</span></td></tr>
+                     <tr><td>Strict medical supervision</td><td><span class="spoiler noun-m">le suivi médical strict</span></td></tr>
+                     <tr><td>Safety</td><td><span class="spoiler noun-f">la sécurité</span></td></tr>
+                     <tr><td>Risks</td><td><span class="spoiler noun-m pl">les risques</span></td></tr>
+                     <tr><td>Side effects</td><td><span class="spoiler noun-m pl">les effets secondaires</span></td></tr>
+                     <tr><td>Informed consent</td><td><span class="spoiler noun-m">le consentement éclairé</span></td></tr>
+                     <tr><td>Eligibility criteria</td><td><span class="spoiler noun-m pl">les critères d'éligibilité</span></td></tr>
+                     <tr><td>Medical examination</td><td><span class="spoiler noun-m">l'examen médical</span></td></tr>
+                     <tr><td>Confidentiality</td><td><span class="spoiler noun-f">la confidentialité</span></td></tr>
+                     <tr><td>Stay at the center</td><td><span class="spoiler noun-m">le séjour au centre</span></td></tr>
+                     <tr><td>Duration of the study</td><td><span class="spoiler noun-f">la durée de l'étude</span></td></tr>
+                     <tr><td>Follow-up visits</td><td><span class="spoiler noun-f pl">les visites de suivi</span></td></tr>
+                     <tr><td>Ethical committee approval</td><td><span class="spoiler noun-f">l'approbation du comité d'éthique</span></td></tr>
+                     <tr><td>Serious commitment</td><td><span class="spoiler noun-m">l'engagement sérieux</span></td></tr>
+                     <tr><td>Think carefully</td><td><span class="spoiler verb">bien réfléchir</span></td></tr>
+                     <tr><td>Information meeting</td><td><span class="spoiler noun-f">la réunion d'information</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 4e. Participate in a TV Debate Recording -->
+            <h3>4e. Convince a friend to attend a non-live TV debate recording</h3>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Announcement / Ad</td><td><span class="spoiler noun-f">l'annonce</span></td></tr>
+                    <tr><td>Participation</td><td><span class="spoiler noun-f">la participation</span></td></tr>
+                    <tr><td>Debate</td><td><span class="spoiler noun-m">le débat</span></td></tr>
+                    <tr><td>Political</td><td><span class="spoiler adj">politique</span></td></tr>
+                    <tr><td>Ecological</td><td><span class="spoiler adj">écologique</span></td></tr>
+                    <tr><td>Scientific</td><td><span class="spoiler adj">scientifique</span></td></tr>
+                    <tr><td>TV show / program</td><td><span class="spoiler noun-f">l'émission de télévision (télé)</span></td></tr>
+                    <tr><td>Recording</td><td><span class="spoiler noun-m">l'enregistrement</span></td></tr>
+                    <tr><td>Not broadcast live</td><td><span class="spoiler adj">non diffusé(e) en direct</span></td></tr>
+                    <tr><td>Audience / Public</td><td><span class="spoiler noun-m">le public</span></td></tr>
+                    <tr><td>To attend / To be present at</td><td><span class="spoiler verb">assister à</span></td></tr>
+                    <tr><td>Visit the backstage / behind the scenes</td><td><span class="spoiler verb">visiter les coulisses</span></td></tr>
+                    <tr><td>TV studio</td><td><span class="spoiler noun-m">le plateau télé / le studio</span></td></tr>
+                    <tr><td>Celebrities / Personalities</td><td><span class="spoiler noun-f pl">les célébrités / les personnalités</span></td></tr>
+                    <tr><td>Guests</td><td><span class="spoiler noun-m pl">les invités</span></td></tr>
+                    <tr><td>Presenter / Host</td><td><span class="spoiler noun-m">le présentateur / l'animateur</span></td></tr>
+                    <tr><td>Other surprises</td><td><span class="spoiler noun-f pl">d'autres surprises</span></td></tr>
+                    <tr><td>Interesting experience</td><td><span class="spoiler noun-f">l'expérience intéressante</span></td></tr>
+                    <tr><td>See how it works</td><td><span class="spoiler verb">voir comment ça marche</span></td></tr>
+                    <tr><td>Free</td><td><span class="spoiler adj">gratuit(e)</span></td></tr>
+                    <tr><td>To register / Sign up</td><td><span class="spoiler verb">s'inscrire</span></td></tr>
+                    <tr><td>Limited places</td><td><span class="spoiler noun-f pl">les places limitées</span></td></tr>
+                    <tr><td>Date and time</td><td><span class="spoiler noun-f">la date et l'heure</span></td></tr>
+                    <tr><td>Location / Address</td><td><span class="spoiler noun-m">le lieu / l'adresse</span></td></tr>
+                    <tr><td>Unique opportunity</td><td><span class="spoiler noun-f">l'opportunité unique</span></td></tr>
+                    <tr><td>Let's go together!</td><td><span class="spoiler other">Allons-y ensemble !</span></td></tr>
+                    <tr><td>It could be fun!</td><td><span class="spoiler other">Ça pourrait être sympa !</span></td></tr>
+                    <tr><td>Curiosity</td><td><span class="spoiler noun-f">la curiosité</span></td></tr>
+                    <tr><td>Atmosphere</td><td><span class="spoiler noun-f">l'ambiance</span></td></tr>
+                    <tr><td>Applause</td><td><span class="spoiler noun-m pl">les applaudissements</span></td></tr>
+                </tbody>
+            </table>
+
+             <!-- 4f. Community Hall Opening -->
+             <h3>4f. Convince a friend to visit the new Community Hall</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Community hall / center</td><td><span class="spoiler noun-f">la salle communautaire / la maison de quartier</span></td></tr>
+                     <tr><td>Just opened</td><td><span class="spoiler adv adj">vient d'ouvrir</span></td></tr>
+                     <tr><td>Get to know neighbors</td><td><span class="spoiler verb">connaître les gens du quartier</span></td></tr>
+                     <tr><td>Neighbor</td><td><span class="spoiler noun-m">le voisin / la voisine</span></td></tr>
+                     <tr><td>Bring dishes (potluck style)</td><td><span class="spoiler verb">apporter des plats</span> (type auberge espagnole)</td></tr>
+                     <tr><td>Activities for children</td><td><span class="spoiler noun-f pl">les activités pour les enfants</span></td></tr>
+                     <tr><td>Prizes to win</td><td><span class="spoiler noun-m pl">des lots à gagner</span></td></tr>
+                     <tr><td>Access / Open</td><td><span class="spoiler noun-m adj">l'accès / ouvert(e)</span></td></tr>
+                     <tr><td>Every first Friday of the month</td><td><span class="spoiler adv">tous les 1ers vendredis du mois</span></td></tr>
+                     <tr><td>Mandatory registration</td><td><span class="spoiler noun-f">l'inscription obligatoire</span></td></tr>
+                     <tr><td>By phone</td><td><span class="spoiler prep noun-m">par téléphone</span></td></tr>
+                     <tr><td>Convince a friend</td><td><span class="spoiler verb">convaincre un(e) ami(e)</span></td></tr>
+                     <tr><td>To visit</td><td><span class="spoiler verb">visiter / y aller</span></td></tr>
+                     <tr><td>Friendly / Welcoming</td><td><span class="spoiler adj">convivial(e) / accueillant(e)</span></td></tr>
+                     <tr><td>Good atmosphere</td><td><span class="spoiler noun-f">la bonne ambiance</span></td></tr>
+                     <tr><td>Meet new people</td><td><span class="spoiler verb">rencontrer de nouvelles personnes</span></td></tr>
+                     <tr><td>Social connection</td><td><span class="spoiler noun-m">le lien social</span></td></tr>
+                     <tr><td>Community life</td><td><span class="spoiler noun-f">la vie de quartier / communautaire</span></td></tr>
+                     <tr><td>Free event</td><td><span class="spoiler noun-m">l'événement gratuit</span></td></tr>
+                     <tr><td>Opportunity</td><td><span class="spoiler noun-f">l'occasion / l'opportunité</span></td></tr>
+                     <tr><td>Let's check it out!</td><td><span class="spoiler other">Allons voir ! / Jetons un coup d'œil !</span></td></tr>
+                     <tr><td>It costs nothing to look</td><td><span class="spoiler other">Ça ne coûte rien de regarder</span></td></tr>
+                     <tr><td>Maybe we'll like it</td><td><span class="spoiler other">Peut-être que ça nous plaira</span></td></tr>
+                     <tr><td>Information</td><td><span class="spoiler noun-f pl">les informations / les renseignements</span></td></tr>
+                     <tr><td>Contact details</td><td><span class="spoiler noun-f pl">les coordonnées</span></td></tr>
+                     <tr><td>Let's call to sign up?</td><td><span class="spoiler other">On appelle pour s'inscrire ?</span></td></tr>
+                     <tr><td>Discovery</td><td><span class="spoiler noun-f">la découverte</span></td></tr>
+                     <tr><td>Local</td><td><span class="spoiler adj">local(e)</span></td></tr>
+                     <tr><td>Initiative</td><td><span class="spoiler noun-f">l'initiative</span></td></tr>
+                     <tr><td>Shared meal</td><td><span class="spoiler noun-m">le repas partagé</span></td></tr>
+                 </tbody>
+             </table>
+
+        </section>
+
+        <!-- 5. BIO / ENVIRONMENT -->
+        <section class="topic-section">
+            <h2>5. Organic / Environment</h2>
+
+            <!-- 5a. Rent Urban Garden Plot -->
+            <h3>5a. Convince a friend to rent a small urban plot for gardening</h3>
+            <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Advertisement / Announcement</td><td><span class="spoiler noun-f">l'annonce</span></td></tr>
+                     <tr><td>Published by</td><td><span class="spoiler adj">publiée par</span></td></tr>
+                     <tr><td>Association / Organization</td><td><span class="spoiler noun-f">l'association / l'organisation</span></td></tr>
+                     <tr><td>To rent</td><td><span class="spoiler verb">louer</span></td></tr>
+                     <tr><td>Small plots of land</td><td><span class="spoiler noun-f pl">les petites parcelles de terrain</span></td></tr>
+                     <tr><td>In the city / Urban</td><td><span class="spoiler prep noun-f adj">en ville / urbain(e)</span></td></tr>
+                     <tr><td>To cultivate / To grow</td><td><span class="spoiler verb">cultiver</span></td></tr>
+                     <tr><td>Vegetables</td><td><span class="spoiler noun-m pl">les légumes</span></td></tr>
+                     <tr><td>Fruits</td><td><span class="spoiler noun-m pl">les fruits</span></td></tr>
+                     <tr><td>Plants</td><td><span class="spoiler noun-f pl">les plantes</span></td></tr>
+                     <tr><td>To contact</td><td><span class="spoiler verb">contacter</span></td></tr>
+                     <tr><td>Friend (female)</td><td><span class="spoiler noun-f">une amie</span></td></tr>
+                     <tr><td>Owns an apartment</td><td><span class="spoiler verb">possède un appartement</span></td></tr>
+                     <tr><td>Share the news / Tell about</td><td><span class="spoiler verb">faire part de / parler de</span></td></tr>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>Gardening</td><td><span class="spoiler noun-m">le jardinage</span></td></tr>
+                     <tr><td>Urban gardening</td><td><span class="spoiler noun-m">le jardinage urbain</span></td></tr>
+                     <tr><td>Fresh products</td><td><span class="spoiler noun-m pl">les produits frais</span></td></tr>
+                     <tr><td>Organic (potentially)</td><td><span class="spoiler adj">bio (potentiellement)</span></td></tr>
+                     <tr><td>Hobby / Leisure activity</td><td><span class="spoiler noun-m">le loisir / le passe-temps</span></td></tr>
+                     <tr><td>Relaxing</td><td><span class="spoiler adj">relaxant(e) / apaisant(e)</span></td></tr>
+                     <tr><td>Contact with nature</td><td><span class="spoiler noun-m">le contact avec la nature</span></td></tr>
+                     <tr><td>Even without a garden</td><td><span class="spoiler adv">même sans jardin</span></td></tr>
+                     <tr><td>Shared garden</td><td><span class="spoiler noun-m">le jardin partagé / communautaire</span></td></tr>
+                     <tr><td>Learn to garden</td><td><span class="spoiler verb">apprendre à jardiner</span></td></tr>
+                     <tr><td>Affordable rent</td><td><span class="spoiler noun-f">la location abordable</span></td></tr>
+                     <tr><td>Close to home</td><td><span class="spoiler adj">proche de chez toi</span></td></tr>
+                     <tr><td>Good idea</td><td><span class="spoiler noun-f">la bonne idée</span></td></tr>
+                     <tr><td>Let's do it together?</td><td><span class="spoiler other">On le fait ensemble ?</span></td></tr>
+                     <tr><td>Imagine harvesting your own tomatoes!</td><td><span class="spoiler other">Imagine récolter tes propres tomates !</span></td></tr>
+                 </tbody>
+            </table>
+
+            <!-- 5b. Recycle Frying Oil -->
+            <h3>5b. Convince a friend to recycle used frying oil instead of discarding it</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To use / To utilize</td><td><span class="spoiler verb">utiliser / valoriser</span></td></tr>
+                     <tr><td>Frying oil</td><td><span class="spoiler noun-f">l'huile de friture</span></td></tr>
+                     <tr><td>Used oil</td><td><span class="spoiler noun-f">l'huile usagée</span></td></tr>
+                     <tr><td>Instead of</td><td><span class="spoiler prep">au lieu de</span></td></tr>
+                     <tr><td>To throw away / To discard</td><td><span class="spoiler verb">jeter</span></td></tr>
+                     <tr><td>Sink / Drain</td><td><span class="spoiler noun-m">l'évier</span></td></tr>
+                     <tr><td>Toilet</td><td><span class="spoiler noun-f pl">les toilettes</span></td></tr>
+                     <tr><td>Trash can / Bin</td><td><span class="spoiler noun-f">la poubelle</span></td></tr>
+                     <tr><td>Recycling center / Collection point</td><td><span class="spoiler noun-f">la déchetterie / le point de collecte</span></td></tr>
+                     <tr><td>Recycling</td><td><span class="spoiler noun-m">le recyclage</span></td></tr>
+                     <tr><td>To recycle</td><td><span class="spoiler verb">recycler</span></td></tr>
+                     <tr><td>Environment</td><td><span class="spoiler noun-m">l'environnement</span></td></tr>
+                     <tr><td>Pollution</td><td><span class="spoiler noun-f">la pollution</span></td></tr>
+                     <tr><td>Water pollution</td><td><span class="spoiler noun-f">la pollution de l'eau</span></td></tr>
+                     <tr><td>Clogged pipes</td><td><span class="spoiler noun-f pl">les canalisations bouchées</span></td></tr>
+                     <tr><td>Bad for plumbing</td><td><span class="spoiler adj">mauvais pour la plomberie</span></td></tr>
+                     <tr><td>Ecological gesture</td><td><span class="spoiler noun-m">le geste écologique</span></td></tr>
+                     <tr><td>Easy to do</td><td><span class="spoiler adj">facile à faire</span></td></tr>
+                     <tr><td>Collect in a bottle/container</td><td><span class="spoiler verb">collecter dans une bouteille/un récipient</span></td></tr>
+                     <tr><td>Container</td><td><span class="spoiler noun-m">le contenant / le récipient</span></td></tr>
+                     <tr><td>Take to collection point</td><td><span class="spoiler verb">apporter au point de collecte</span></td></tr>
+                     <tr><td>Transformation / Conversion</td><td><span class="spoiler noun-f">la transformation / la valorisation</span></td></tr>
+                     <tr><td>Biofuel</td><td><span class="spoiler noun-m">le biocarburant</span></td></tr>
+                     <tr><td>Soap</td><td><span class="spoiler noun-m">le savon</span></td></tr>
+                     <tr><td>Energy</td><td><span class="spoiler noun-f">l'énergie</span></td></tr>
+                     <tr><td>Good habit</td><td><span class="spoiler noun-f">la bonne habitude</span></td></tr>
+                     <tr><td>Simple action</td><td><span class="spoiler noun-f">l'action simple</span></td></tr>
+                     <tr><td>Protect the planet</td><td><span class="spoiler verb">protéger la planète</span></td></tr>
+                     <tr><td>Responsible</td><td><span class="spoiler adj">responsable</span></td></tr>
+                     <tr><td>Think about it!</td><td><span class="spoiler other">Penses-y !</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 5c. Install Solar Panels -->
+            <h3>5c. Convince a friend to install solar panels</h3>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                    <tr><td>To install</td><td><span class="spoiler verb">installer</span></td></tr>
+                    <tr><td>Solar panels</td><td><span class="spoiler noun-m pl">les panneaux solaires / photovoltaïques</span></td></tr>
+                    <tr><td>House / Home</td><td><span class="spoiler noun-f">la maison</span></td></tr>
+                    <tr><td>Roof</td><td><span class="spoiler noun-m">le toit</span></td></tr>
+                    <tr><td>Renewable energy</td><td><span class="spoiler noun-f">l'énergie renouvelable</span></td></tr>
+                    <tr><td>Clean energy</td><td><span class="spoiler noun-f">l'énergie propre</span></td></tr>
+                    <tr><td>Sun</td><td><span class="spoiler noun-m">le soleil</span></td></tr>
+                    <tr><td>Electricity</td><td><span class="spoiler noun-f">l'électricité</span></td></tr>
+                    <tr><td>Produce your own energy</td><td><span class="spoiler verb">produire sa propre énergie</span></td></tr>
+                    <tr><td>Self-consumption</td><td><span class="spoiler noun-f">l'autoconsommation</span></td></tr>
+                    <tr><td>Reduce electricity bill</td><td><span class="spoiler verb">réduire la facture d'électricité</span></td></tr>
+                    <tr><td>Savings</td><td><span class="spoiler noun-f pl">les économies</span></td></tr>
+                    <tr><td>Long-term investment</td><td><span class="spoiler noun-m">l'investissement à long terme</span></td></tr>
+                    <tr><td>Environmentally friendly</td><td><span class="spoiler adj">écologique / respectueux de l'environnement</span></td></tr>
+                    <tr><td>Reduce carbon footprint</td><td><span class="spoiler verb">réduire son empreinte carbone</span></td></tr>
+                    <tr><td>Government aid / subsidies</td><td><span class="spoiler noun-f pl">les aides de l'État / les subventions</span></td></tr>
+                    <tr><td>Tax credit</td><td><span class="spoiler noun-m">le crédit d'impôt</span></td></tr>
+                    <tr><td>Sell surplus electricity</td><td><span class="spoiler verb">vendre le surplus d'électricité</span></td></tr>
+                    <tr><td>Increase property value</td><td><span class="spoiler verb">augmenter la valeur immobilière</span></td></tr>
+                    <tr><td>Installation cost</td><td><span class="spoiler noun-m">le coût d'installation</span></td></tr>
+                    <tr><td>Profitability / Return on investment</td><td><span class="spoiler noun-f">la rentabilité</span></td></tr>
+                    <tr><td>Maintenance</td><td><span class="spoiler noun-m">l'entretien / la maintenance</span></td></tr>
+                    <tr><td>Lifespan / Durability</td><td><span class="spoiler noun-f">la durée de vie / la durabilité</span></td></tr>
+                    <tr><td>Installer / Company</td><td><span class="spoiler noun-m">l'installateur / l'entreprise</span></td></tr>
+                    <tr><td>Quote / Estimate</td><td><span class="spoiler noun-m">le devis</span></td></tr>
+                    <tr><td>Feasibility study</td><td><span class="spoiler noun-f">l'étude de faisabilité</span></td></tr>
+                    <tr><td>Orientation / Inclination (of roof)</td><td><span class="spoiler noun-f">l'orientation / l'inclinaison (du toit)</span></td></tr>
+                    <tr><td>Good for the planet and the wallet</td><td><span class="spoiler other">bon pour la planète et le portefeuille</span></td></tr>
+                    <tr><td>It's worth looking into</td><td><span class="spoiler other">Ça vaut le coup de se renseigner</span></td></tr>
+                </tbody>
+            </table>
+
+            <!-- 5d. Beach Cleanup (Oil Spill) -->
+            <h3>5d. Convince a friend to clean a beach polluted by an oil spill</h3>
+            <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To clean</td><td><span class="spoiler verb">nettoyer</span></td></tr>
+                     <tr><td>Beach</td><td><span class="spoiler noun-f">la plage</span></td></tr>
+                     <tr><td>Polluted</td><td><span class="spoiler adj">pollué(e)</span></td></tr>
+                     <tr><td>By / Caused by</td><td><span class="spoiler prep">par / à cause de</span></td></tr>
+                     <tr><td>Oil tanker</td><td><span class="spoiler noun-m">le pétrolier</span></td></tr>
+                     <tr><td>Shipwreck / Sinking</td><td><span class="spoiler noun-m">le naufrage</span></td></tr>
+                     <tr><td>Oil spill</td><td><span class="spoiler noun-f">la marée noire</span></td></tr>
+                     <tr><td>Oil / Petroleum</td><td><span class="spoiler noun-m">le pétrole / le fioul</span></td></tr>
+                     <tr><td>Pollution</td><td><span class="spoiler noun-f">la pollution</span></td></tr>
+                     <tr><td>Ecological disaster</td><td><span class="spoiler noun-f">la catastrophe écologique</span></td></tr>
+                     <tr><td>Volunteering</td><td><span class="spoiler noun-m">le bénévolat</span></td></tr>
+                     <tr><td>Volunteer</td><td><span class="spoiler noun-m">le/la bénévole</span></td></tr>
+                     <tr><td>Action / Operation</td><td><span class="spoiler noun-f">l'action / l'opération</span> (de nettoyage)</td></tr>
+                     <tr><td>Help</td><td><span class="spoiler verb noun-f">aider / l'aide</span></td></tr>
+                     <tr><td>Protect wildlife</td><td><span class="spoiler verb">protéger la faune</span> (oiseaux, poissons)</td></tr>
+                     <tr><td>Birds</td><td><span class="spoiler noun-m pl">les oiseaux</span></td></tr>
+                     <tr><td>Marine life</td><td><span class="spoiler noun-f">la vie marine</span></td></tr>
+                     <tr><td>Coastline / Shore</td><td><span class="spoiler noun-m">le littoral</span></td></tr>
+                     <tr><td>Sand</td><td><span class="spoiler noun-m">le sable</span></td></tr>
+                     <tr><td>Rocks</td><td><span class="spoiler noun-m pl">les rochers</span></td></tr>
+                     <tr><td>Equipment (gloves, boots, suits)</td><td><span class="spoiler noun-m">l'équipement (gants, bottes, combinaisons)</span></td></tr>
+                     <tr><td>Provided by organizers</td><td><span class="spoiler adj">fourni par les organisateurs</span></td></tr>
+                     <tr><td>Instructions / Briefing</td><td><span class="spoiler noun-f pl noun-m">les consignes / le briefing</span></td></tr>
+                     <tr><td>Safety</td><td><span class="spoiler noun-f">la sécurité</span></td></tr>
+                     <tr><td>Teamwork</td><td><span class="spoiler noun-m">le travail d'équipe</span></td></tr>
+                     <tr><td>Solidarity</td><td><span class="spoiler noun-f">la solidarité</span></td></tr>
+                     <tr><td>Useful / Necessary</td><td><span class="spoiler adj">utile / nécessaire</span></td></tr>
+                     <tr><td>Make a concrete difference</td><td><span class="spoiler verb">faire une différence concrète</span></td></tr>
+                     <tr><td>Sign up / Join the group</td><td><span class="spoiler verb">s'inscrire / rejoindre le groupe</span></td></tr>
+                 </tbody>
+            </table>
+
+            <!-- 5e. Forest Cleanup After Storm (Duplicate of 2f, kept for completeness) -->
+            <h3>5e. Clean the forest after a storm</h3>
+            <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To clean</td><td><span class="spoiler verb">nettoyer</span></td></tr>
+                     <tr><td>Forest</td><td><span class="spoiler noun-f">la forêt</span></td></tr>
+                     <tr><td>During / After</td><td><span class="spoiler prep">lors de / après</span></td></tr>
+                     <tr><td>Storm</td><td><span class="spoiler noun-f">la tempête</span></td></tr>
+                     <tr><td>Damage</td><td><span class="spoiler noun-m pl">les dégâts</span></td></tr>
+                     <tr><td>Fallen trees</td><td><span class="spoiler noun-m pl">les arbres tombés / couchés</span></td></tr>
+                     <tr><td>Broken branches</td><td><span class="spoiler noun-f pl">les branches cassées</span></td></tr>
+                     <tr><td>Debris / Waste</td><td><span class="spoiler noun-m pl">les débris / les déchets</span></td></tr>
+                     <tr><td>Clear paths</td><td><span class="spoiler verb">dégager les chemins</span></td></tr>
+                     <tr><td>Safety hazard</td><td><span class="spoiler noun-m">le danger / le risque pour la sécurité</span></td></tr>
+                     <tr><td>Volunteer action</td><td><span class="spoiler noun-f">l'action bénévole</span></td></tr>
+                     <tr><td>Organized by</td><td><span class="spoiler adj">organisé(e) par</span> (mairie, association)</td></tr>
+                     <tr><td>Town hall / Municipality</td><td><span class="spoiler noun-f">la mairie</span></td></tr>
+                     <tr><td>Association</td><td><span class="spoiler noun-f">l'association</span> (de protection de la nature)</td></tr>
+                     <tr><td>Teamwork</td><td><span class="spoiler noun-m">le travail d'équipe</span></td></tr>
+                     <tr><td>Equipment needed</td><td><span class="spoiler noun-m">l'équipement nécessaire</span> (gants, chaussures solides)</td></tr>
+                     <tr><td>Gloves</td><td><span class="spoiler noun-m pl">les gants</span></td></tr>
+                     <tr><td>Sturdy shoes</td><td><span class="spoiler noun-f pl">les chaussures solides</span></td></tr>
+                     <tr><td>Tools (saw, axe - if qualified)</td><td><span class="spoiler noun-m pl">les outils</span> (scie, hache - si qualifié)</td></tr>
+                     <tr><td>Collection bags</td><td><span class="spoiler noun-m pl">les sacs de collecte</span></td></tr>
+                     <tr><td>Restore access</td><td><span class="spoiler verb">restaurer l'accès</span></td></tr>
+                     <tr><td>Protect the ecosystem</td><td><span class="spoiler verb">protéger l'écosystème</span></td></tr>
+                     <tr><td>Community effort</td><td><span class="spoiler noun-m">l'effort communautaire</span></td></tr>
+                     <tr><td>Useful work</td><td><span class="spoiler noun-m">le travail utile</span></td></tr>
+                     <tr><td>Physical activity</td><td><span class="spoiler noun-f">l'activité physique</span></td></tr>
+                     <tr><td>Outdoor</td><td><span class="spoiler adv">en plein air</span></td></tr>
+                     <tr><td>Participate / Lend a hand</td><td><span class="spoiler verb">participer / donner un coup de main</span></td></tr>
+                     <tr><td>Information / Meeting point</td><td><span class="spoiler noun-f pl noun-m">les informations / le point de rendez-vous</span></td></tr>
+                     <tr><td>Solidarity</td><td><span class="spoiler noun-f">la solidarité</span></td></tr>
+                     <tr><td>Preserve nature</td><td><span class="spoiler verb">préserver la nature</span></td></tr>
+                 </tbody>
+            </table>
+
+            <!-- 5f. Eco-friendly Trip -->
+            <h3>5f. Convince a friend to participate in an eco-trip</h3>
+            <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To participate in</td><td><span class="spoiler verb">participer à</span></td></tr>
+                     <tr><td>Eco-trip / Sustainable trip</td><td><span class="spoiler noun-m">le voyage écolo / le voyage durable</span></td></tr>
+                     <tr><td>Responsible tourism</td><td><span class="spoiler noun-m">le tourisme responsable</span></td></tr>
+                     <tr><td>Minimize impact</td><td><span class="spoiler verb">minimiser l'impact</span> (sur l'environnement)</td></tr>
+                     <tr><td>Environment</td><td><span class="spoiler noun-m">l'environnement</span></td></tr>
+                     <tr><td>Choose destination</td><td><span class="spoiler verb">choisir la destination</span></td></tr>
+                     <tr><td>Eco-friendly transport</td><td><span class="spoiler noun-m">le transport écologique</span> (train, bus, vélo)</td></tr>
+                     <tr><td>Avoid flying (if possible)</td><td><span class="spoiler verb">éviter l'avion (si possible)</span></td></tr>
+                     <tr><td>Sustainable accommodation</td><td><span class="spoiler noun-m">l'hébergement durable</span> (écolodge, gîte certifié)</td></tr>
+                     <tr><td>Eco-label</td><td><span class="spoiler noun-m">l'écolabel</span></td></tr>
+                     <tr><td>Local activities</td><td><span class="spoiler noun-f pl">les activités locales</span></td></tr>
+                     <tr><td>Respect local culture</td><td><span class="spoiler verb">respecter la culture locale</span></td></tr>
+                     <tr><td>Support local economy</td><td><span class="spoiler verb">soutenir l'économie locale</span></td></tr>
+                     <tr><td>Buy local products</td><td><span class="spoiler verb">acheter des produits locaux</span></td></tr>
+                     <tr><td>Eat local food</td><td><span class="spoiler verb">manger local</span></td></tr>
+                     <tr><td>Reduce waste</td><td><span class="spoiler verb">réduire les déchets</span></td></tr>
+                     <tr><td>Avoid single-use plastic</td><td><span class="spoiler verb">éviter le plastique à usage unique</span></td></tr>
+                     <tr><td>Reusable water bottle</td><td><span class="spoiler noun-f">la gourde réutilisable</span></td></tr>
+                     <tr><td>Conserve water and energy</td><td><span class="spoiler verb">économiser l'eau et l'énergie</span></td></tr>
+                     <tr><td>Nature activities</td><td><span class="spoiler noun-f pl">les activités nature</span> (randonnée, observation)</td></tr>
+                     <tr><td>Hiking</td><td><span class="spoiler noun-f">la randonnée</span></td></tr>
+                     <tr><td>Wildlife observation</td><td><span class="spoiler noun-f">l'observation de la faune</span></td></tr>
+                     <tr><td>Awareness</td><td><span class="spoiler noun-f">la prise de conscience / la sensibilisation</span></td></tr>
+                     <tr><td>Travel differently</td><td><span class="spoiler verb">voyager différemment</span></td></tr>
+                     <tr><td>Meaningful travel</td><td><span class="spoiler noun-m">le voyage qui a du sens</span></td></tr>
+                     <tr><td>Authentic</td><td><span class="spoiler adj">authentique</span></td></tr>
+                     <tr><td>Enriching</td><td><span class="spoiler adj">enrichissant(e)</span></td></tr>
+                     <tr><td>Let's plan it!</td><td><span class="spoiler other">Planifions-le ! / Organisans ça !</span></td></tr>
+                     <tr><td>Good for conscience</td><td><span class="spoiler adj">bon pour la conscience</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 5g. Leave Car, Use Bike -->
+            <h3>5g. Convince a friend to leave their car and cycle instead</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To leave / abandon</td><td><span class="spoiler verb">laisser / abandonner</span></td></tr>
+                     <tr><td>Car</td><td><span class="spoiler noun-f">la voiture</span></td></tr>
+                     <tr><td>To cycle / To bike</td><td><span class="spoiler verb">rouler à vélo / faire du vélo</span></td></tr>
+                     <tr><td>Bicycle / Bike</td><td><span class="spoiler noun-m">le vélo</span> 🚴‍♀️</td></tr>
+                     <tr><td>Daily commute / trips</td><td><span class="spoiler noun-m pl">les trajets quotidiens</span></td></tr>
+                     <tr><td>Short distances</td><td><span class="spoiler noun-f pl">les courtes distances</span></td></tr>
+                     <tr><td>Good for health</td><td><span class="spoiler adj">bon pour la santé</span></td></tr>
+                     <tr><td>Physical exercise</td><td><span class="spoiler noun-m">l'exercice physique</span></td></tr>
+                     <tr><td>Stay in shape</td><td><span class="spoiler verb">rester en forme</span></td></tr>
+                     <tr><td>Good for the environment</td><td><span class="spoiler adj">bon pour l'environnement</span></td></tr>
+                     <tr><td>No pollution / emissions</td><td><span class="spoiler noun-f">pas de pollution / d'émissions</span></td></tr>
+                     <tr><td>Reduce carbon footprint</td><td><span class="spoiler verb">réduire son empreinte carbone</span></td></tr>
+                     <tr><td>Economical / Cheaper</td><td><span class="spoiler adj">économique / moins cher</span></td></tr>
+                     <tr><td>Save money (gas, insurance, parking)</td><td><span class="spoiler verb">économiser de l'argent</span> (essence, assurance, parking)</td></tr>
+                     <tr><td>Gas / Petrol</td><td><span class="spoiler noun-f">l'essence</span></td></tr>
+                     <tr><td>Parking</td><td><span class="spoiler noun-m">le stationnement / le parking</span></td></tr>
+                     <tr><td>Avoid traffic jams</td><td><span class="spoiler verb">éviter les embouteillages / bouchons</span></td></tr>
+                     <tr><td>Faster in the city</td><td><span class="spoiler adj">plus rapide en ville</span></td></tr>
+                     <tr><td>Cycle paths / lanes</td><td><span class="spoiler noun-f pl">les pistes cyclables</span></td></tr>
+                     <tr><td>Enjoy the city / scenery</td><td><span class="spoiler verb">profiter de la ville / du paysage</span></td></tr>
+                     <tr><td>Less stress</td><td><span class="spoiler noun-m">moins de stress</span></td></tr>
+                     <tr><td>Practical / Convenient</td><td><span class="spoiler adj">pratique</span></td></tr>
+                     <tr><td>Equipment (helmet, lock, lights)</td><td><span class="spoiler noun-m">l'équipement</span> (casque, antivol, lumières)</td></tr>
+                     <tr><td>Helmet</td><td><span class="spoiler noun-m">le casque</span></td></tr>
+                     <tr><td>Lock</td><td><span class="spoiler noun-m">l'antivol</span></td></tr>
+                     <tr><td>Safety</td><td><span class="spoiler noun-f">la sécurité</span> (être visible)</td></tr>
+                     <tr><td>Try it for a week?</td><td><span class="spoiler other">Essaie pendant une semaine ?</span></td></tr>
+                     <tr><td>Electric bike (option)</td><td><span class="spoiler noun-m">le vélo électrique (option)</span></td></tr>
+                     <tr><td>Good resolution</td><td><span class="spoiler noun-f">la bonne résolution</span></td></tr>
+                 </tbody>
+             </table>
+        </section>
+
+        <!-- 6. SERVICES -->
+        <section class="topic-section">
+            <h2>6. Services / Miscellaneous Activities</h2>
+
+             <!-- 6a. Service Exchange Between Individuals -->
+            <h3>6a. Convince a friend to participate in service exchanges</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Advertisement / Flyer</td><td><span class="spoiler noun-f">la publicité / le prospectus</span></td></tr>
+                     <tr><td>Received at home</td><td><span class="spoiler adj">reçu(e) chez soi</span></td></tr>
+                     <tr><td>Service exchange</td><td><span class="spoiler noun-m">l'échange de services</span></td></tr>
+                     <tr><td>Between individuals / Peer-to-peer</td><td><span class="spoiler prep noun-m pl">entre particuliers</span></td></tr>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To participate</td><td><span class="spoiler verb">participer (à)</span></td></tr>
+                     <tr><td>Platform / System</td><td><span class="spoiler noun-f noun-m">la plateforme / le système</span> (SEL - Système d'Échange Local)</td></tr>
+                     <tr><td>Offer your skills / time</td><td><span class="spoiler verb">proposer ses compétences / son temps</span></td></tr>
+                     <tr><td>Receive services in return</td><td><span class="spoiler verb">recevoir des services en retour</span></td></tr>
+                     <tr><td>Based on time / points</td><td><span class="spoiler prep noun-m">basé sur le temps / les points</span></td></tr>
+                     <tr><td>Babysitting</td><td><span class="spoiler noun-m">le babysitting / la garde d'enfants</span></td></tr>
+                     <tr><td>DIY / Handyman work</td><td><span class="spoiler noun-m">le bricolage</span></td></tr>
+                     <tr><td>Cooking / Meal preparation</td><td><span class="spoiler noun-f">la cuisine / la préparation de repas</span></td></tr>
+                     <tr><td>Dog walking</td><td><span class="spoiler noun-f">la promenade de chien</span></td></tr>
+                     <tr><td>Gardening help</td><td><span class="spoiler noun-f">l'aide au jardinage</span></td></tr>
+                     <tr><td>Computer help</td><td><span class="spoiler noun-f">l'aide informatique</span></td></tr>
+                     <tr><td>Lessons (music, language)</td><td><span class="spoiler noun-m pl">les cours</span> (musique, langue)</td></tr>
+                     <tr><td>Sewing / Alterations</td><td><span class="spoiler noun-f">la couture / les retouches</span></td></tr>
+                     <tr><td>Moving help</td><td><span class="spoiler noun-f">l'aide au déménagement</span></td></tr>
+                     <tr><td>Save money</td><td><span class="spoiler verb">économiser de l'argent</span></td></tr>
+                     <tr><td>Mutual aid / Solidarity</td><td><span class="spoiler noun-f">l'entraide / la solidarité</span></td></tr>
+                     <tr><td>Meet neighbors / people</td><td><span class="spoiler verb">rencontrer ses voisins / du monde</span></td></tr>
+                     <tr><td>Create social links</td><td><span class="spoiler verb">créer du lien social</span></td></tr>
+                     <tr><td>Share skills</td><td><span class="spoiler verb">partager ses compétences</span></td></tr>
+                     <tr><td>Learn new things</td><td><span class="spoiler verb">apprendre de nouvelles choses</span></td></tr>
+                     <tr><td>Useful</td><td><span class="spoiler adj">utile</span></td></tr>
+                     <tr><td>Community spirit</td><td><span class="spoiler noun-m">l'esprit communautaire</span></td></tr>
+                     <tr><td>Register / Join the network</td><td><span class="spoiler verb">s'inscrire / rejoindre le réseau</span></td></tr>
+                     <tr><td>Website / App</td><td><span class="spoiler noun-m noun-f">le site web / l'application</span></td></tr>
+                     <tr><td>Give it a try!</td><td><span class="spoiler other">Essaie ! C'est sympa !</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 6b. Attend TV Debate Recording (Duplicate of 4e) -->
+            <h3>6b. Convince a friend to attend a TV debate recording</h3>
+            <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To attend / To be present at</td><td><span class="spoiler verb">assister à</span></td></tr>
+                     <tr><td>Recording</td><td><span class="spoiler noun-m">l'enregistrement</span></td></tr>
+                     <tr><td>TV show / program</td><td><span class="spoiler noun-f">l'émission (de télévision)</span></td></tr>
+                     <tr><td>Debate</td><td><span class="spoiler noun-m">le débat</span></td></tr>
+                     <tr><td>Political</td><td><span class="spoiler adj">politique</span></td></tr>
+                     <tr><td>Ecological</td><td><span class="spoiler adj">écologique</span></td></tr>
+                     <tr><td>Scientific</td><td><span class="spoiler adj">scientifique</span></td></tr>
+                     <tr><td>Audience / Public</td><td><span class="spoiler noun-m">le public</span></td></tr>
+                     <tr><td>See behind the scenes</td><td><span class="spoiler verb">voir les coulisses / l'envers du décor</span></td></tr>
+                     <tr><td>TV studio</td><td><span class="spoiler noun-m">le plateau télé / le studio</span></td></tr>
+                     <tr><td>How it's made</td><td><span class="spoiler other">comment c'est fait</span></td></tr>
+                     <tr><td>Guests / Speakers</td><td><span class="spoiler noun-m pl">les invités / les intervenants</span></td></tr>
+                     <tr><td>Host / Presenter</td><td><span class="spoiler noun-m">l'animateur / le présentateur</span></td></tr>
+                     <tr><td>Interesting topic</td><td><span class="spoiler noun-m">le sujet intéressant</span></td></tr>
+                     <tr><td>Atmosphere</td><td><span class="spoiler noun-f">l'ambiance</span></td></tr>
+                     <tr><td>Free</td><td><span class="spoiler adj">gratuit(e)</span></td></tr>
+                     <tr><td>Need to book / register</td><td><span class="spoiler verb">il faut réserver / s'inscrire</span></td></tr>
+                     <tr><td>Limited seats</td><td><span class="spoiler noun-f pl">les places limitées</span></td></tr>
+                     <tr><td>Unique experience</td><td><span class="spoiler noun-f">l'expérience unique</span></td></tr>
+                     <tr><td>Original outing</td><td><span class="spoiler noun-f">la sortie originale</span></td></tr>
+                     <tr><td>Maybe see celebrities</td><td><span class="spoiler other">peut-être voir des célébrités</span></td></tr>
+                     <tr><td>Let's go?</td><td><span class="spoiler other">On y va ? / Ça te dit ?</span></td></tr>
+                     <tr><td>Check the date/time</td><td><span class="spoiler verb">vérifier la date/l'heure</span></td></tr>
+                     <tr><td>Location</td><td><span class="spoiler noun-m">le lieu</span></td></tr>
+                     <tr><td>Sign up quickly</td><td><span class="spoiler verb">s'inscrire rapidement</span></td></tr>
+                     <tr><td>Curiosity</td><td><span class="spoiler noun-f">la curiosité</span></td></tr>
+                     <tr><td>Applause director</td><td><span class="spoiler noun-m">le chauffeur de salle</span></td></tr>
+                     <tr><td>Duration</td><td><span class="spoiler noun-f">la durée</span></td></tr>
+                 </tbody>
+            </table>
+
+            <!-- 6c. Accompany to Beauty Salon -->
+            <h3>6c. Convince a friend to accompany you to a beauty salon</h3>
+            <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To accompany</td><td><span class="spoiler verb">accompagner</span></td></tr>
+                     <tr><td>Beauty salon / institute</td><td><span class="spoiler noun-m noun-m">le salon de beauté / l'institut de beauté</span></td></tr>
+                     <tr><td>Appointment</td><td><span class="spoiler noun-m">le rendez-vous</span></td></tr>
+                     <tr><td>Treatment / Care</td><td><span class="spoiler noun-m">le soin</span></td></tr>
+                     <tr><td>Haircut / Hairstyle</td><td><span class="spoiler noun-f">la coupe de cheveux / la coiffure</span></td></tr>
+                     <tr><td>Hairdresser</td><td><span class="spoiler noun-m">le coiffeur / la coiffeuse</span></td></tr>
+                     <tr><td>Manicure</td><td><span class="spoiler noun-f">la manucure</span></td></tr>
+                     <tr><td>Pedicure</td><td><span class="spoiler noun-f">la pédicure</span></td></tr>
+                     <tr><td>Facial treatment</td><td><span class="spoiler noun-m">le soin du visage</span></td></tr>
+                     <tr><td>Massage</td><td><span class="spoiler noun-m">le massage</span></td></tr>
+                     <tr><td>Waxing / Hair removal</td><td><span class="spoiler noun-f">l'épilation</span></td></tr>
+                     <tr><td>Makeup</td><td><span class="spoiler noun-m">le maquillage</span></td></tr>
+                     <tr><td>Relaxing moment</td><td><span class="spoiler noun-m">le moment de détente / relaxant</span></td></tr>
+                     <tr><td>Pampering</td><td><span class="spoiler noun-m">le cocooning / se faire chouchouter</span></td></tr>
+                     <tr><td>For fun / pleasure</td><td><span class="spoiler prep noun-m">pour le plaisir</span></td></tr>
+                     <tr><td>To chat / gossip</td><td><span class="spoiler verb">papoter / discuter</span></td></tr>
+                     <tr><td>Girls' time (if applicable)</td><td><span class="spoiler noun-m">le moment entre filles</span></td></tr>
+                     <tr><td>You can also get something done</td><td><span class="spoiler other">Tu peux aussi faire quelque chose</span></td></tr>
+                     <tr><td>Just keep me company</td><td><span class="spoiler verb">juste me tenir compagnie</span></td></tr>
+                     <tr><td>Give me your opinion</td><td><span class="spoiler verb">me donner ton avis</span> (sur la coupe, etc.)</td></tr>
+                     <tr><td>Nice atmosphere</td><td><span class="spoiler noun-f">l'ambiance sympa</span></td></tr>
+                     <tr><td>Discover the place</td><td><span class="spoiler verb">découvrir l'endroit</span></td></tr>
+                     <tr><td>New salon</td><td><span class="spoiler noun-m">le nouveau salon</span></td></tr>
+                     <tr><td>Good reviews</td><td><span class="spoiler noun-m pl">les bons avis</span></td></tr>
+                     <tr><td>Afterwards, we can... (go for coffee)</td><td><span class="spoiler other">Après, on peut... (aller boire un café)</span></td></tr>
+                     <tr><td>Please?</td><td><span class="spoiler other">S'il te plaît ?</span></td></tr>
+                     <tr><td>It won't take long</td><td><span class="spoiler other">Ça ne sera pas long</span></td></tr>
+                     <tr><td>Waiting area</td><td><span class="spoiler noun-f">la salle d'attente</span> (avec des magazines)</td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 6d. Go to a Book Fair/Exhibition -->
+            <h3>6d. Convince a friend to go to a book exhibition/fair</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To go to / attend</td><td><span class="spoiler verb">aller à / assister à</span></td></tr>
+                     <tr><td>Book exhibition / fair</td><td><span class="spoiler noun-f noun-m">l'exposition de livres / le salon du livre</span></td></tr>
+                     <tr><td>Book</td><td><span class="spoiler noun-m">le livre</span></td></tr>
+                     <tr><td>Author</td><td><span class="spoiler noun-m">l'auteur / l'écrivain</span></td></tr>
+                     <tr><td>Publisher</td><td><span class="spoiler noun-m">l'éditeur</span></td></tr>
+                     <tr><td>Book signing / Dedication</td><td><span class="spoiler noun-f">la séance de dédicaces</span></td></tr>
+                     <tr><td>Meet authors</td><td><span class="spoiler verb">rencontrer des auteurs</span></td></tr>
+                     <tr><td>Discover new books</td><td><span class="spoiler verb">découvrir de nouveaux livres</span></td></tr>
+                     <tr><td>Different genres</td><td><span class="spoiler noun-m pl">les genres différents</span> (roman, BD, manga, jeunesse...)</td></tr>
+                     <tr><td>Novel</td><td><span class="spoiler noun-m">le roman</span></td></tr>
+                     <tr><td>Comic book</td><td><span class="spoiler noun-f">la bande dessinée (BD)</span></td></tr>
+                     <tr><td>Manga</td><td><span class="spoiler noun-m">le manga</span></td></tr>
+                     <tr><td>Children's literature</td><td><span class="spoiler noun-f">la littérature jeunesse</span></td></tr>
+                     <tr><td>Conferences / Debates</td><td><span class="spoiler noun-f pl noun-m pl">les conférences / les débats</span></td></tr>
+                     <tr><td>Workshops</td><td><span class="spoiler noun-m pl">les ateliers</span> (écriture, illustration)</td></tr>
+                     <tr><td>Exhibitors / Stands</td><td><span class="spoiler noun-m pl">les exposants / les stands</span></td></tr>
+                     <tr><td>Bargains / Second-hand books</td><td><span class="spoiler noun-f pl noun-m pl">les bonnes affaires / les livres d'occasion</span></td></tr>
+                     <tr><td>Atmosphere / Ambiance</td><td><span class="spoiler noun-f">l'ambiance / l'atmosphère</span></td></tr>
+                     <tr><td>For book lovers</td><td><span class="spoiler prep noun-m pl">pour les amoureux des livres</span></td></tr>
+                     <tr><td>Reading</td><td><span class="spoiler noun-f">la lecture</span></td></tr>
+                     <tr><td>Culture</td><td><span class="spoiler noun-f">la culture</span></td></tr>
+                     <tr><td>Interesting outing</td><td><span class="spoiler noun-f">la sortie intéressante</span></td></tr>
+                     <tr><td>Tickets / Entrance fee</td><td><span class="spoiler noun-m pl noun-m">les billets / le prix d'entrée</span></td></tr>
+                     <tr><td>Program / Schedule</td><td><span class="spoiler noun-m">le programme</span></td></tr>
+                     <tr><td>Dates / Location</td><td><span class="spoiler noun-f pl noun-m">les dates / le lieu</span></td></tr>
+                     <tr><td>Let's go browse!</td><td><span class="spoiler other">Allons flâner / bouquiner !</span></td></tr>
+                     <tr><td>Even if you don't buy anything</td><td><span class="spoiler other">Même si on n'achète rien</span></td></tr>
+                     <tr><td>Inspiration</td><td><span class="spoiler noun-f">l'inspiration</span> (pour lire)</td></tr>
+                     <tr><td>Find gifts</td><td><span class="spoiler verb">trouver des cadeaux</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 6e. Eco-responsible Organized Trip (Ad) -->
+            <h3>6e. Go on an eco-responsible organized trip (based on an ad)</h3>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                     <tr><td>Organized trip</td><td><span class="spoiler noun-m">le voyage organisé</span></td></tr>
+                     <tr><td>Eco-responsible / Sustainable</td><td><span class="spoiler adj">éco-responsable / durable</span></td></tr>
+                     <tr><td>Following / Based on</td><td><span class="spoiler prep">suite à / d'après</span></td></tr>
+                     <tr><td>Advertisement / Ad</td><td><span class="spoiler noun-f">l'annonce / la publicité</span></td></tr>
+                     <tr><td>Appeared / Published</td><td><span class="spoiler adj">parue / publiée</span></td></tr>
+                     <tr><td>Newspaper / Journal</td><td><span class="spoiler noun-m">le journal</span></td></tr>
+                     <tr><td>Travel agency</td><td><span class="spoiler noun-f">l'agence de voyage</span></td></tr>
+                     <tr><td>Specialized agency</td><td><span class="spoiler noun-f">l'agence spécialisée</span> (tourisme durable)</td></tr>
+                     <tr><td>Offer / Package</td><td><span class="spoiler noun-f noun-m">l'offre / le forfait</span></td></tr>
+                     <tr><td>Destination</td><td><span class="spoiler noun-f">la destination</span></td></tr>
+                     <tr><td>Itinerary</td><td><span class="spoiler noun-m">l'itinéraire</span></td></tr>
+                     <tr><td>Included activities</td><td><span class="spoiler noun-f pl">les activités incluses</span></td></tr>
+                     <tr><td>Eco-friendly transport</td><td><span class="spoiler noun-m">le transport écologique</span></td></tr>
+                     <tr><td>Sustainable accommodation</td><td><span class="spoiler noun-m">l'hébergement durable</span></td></tr>
+                     <tr><td>Meals (local, organic)</td><td><span class="spoiler noun-m pl">les repas</span> (locaux, bio)</td></tr>
+                     <tr><td>Local guide</td><td><span class="spoiler noun-m">le guide local</span></td></tr>
+                     <tr><td>Small group</td><td><span class="spoiler noun-m">le petit groupe</span></td></tr>
+                     <tr><td>Support local communities</td><td><span class="spoiler verb">soutenir les communautés locales</span></td></tr>
+                     <tr><td>Respect nature and culture</td><td><span class="spoiler verb">respecter la nature et la culture</span></td></tr>
+                     <tr><td>Authentic experience</td><td><span class="spoiler noun-f">l'expérience authentique</span></td></tr>
+                     <tr><td>Attractive price</td><td><span class="spoiler noun-m">le prix attractif</span></td></tr>
+                     <tr><td>All inclusive</td><td><span class="spoiler adj">tout compris</span></td></tr>
+                     <tr><td>Seems perfect</td><td><span class="spoiler adj">ça a l'air parfait</span></td></tr>
+                     <tr><td>Shall we book?</td><td><span class="spoiler other">On réserve ? / On s'inscrit ?</span></td></tr>
+                     <tr><td>Need a vacation</td><td><span class="spoiler verb">avoir besoin de vacances</span></td></tr>
+                     <tr><td>Travel with peace of mind</td><td><span class="spoiler verb">voyager l'esprit tranquille</span></td></tr>
+                     <tr><td>Good opportunity</td><td><span class="spoiler noun-f">la bonne opportunité / occasion</span></td></tr>
+                     <tr><td>Check availability</td><td><span class="spoiler verb">vérifier les disponibilités</span></td></tr>
+                     <tr><td>More information</td><td><span class="spoiler noun-f pl">plus d'informations</span></td></tr>
+                 </tbody>
+            </table>
+
+            <!-- 6f. Pick Fruits/Vegetables at a Farm -->
+            <h3>6f. Convince a friend (who likes cooking) to pick fruits/vegetables at a farm</h3>
+            <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>Friend (who likes cooking)</td><td><span class="spoiler noun-m">un(e) ami(e) (qui aime cuisiner)</span></td></tr>
+                     <tr><td>To go to</td><td><span class="spoiler verb">aller à</span></td></tr>
+                     <tr><td>Farm</td><td><span class="spoiler noun-f">la ferme</span></td></tr>
+                     <tr><td>To pick / To harvest</td><td><span class="spoiler verb">cueillir / récolter</span></td></tr>
+                     <tr><td>Pick-your-own farm</td><td><span class="spoiler noun-f">la ferme de cueillette / la cueillette à la ferme</span></td></tr>
+                     <tr><td>Fruits</td><td><span class="spoiler noun-m pl">les fruits</span> (fraises, pommes, cerises...)</td></tr>
+                     <tr><td>Vegetables</td><td><span class="spoiler noun-m pl">les légumes</span> (tomates, courgettes, haricots...)</td></tr>
+                     <tr><td>Seasonal products</td><td><span class="spoiler noun-m pl">les produits de saison</span></td></tr>
+                     <tr><td>Fresh</td><td><span class="spoiler adj">frais / fraîche</span></td></tr>
+                     <tr><td>Ripe</td><td><span class="spoiler adj">mûr(e)</span></td></tr>
+                     <tr><td>Directly from the producer</td><td><span class="spoiler adv">directement du producteur</span></td></tr>
+                     <tr><td>Quality</td><td><span class="spoiler noun-f">la qualité</span></td></tr>
+                     <tr><td>Taste / Flavor</td><td><span class="spoiler noun-m">le goût / la saveur</span></td></tr>
+                     <tr><td>You choose what you pick</td><td><span class="spoiler other">tu choisis ce que tu cueilles</span></td></tr>
+                     <tr><td>Pay by weight</td><td><span class="spoiler verb">payer au poids</span></td></tr>
+                     <tr><td>Often cheaper</td><td><span class="spoiler adv adj">souvent moins cher</span> (que en magasin)</td></tr>
+                     <tr><td>Fun activity</td><td><span class="spoiler noun-f">l'activité sympa / ludique</span></td></tr>
+                     <tr><td>Outdoor</td><td><span class="spoiler adv">en plein air</span></td></tr>
+                     <tr><td>Good for cooking</td><td><span class="spoiler adj">bien pour cuisiner</span></td></tr>
+                     <tr><td>Imagine the recipes!</td><td><span class="spoiler other">Imagine les recettes !</span> (tartes, confitures...)</td></tr>
+                     <tr><td>Pie</td><td><span class="spoiler noun-f">la tarte</span></td></tr>
+                     <tr><td>Jam</td><td><span class="spoiler noun-f">la confiture</span></td></tr>
+                     <tr><td>Preserves / Canning</td><td><span class="spoiler noun-f pl">les conserves</span></td></tr>
+                     <tr><td>Nice outing</td><td><span class="spoiler noun-f">la sortie agréable</span></td></tr>
+                     <tr><td>Need a car</td><td><span class="spoiler verb">avoir besoin d'une voiture</span> (souvent)</td></tr>
+                     <tr><td>Containers / Baskets</td><td><span class="spoiler noun-m pl">les contenants / les paniers</span></td></tr>
+                     <tr><td>Check opening hours</td><td><span class="spoiler verb">vérifier les horaires d'ouverture</span></td></tr>
+                     <tr><td>What's in season now</td><td><span class="spoiler other">ce qui est de saison maintenant</span></td></tr>
+                     <tr><td>Let's go this weekend?</td><td><span class="spoiler other">On y va ce week-end ?</span></td></tr>
+                 </tbody>
+             </table>
+
+             <!-- 6g. Get an Urban Garden Plot from City Hall -->
+             <h3>6g. Convince a friend to get a small urban garden plot offered by the city</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>City hall / Municipality</td><td><span class="spoiler noun-f">la mairie</span></td></tr>
+                     <tr><td>Offers / Proposes</td><td><span class="spoiler verb">propose</span></td></tr>
+                     <tr><td>Small plot of land</td><td><span class="spoiler noun-m">le petit terrain / la parcelle</span></td></tr>
+                     <tr><td>In the city / Urban</td><td><span class="spoiler prep noun-f adj">en ville / urbain</span></td></tr>
+                     <tr><td>To make / To turn into</td><td><span class="spoiler verb">en faire / transformer en</span></td></tr>
+                     <tr><td>Small garden / Vegetable patch</td><td><span class="spoiler noun-m">le petit jardin / le potager</span></td></tr>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>Friend</td><td><span class="spoiler noun-m">un(e) ami(e)</span></td></tr>
+                     <tr><td>To do the same thing</td><td><span class="spoiler verb">faire la même chose</span></td></tr>
+                     <tr><td>Apply / Request</td><td><span class="spoiler verb">faire une demande / postuler</span></td></tr>
+                     <tr><td>Family garden / Allotment</td><td><span class="spoiler noun-m">le jardin familial / ouvrier</span></td></tr>
+                     <tr><td>Gardening</td><td><span class="spoiler noun-m">le jardinage</span></td></tr>
+                     <tr><td>Grow your own vegetables</td><td><span class="spoiler verb">cultiver ses propres légumes</span></td></tr>
+                     <tr><td>Fresh and organic</td><td><span class="spoiler adj">frais et bio</span></td></tr>
+                     <tr><td>Hobby / Relaxation</td><td><span class="spoiler noun-m noun-f">le loisir / la détente</span></td></tr>
+                     <tr><td>Good for morale</td><td><span class="spoiler adj">bon pour le moral</span></td></tr>
+                     <tr><td>Connect with nature</td><td><span class="spoiler verb">se connecter à la nature</span></td></tr>
+                     <tr><td>Outdoor activity</td><td><span class="spoiler noun-f">l'activité de plein air</span></td></tr>
+                     <tr><td>Social aspect</td><td><span class="spoiler noun-m">l'aspect social</span> (rencontrer d'autres jardiniers)</td></tr>
+                     <tr><td>Share tips / harvests</td><td><span class="spoiler verb">partager des astuces / les récoltes</span></td></tr>
+                     <tr><td>Often low rent / free</td><td><span class="spoiler adv adj">loyer modique / gratuit souvent</span></td></tr>
+                     <tr><td>Conditions / Requirements</td><td><span class="spoiler noun-f pl">les conditions</span> (habiter la ville, etc.)</td></tr>
+                     <tr><td>Waiting list</td><td><span class="spoiler noun-f">la liste d'attente</span></td></tr>
+                     <tr><td>Great opportunity</td><td><span class="spoiler noun-f">la super opportunité</span></td></tr>
+                     <tr><td>Even a small space</td><td><span class="spoiler adv">même un petit espace</span></td></tr>
+                     <tr><td>Let's inquire together!</td><td><span class="spoiler other">Renseignons-nous ensemble !</span></td></tr>
+                     <tr><td>Imagine your own salad!</td><td><span class="spoiler other">Imagine ta propre salade !</span></td></tr>
+                     <tr><td>Therapeutic</td><td><span class="spoiler adj">thérapeutique</span></td></tr>
+                     <tr><td>Rewarding</td><td><span class="spoiler adj">gratifiant(e)</span></td></tr>
+                     <tr><td>Municipal initiative</td><td><span class="spoiler noun-f">l'initiative municipale</span></td></tr>
+                     <tr><td>Green the city</td><td><span class="spoiler verb">verdir la ville</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 6h. Visit Local Organic Store -->
+            <h3>6h. Convince a friend to visit a store selling local organic products</h3>
+            <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>Advertisement / Ad</td><td><span class="spoiler noun-f">la publicité</span></td></tr>
+                     <tr><td>Store / Shop</td><td><span class="spoiler noun-m">le magasin</span></td></tr>
+                     <tr><td>Sells</td><td><span class="spoiler verb">vend</span></td></tr>
+                     <tr><td>Organic products</td><td><span class="spoiler noun-m pl">les produits bio(logiques)</span></td></tr>
+                     <tr><td>More than 200 products</td><td><span class="spoiler other">plus de 200 produits</span></td></tr>
+                     <tr><td>Presented by</td><td><span class="spoiler adj">présentés par</span></td></tr>
+                     <tr><td>Producers</td><td><span class="spoiler noun-m pl">les producteurs</span></td></tr>
+                     <tr><td>Farmers</td><td><span class="spoiler noun-m pl">les agriculteurs</span></td></tr>
+                     <tr><td>Local / From the area</td><td><span class="spoiler adj">du coin / locaux</span></td></tr>
+                     <tr><td>Home delivery</td><td><span class="spoiler noun-f">la livraison à domicile</span></td></tr>
+                     <tr><td>Call a friend</td><td><span class="spoiler verb">appeler un copain / une copine</span></td></tr>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To go visit</td><td><span class="spoiler verb">aller visiter</span></td></tr>
+                     <tr><td>Discover the store</td><td><span class="spoiler verb">découvrir ce magasin</span></td></tr>
+                     <tr><td>Direct from farm / producer</td><td><span class="spoiler adv">en direct de la ferme / du producteur</span></td></tr>
+                     <tr><td>Short circuit / Local supply chain</td><td><span class="spoiler noun-m">le circuit court</span></td></tr>
+                     <tr><td>Freshness</td><td><span class="spoiler noun-f">la fraîcheur</span></td></tr>
+                     <tr><td>Quality</td><td><span class="spoiler noun-f">la qualité</span></td></tr>
+                     <tr><td>Taste</td><td><span class="spoiler noun-m">le goût</span></td></tr>
+                     <tr><td>Support local economy</td><td><span class="spoiler verb">soutenir l'économie locale</span></td></tr>
+                     <tr><td>Environmentally friendly</td><td><span class="spoiler adj">respectueux de l'environnement</span></td></tr>
+                     <tr><td>Wide choice</td><td><span class="spoiler noun-m">le grand choix</span> (fruits, légumes, fromage, viande...)</td></tr>
+                     <tr><td>Fruits and Vegetables</td><td><span class="spoiler noun-m pl">les fruits et légumes</span></td></tr>
+                     <tr><td>Cheese</td><td><span class="spoiler noun-m">le fromage</span></td></tr>
+                     <tr><td>Meat</td><td><span class="spoiler noun-f">la viande</span></td></tr>
+                     <tr><td>Bread</td><td><span class="spoiler noun-m">le pain</span></td></tr>
+                     <tr><td>Tasting / Sampling</td><td><span class="spoiler noun-f">la dégustation</span> (peut-être)</td></tr>
+                     <tr><td>Meet the producers</td><td><span class="spoiler verb">rencontrer les producteurs</span> (parfois)</td></tr>
+                     <tr><td>Let's check it out!</td><td><span class="spoiler other">Allons jeter un œil !</span></td></tr>
+                     <tr><td>Good alternative to supermarkets</td><td><span class="spoiler noun-f">la bonne alternative aux supermarchés</span></td></tr>
+                     <tr><td>Healthy eating</td><td><span class="spoiler verb">manger sainement</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 6i. Rent Small Plot for Gardening (Ad) -->
+            <h3>6i. Convince friend to rent a 2-meter plot for gardening (from ad)</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To rent</td><td><span class="spoiler verb">louer</span></td></tr>
+                     <tr><td>Plot / Space</td><td><span class="spoiler noun-f noun-m">la parcelle / l'espace</span></td></tr>
+                     <tr><td>Two meters (square?)</td><td><span class="spoiler other">de 2 mètres</span> (carrés ?)</td></tr>
+                     <tr><td>For gardening</td><td><span class="spoiler prep noun-m">pour le jardinage</span></td></tr>
+                     <tr><td>After reading an ad</td><td><span class="spoiler prep verb">après avoir lu une annonce</span></td></tr>
+                     <tr><td>Advertisement / Announcement</td><td><span class="spoiler noun-f">l'annonce</span></td></tr>
+                     <tr><td>Urban garden / Allotment</td><td><span class="spoiler noun-m">le jardin urbain / partagé</span></td></tr>
+                     <tr><td>Grow your own produce</td><td><span class="spoiler verb">cultiver ses propres produits</span></td></tr>
+                     <tr><td>Vegetables / Herbs / Flowers</td><td><span class="spoiler noun-m pl noun-f pl noun-f pl">légumes / herbes / fleurs</span></td></tr>
+                     <tr><td>Fresh produce</td><td><span class="spoiler noun-m pl">les produits frais</span></td></tr>
+                     <tr><td>Organic possibility</td><td><span class="spoiler noun-f">la possibilité de faire du bio</span></td></tr>
+                     <tr><td>Even a small space is enough</td><td><span class="spoiler other">même un petit espace suffit</span></td></tr>
+                     <tr><td>Manageable</td><td><span class="spoiler adj">gérable</span></td></tr>
+                     <tr><td>Good start</td><td><span class="spoiler noun-m">le bon début / pour commencer</span></td></tr>
+                     <tr><td>Hobby / Relaxation</td><td><span class="spoiler noun-m noun-f">le loisir / la détente</span></td></tr>
+                     <tr><td>Contact with earth/nature</td><td><span class="spoiler noun-m">le contact avec la terre/nature</span></td></tr>
+                     <tr><td>Accessible</td><td><span class="spoiler adj">accessible</span> (prix, lieu)</td></tr>
+                     <tr><td>Rent / Cost</td><td><span class="spoiler noun-m">le loyer / le coût</span></td></tr>
+                     <tr><td>Tools (shared?)</td><td><span class="spoiler noun-m pl">les outils (partagés ?)</span></td></tr>
+                     <tr><td>Water access</td><td><span class="spoiler noun-m">l'accès à l'eau</span></td></tr>
+                     <tr><td>Community / Neighbors</td><td><span class="spoiler noun-f noun-m pl">la communauté / les voisins jardiniers</span></td></tr>
+                     <tr><td>Learn gardening</td><td><span class="spoiler verb">apprendre le jardinage</span></td></tr>
+                     <tr><td>Rewarding</td><td><span class="spoiler adj">gratifiant(e)</span></td></tr>
+                     <tr><td>Let's do it?</td><td><span class="spoiler other">On le fait ? / Ça te tente ?</span></td></tr>
+                     <tr><td>Sign up / Get info</td><td><span class="spoiler verb">s'inscrire / se renseigner</span></td></tr>
+                     <tr><td>Limited plots</td><td><span class="spoiler noun-f pl">les parcelles limitées</span></td></tr>
+                     <tr><td>Act quickly</td><td><span class="spoiler verb">agir vite</span></td></tr>
+                     <tr><td>Your own little garden</td><td><span class="spoiler noun-m">ton propre petit jardin</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 6j. Participate in a Garage Sale -->
+            <h3>6j. Convince a friend to participate in a city-organized garage sale</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>City hall / Municipality</td><td><span class="spoiler noun-f">la mairie</span></td></tr>
+                     <tr><td>Organizes</td><td><span class="spoiler verb">organise</span></td></tr>
+                     <tr><td>Garage sale / Flea market</td><td><span class="spoiler noun-m">le vide-grenier / la brocante</span></td></tr>
+                     <tr><td>Call your friend</td><td><span class="spoiler verb">appeler ton amie</span></td></tr>
+                     <tr><td>To convince her</td><td><span class="spoiler verb">pour la convaincre</span></td></tr>
+                     <tr><td>To participate</td><td><span class="spoiler verb">d'y participer</span></td></tr>
+                     <tr><td>As a seller</td><td><span class="spoiler prep noun-m">en tant que vendeur / vendeuse</span></td></tr>
+                     <tr><td>As a buyer / visitor</td><td><span class="spoiler prep noun-m">en tant qu'acheteur / visiteur</span></td></tr>
+                     <tr><td>Sell unused items</td><td><span class="spoiler verb">vendre les objets inutilisés</span></td></tr>
+                     <tr><td>Declutter / Clear out</td><td><span class="spoiler verb">désencombrer / faire du vide</span></td></tr>
+                     <tr><td>Clothes, books, objects</td><td><span class="spoiler noun-m pl noun-m pl noun-m pl">vêtements, livres, objets</span></td></tr>
+                     <tr><td>Earn some money</td><td><span class="spoiler verb">gagner un peu d'argent</span></td></tr>
+                     <tr><td>Rent a stall / space</td><td><span class="spoiler verb">louer un stand / un emplacement</span></td></tr>
+                     <tr><td>Registration fee</td><td><span class="spoiler noun-m pl">les frais d'inscription</span></td></tr>
+                     <tr><td>Share a stall?</td><td><span class="spoiler verb">partager un stand ?</span></td></tr>
+                     <tr><td>Fun atmosphere</td><td><span class="spoiler noun-f">l'ambiance sympa / festive</span></td></tr>
+                     <tr><td>Meet people</td><td><span class="spoiler verb">rencontrer du monde</span></td></tr>
+                     <tr><td>Bargain hunting / Looking for deals</td><td><span class="spoiler verb">chiner / chercher des bonnes affaires</span></td></tr>
+                     <tr><td>Find treasures</td><td><span class="spoiler verb">trouver des trésors</span></td></tr>
+                     <tr><td>Second-hand</td><td><span class="spoiler noun-f">la seconde main / l'occasion</span></td></tr>
+                     <tr><td>Ecological (reuse)</td><td><span class="spoiler adj">écologique (réutilisation)</span></td></tr>
+                     <tr><td>Sunday outing</td><td><span class="spoiler noun-f">la sortie du dimanche</span></td></tr>
+                     <tr><td>Preparation (sorting, pricing)</td><td><span class="spoiler noun-f">la préparation (trier, étiqueter les prix)</span></td></tr>
+                     <tr><td>Price tag</td><td><span class="spoiler noun-f">l'étiquette de prix</span></td></tr>
+                     <tr><td>Negotiate / Haggle</td><td><span class="spoiler verb">négocier / marchander</span></td></tr>
+                     <tr><td>Let's do it together!</td><td><span class="spoiler other">Faisons-le ensemble !</span></td></tr>
+                     <tr><td>It will be fun!</td><td><span class="spoiler other">Ce sera amusant !</span></td></tr>
+                     <tr><td>Check the date/location</td><td><span class="spoiler verb">vérifier la date/le lieu</span></td></tr>
+                     <tr><td>Need to register soon</td><td><span class="spoiler verb">il faut s'inscrire bientôt</span></td></tr>
+                 </tbody>
+             </table>
+
+             <!-- 6k. Rent Weekend Space for Cultivating -->
+             <h3>6k. Convince friend to rent a space on weekends to grow fresh produce</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To rent</td><td><span class="spoiler verb">louer</span></td></tr>
+                     <tr><td>Space / Plot</td><td><span class="spoiler noun-m noun-f">l'espace / la parcelle</span></td></tr>
+                     <tr><td>Weekends</td><td><span class="spoiler noun-m pl">les week-ends</span></td></tr>
+                     <tr><td>In order to / To</td><td><span class="spoiler prep">afin de / pour</span></td></tr>
+                     <tr><td>To cultivate / To grow</td><td><span class="spoiler verb">cultiver</span></td></tr>
+                     <tr><td>Fresh produce</td><td><span class="spoiler noun-m pl">les produits frais</span></td></tr>
+                     <tr><td>Vegetables / Fruits / Herbs</td><td><span class="spoiler noun-m pl noun-m pl noun-f pl">légumes / fruits / herbes</span></td></tr>
+                     <tr><td>Shared garden / Allotment concept</td><td><span class="spoiler noun-m">le concept de jardin partagé / familial</span></td></tr>
+                     <tr><td>Gardening as a hobby</td><td><span class="spoiler noun-m">le jardinage comme loisir</span></td></tr>
+                     <tr><td>Relaxing activity</td><td><span class="spoiler noun-f">l'activité relaxante</span></td></tr>
+                     <tr><td>Outdoor</td><td><span class="spoiler adv">en plein air</span></td></tr>
+                     <tr><td>Eat what you grow</td><td><span class="spoiler verb">manger ce qu'on cultive</span></td></tr>
+                     <tr><td>Healthy / Organic</td><td><span class="spoiler adj">sain / bio</span></td></tr>
+                     <tr><td>Taste difference</td><td><span class="spoiler noun-f">la différence de goût</span></td></tr>
+                     <tr><td>Shared cost (if renting together)</td><td><span class="spoiler noun-m">le coût partagé</span> (si on loue ensemble)</td></tr>
+                     <tr><td>Learn together</td><td><span class="spoiler verb">apprendre ensemble</span></td></tr>
+                     <tr><td>Share the work</td><td><span class="spoiler verb">partager le travail</span></td></tr>
+                     <tr><td>Share the harvest</td><td><span class="spoiler verb">partager la récolte</span></td></tr>
+                     <tr><td>Find a place</td><td><span class="spoiler verb">trouver un endroit</span> (association, particulier)</td></tr>
+                     <tr><td>Rent price</td><td><span class="spoiler noun-m">le prix de la location</span></td></tr>
+                     <tr><td>Tools / Water access</td><td><span class="spoiler noun-m pl noun-m">les outils / l'accès à l'eau</span></td></tr>
+                     <tr><td>Commitment (time)</td><td><span class="spoiler noun-m">l'engagement (en temps)</span></td></tr>
+                     <tr><td>Rewarding result</td><td><span class="spoiler noun-m">le résultat gratifiant</span></td></tr>
+                     <tr><td>Good idea for weekends</td><td><span class="spoiler noun-f">la bonne idée pour les week-ends</span></td></tr>
+                     <tr><td>Let's look for options?</td><td><span class="spoiler other">Cherchons des options ?</span></td></tr>
+                     <tr><td>Imagine fresh tomatoes!</td><td><span class="spoiler other">Imagine les tomates fraîches !</span></td></tr>
+                     <tr><td>Connection to seasons</td><td><span class="spoiler noun-f">la connexion aux saisons</span></td></tr>
+                     <tr><td>Satisfaction</td><td><span class="spoiler noun-f">la satisfaction</span></td></tr>
+                 </tbody>
+             </table>
+
+            <!-- 6l. Guided Cave Tour -->
+            <h3>6l. Convince friend to do a guided cave tour activity</h3>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                    <tr><td>To do an activity</td><td><span class="spoiler verb">faire une activité</span></td></tr>
+                    <tr><td>Guided tour / visit</td><td><span class="spoiler noun-f">la visite guidée</span></td></tr>
+                    <tr><td>Cave / Grotto</td><td><span class="spoiler noun-f">la grotte</span></td></tr>
+                    <tr><td>Underground world</td><td><span class="spoiler noun-m">le monde souterrain</span></td></tr>
+                    <tr><td>Discovery</td><td><span class="spoiler noun-f">la découverte</span></td></tr>
+                    <tr><td>Geology</td><td><span class="spoiler noun-f">la géologie</span></td></tr>
+                    <tr><td>Stalactites</td><td><span class="spoiler noun-f pl">les stalactites</span> (tombent / fall)</td></tr>
+                    <tr><td>Stalagmites</td><td><span class="spoiler noun-f pl">les stalagmites</span> (montent / rise)</td></tr>
+                    <tr><td>Columns / Pillars</td><td><span class="spoiler noun-f pl">les colonnes</span></td></tr>
+                    <tr><td>Draperies / Curtains</td><td><span class="spoiler noun-f pl">les draperies</span></td></tr>
+                    <tr><td>Underground river / lake</td><td><span class="spoiler noun-f noun-m">la rivière / le lac souterrain(e)</span></td></tr>
+                    <tr><td>Impressive / Spectacular</td><td><span class="spoiler adj">impressionnant(e) / spectaculaire</span></td></tr>
+                    <tr><td>Natural beauty</td><td><span class="spoiler noun-f">la beauté naturelle</span></td></tr>
+                    <tr><td>Lighting / Illumination</td><td><span class="spoiler noun-m">l'éclairage / la mise en lumière</span></td></tr>
+                    <tr><td>Guide / Caver</td><td><span class="spoiler noun-m">le guide / le spéléologue</span></td></tr>
+                    <tr><td>Explanations / Information</td><td><span class="spoiler noun-f pl">les explications / les informations</span></td></tr>
+                    <tr><td>History of the cave</td><td><span class="spoiler noun-f">l'histoire de la grotte</span></td></tr>
+                    <tr><td>Formation</td><td><span class="spoiler noun-f">la formation</span> (des concrétions)</td></tr>
+                    <tr><td>Cool temperature</td><td><span class="spoiler noun-f">la température fraîche</span> (même en été)</td></tr>
+                    <tr><td>Bring a sweater</td><td><span class="spoiler verb">prévoir un pull</span></td></tr>
+                    <tr><td>Easy path / Accessible</td><td><span class="spoiler noun-m adj">le parcours aménagé / accessible</span></td></tr>
+                    <tr><td>Duration of visit</td><td><span class="spoiler noun-f">la durée de la visite</span></td></tr>
+                    <tr><td>Tickets / Price</td><td><span class="spoiler noun-m pl noun-m">les billets / le tarif</span></td></tr>
+                    <tr><td>Opening hours</td><td><span class="spoiler noun-m pl">les horaires d'ouverture</span></td></tr>
+                    <tr><td>Original outing</td><td><span class="spoiler noun-f">la sortie originale</span></td></tr>
+                    <tr><td>Unusual</td><td><span class="spoiler adj">insolite</span></td></tr>
+                    <tr><td>Let's go explore!</td><td><span class="spoiler other">Allons explorer !</span></td></tr>
+                    <tr><td>Good photo opportunities</td><td><span class="spoiler noun-f pl">les belles photos à faire</span> (si permis)</td></tr>
+                 </tbody>
+            </table>
+
+             <!-- 6m. Rent Out Your Car -->
+             <h3>6m. Convince friend to rent out their car</h3>
+             <table>
+                 <thead>
+                     <tr><th>English</th><th>French</th></tr>
+                 </thead>
+                 <tbody>
+                     <tr><td>To convince</td><td><span class="spoiler verb">convaincre</span></td></tr>
+                     <tr><td>To rent out / To lease</td><td><span class="spoiler verb">louer / mettre en location</span></td></tr>
+                     <tr><td>Your car</td><td><span class="spoiler noun-f">ta voiture / sa voiture</span></td></tr>
+                     <tr><td>When you don't use it</td><td><span class="spoiler adv">quand tu ne l'utilises pas</span></td></tr>
+                     <tr><td>Car rental between individuals</td><td><span class="spoiler noun-f">la location de voiture entre particuliers</span></td></tr>
+                     <tr><td>Platform / App</td><td><span class="spoiler noun-f">la plateforme / l'application</span> (ex: Getaround, Ouicar)</td></tr>
+                     <tr><td>Earn money</td><td><span class="spoiler verb">gagner de l'argent</span></td></tr>
+                     <tr><td>Offset costs</td><td><span class="spoiler verb">rentabiliser / amortir les frais</span> (assurance, entretien)</td></tr>
+                     <tr><td>Insurance</td><td><span class="spoiler noun-f">l'assurance</span></td></tr>
+                     <tr><td>Maintenance</td><td><span class="spoiler noun-m">l'entretien</span></td></tr>
+                     <tr><td>Car sits idle</td><td><span class="spoiler verb">la voiture dort / ne sert pas</span></td></tr>
+                     <tr><td>Help people who need a car</td><td><span class="spoiler verb">aider des gens qui ont besoin d'une voiture</span></td></tr>
+                     <tr><td>Ecological (optimizes use)</td><td><span class="spoiler adj">écologique (optimise l'utilisation)</span></td></tr>
+                     <tr><td>Easy process</td><td><span class="spoiler noun-m">le processus facile</span></td></tr>
+                     <tr><td>Create listing / ad</td><td><span class="spoiler verb">créer l'annonce</span></td></tr>
+                     <tr><td>Photos / Description</td><td><span class="spoiler noun-f pl noun-f">les photos / la description</span></td></tr>
+                     <tr><td>Set price per day/km</td><td><span class="spoiler verb">fixer le prix par jour/km</span></td></tr>
+                     <tr><td>Manage availability</td><td><span class="spoiler verb">gérer les disponibilités</span> (calendrier)</td></tr>
+                     <tr><td>Insurance included (via platform)</td><td><span class="spoiler noun-f">l'assurance incluse (via la plateforme)</span></td></tr>
+                     <tr><td>Secure payment</td><td><span class="spoiler noun-m">le paiement sécurisé</span></td></tr>
+                     <tr><td>Reviews / Ratings</td><td><span class="spoiler noun-m pl">les avis / les évaluations</span> (des locataires)</td></tr>
+                     <tr><td>Meet the renters</td><td><span class="spoiler verb">rencontrer les locataires</span> (ou système sans clé)</td></tr>
+                     <tr><td>Key handover</td><td><span class="spoiler noun-f">la remise des clés</span></td></tr>
+                     <tr><td>Check condition (before/after)</td><td><span class="spoiler verb">vérifier l'état (avant/après)</span></td></tr>
+                     <tr><td>Rental agreement</td><td><span class="spoiler noun-m">le contrat de location</span></td></tr>
+                     <tr><td>Platform commission</td><td><span class="spoiler noun-f">la commission de la plateforme</span></td></tr>
+                     <tr><td>Worth considering</td><td><span class="spoiler other">ça vaut le coup d'y penser</span></td></tr>
+                     <tr><td>If you don't use it often</td><td><span class="spoiler adv">si tu ne l'utilises pas souvent</span></td></tr>
+                     <tr><td>Make your car work for you!</td><td><span class="spoiler other">Fais travailler ta voiture pour toi !</span></td></tr>
+                 </tbody>
+             </table>
+
+        </section>
+
+    </div><!-- /.container -->
+
+</body>
+</html>
