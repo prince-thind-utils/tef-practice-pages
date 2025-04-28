@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Vocabulary Lists</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-family: 'Roboto', sans-serif;
+            color: #3498db;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0e0e0;
+            scroll-margin-top: 20px; /* Offset for fixed header if implemented */
+        }
+
+        /* Legend Styling */
+        .legend {
+            background-color: #e9ecef;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #ced4da;
+        }
+
+        .legend h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-family: 'Roboto', sans-serif;
+            color: #495057;
+            text-align: center;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9em;
+        }
+
+        .color-box {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            background-color: #333; /* Base spoiler background */
+        }
+
+        .color-box.masculine { background-color: #6495ED; } /* Cornflower Blue */
+        .color-box.feminine { background-color: #FFB6C1; } /* Light Pink */
+        .color-box.noun { border: 2px dashed #777; } /* Indicate noun, maybe redundant */
+        .color-box.verb { background-color: #90EE90; } /* Light Green */
+        .color-box.adjective { background-color: #FFD700; } /* Gold */
+        .color-box.adverb { background-color: #FFA500; } /* Orange */
+        .color-box.preposition { background-color: #DA70D6; } /* Orchid */
+        .color-box.article { background-color: #B0C4DE; } /* Light Steel Blue */
+        .color-box.other { background-color: #A9A9A9; } /* Dark Gray */
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden; /* Ensures border-radius applies to contained elements */
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #ffffff;
+            font-weight: 700;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td:first-child {
+            font-weight: 500;
+            color: #555;
+        }
+
+        /* Spoiler Styling */
+        .spoiler {
+            background-color: #333; /* Dark background */
+            color: #333; /* Text hidden (same as background) */
+            padding: 3px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+            white-space: nowrap; /* Prevent wrapping */
+            display: inline-block; /* Ensure background covers only text */
+        }
+
+        /* Revealed Text Colors - Applied on Hover */
+        .spoiler:hover { color: #ffffff; } /* Default bright reveal color */
+        .spoiler.masculine:hover { color: #6495ED; } /* Cornflower Blue */
+        .spoiler.feminine:hover { color: #FFB6C1; } /* Light Pink */
+        .spoiler.verb:hover { color: #90EE90; } /* Light Green */
+        .spoiler.adjective:hover { color: #FFD700; } /* Gold */
+        .spoiler.adverb:hover { color: #FFA500; } /* Orange */
+        .spoiler.preposition:hover { color: #DA70D6; } /* Orchid */
+        .spoiler.article:hover { color: #B0C4DE; } /* Light Steel Blue */
+        .spoiler.other:hover { color: #D3D3D3; } /* Light Gray */
+
+        /* Class for parts of speech - purely for semantic tagging, styling is combined with gender/type */
+        .noun {}
+        .verb {}
+        .adjective {}
+        .adverb {}
+        .preposition {}
+        .article {}
+        .other {} /* For conjunctions, interjections, etc. */
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>French Vocabulary Lists by Topic</h1>
+
+        <div class="legend">
+            <h3>Legend (Hover over French words to reveal)</h3>
+            <div class="legend-grid">
+                <div class="legend-item"><span class="color-box masculine"></span> Masculine Noun</div>
+                <div class="legend-item"><span class="color-box feminine"></span> Feminine Noun</div>
+                <div class="legend-item"><span class="color-box verb"></span> Verb</div>
+                <div class="legend-item"><span class="color-box adjective"></span> Adjective</div>
+                <div class="legend-item"><span class="color-box adverb"></span> Adverb</div>
+                <div class="legend-item"><span class="color-box preposition"></span> Preposition / Conjunction</div>
+                <div class="legend-item"><span class="color-box article"></span> Article</div>
+                <div class="legend-item"><span class="color-box other"></span> Other (Pronoun, etc.)</div>
+            </div>
+             <p style="font-size: 0.8em; text-align: center; margin-top: 10px;">The color appears when you hover over the hidden French text.</p>
+        </div>
+
+        <!-- ================== COURS ================== -->
+        <div class="topic-section" id="topic1">
+            <h2>1. Une école de peinture (Painting School)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Painting</td><td><span class="spoiler feminine noun">la peinture</span></td></tr>
+                    <tr><td>School</td><td><span class="spoiler feminine noun">une école</span></td></tr>
+                    <tr><td>Course / Class</td><td><span class="spoiler masculine noun">un cours</span></td></tr>
+                    <tr><td>Teacher</td><td><span class="spoiler masculine noun">un professeur</span> / <span class="spoiler feminine noun">une professeure</span></td></tr>
+                    <tr><td>Student</td><td><span class="spoiler masculine noun">un étudiant</span> / <span class="spoiler feminine noun">une étudiante</span></td></tr>
+                    <tr><td>Canvas</td><td><span class="spoiler feminine noun">une toile</span></td></tr>
+                    <tr><td>Brush</td><td><span class="spoiler masculine noun">un pinceau</span></td></tr>
+                    <tr><td>Color</td><td><span class="spoiler feminine noun">une couleur</span></td></tr>
+                    <tr><td>To paint</td><td><span class="spoiler verb">peindre</span></td></tr>
+                    <tr><td>Workshop</td><td><span class="spoiler masculine noun">un atelier</span></td></tr>
+                    <tr><td>Registration</td><td><span class="spoiler feminine noun">une inscription</span></td></tr>
+                    <tr><td>Schedule / Timetable</td><td><span class="spoiler masculine noun">un horaire</span> / <span class="spoiler masculine noun">un emploi du temps</span></td></tr>
+                    <tr><td>Beginner</td><td><span class="spoiler masculine noun">un débutant</span> / <span class="spoiler feminine noun">une débutante</span></td></tr>
+                    <tr><td>Advanced</td><td><span class="spoiler adjective">avancé</span> / <span class="spoiler adjective">avancée</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic2">
+            <h2>2. Les cours de langues (Language Courses)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Language</td><td><span class="spoiler feminine noun">une langue</span></td></tr>
+                    <tr><td>Course</td><td><span class="spoiler masculine noun">un cours</span></td></tr>
+                    <tr><td>To learn</td><td><span class="spoiler verb">apprendre</span></td></tr>
+                    <tr><td>To speak</td><td><span class="spoiler verb">parler</span></td></tr>
+                    <tr><td>Grammar</td><td><span class="spoiler feminine noun">la grammaire</span></td></tr>
+                    <tr><td>Vocabulary</td><td><span class="spoiler masculine noun">le vocabulaire</span></td></tr>
+                    <tr><td>Pronunciation</td><td><span class="spoiler feminine noun">la prononciation</span></td></tr>
+                    <tr><td>Level</td><td><span class="spoiler masculine noun">un niveau</span></td></tr>
+                    <tr><td>Native speaker</td><td><span class="spoiler masculine noun">un locuteur natif</span> / <span class="spoiler feminine noun">une locutrice native</span></td></tr>
+                    <tr><td>Conversation</td><td><span class="spoiler feminine noun">la conversation</span></td></tr>
+                    <tr><td>Online</td><td><span class="spoiler adjective">en ligne</span></td></tr>
+                    <tr><td>Intensive</td><td><span class="spoiler adjective">intensif</span> / <span class="spoiler adjective">intensive</span></td></tr>
+                    <tr><td>Certificate</td><td><span class="spoiler masculine noun">un certificat</span></td></tr>
+                    <tr><td>Group</td><td><span class="spoiler masculine noun">un groupe</span></td></tr>
+                    <tr><td>Private lesson</td><td><span class="spoiler masculine noun">un cours particulier</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic3">
+            <h2>3. Centre de formation en informatique (IT Training Center)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Computer Science / IT</td><td><span class="spoiler feminine noun">l'informatique</span></td></tr>
+                    <tr><td>Training</td><td><span class="spoiler feminine noun">une formation</span></td></tr>
+                    <tr><td>Center</td><td><span class="spoiler masculine noun">un centre</span></td></tr>
+                    <tr><td>Software</td><td><span class="spoiler masculine noun">un logiciel</span></td></tr>
+                    <tr><td>Programming</td><td><span class="spoiler feminine noun">la programmation</span></td></tr>
+                    <tr><td>Network</td><td><span class="spoiler masculine noun">un réseau</span></td></tr>
+                    <tr><td>Database</td><td><span class="spoiler feminine noun">une base de données</span></td></tr>
+                    <tr><td>Web development</td><td><span class="spoiler masculine noun">le développement web</span></td></tr>
+                    <tr><td>Cybersecurity</td><td><span class="spoiler feminine noun">la cybersécurité</span></td></tr>
+                    <tr><td>Module</td><td><span class="spoiler masculine noun">un module</span></td></tr>
+                    <tr><td>Trainer / Instructor</td><td><span class="spoiler masculine noun">un formateur</span> / <span class="spoiler feminine noun">une formatrice</span></td></tr>
+                    <tr><td>Certification</td><td><span class="spoiler feminine noun">une certification</span></td></tr>
+                    <tr><td>Remote (learning)</td><td><span class="spoiler preposition">à distance</span></td></tr>
+                    <tr><td>Prerequisite</td><td><span class="spoiler masculine noun">un prérequis</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic4">
+            <h2>4. Cours de guitare (Guitar Lessons)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Guitar</td><td><span class="spoiler feminine noun">une guitare</span></td></tr>
+                    <tr><td>Lesson</td><td><span class="spoiler feminine noun">une leçon</span> / <span class="spoiler masculine noun">un cours</span></td></tr>
+                    <tr><td>Acoustic</td><td><span class="spoiler adjective">acoustique</span></td></tr>
+                    <tr><td>Electric</td><td><span class="spoiler adjective">électrique</span></td></tr>
+                    <tr><td>Strings</td><td><span class="spoiler feminine noun">les cordes</span></td></tr>
+                    <tr><td>Chord</td><td><span class="spoiler masculine noun">un accord</span></td></tr>
+                    <tr><td>To play (an instrument)</td><td><span class="spoiler verb">jouer (de)</span></td></tr>
+                    <tr><td>Music theory</td><td><span class="spoiler masculine noun">le solfège</span></td></tr>
+                    <tr><td>Rhythm</td><td><span class="spoiler masculine noun">le rythme</span></td></tr>
+                    <tr><td>Song</td><td><span class="spoiler feminine noun">une chanson</span> / <span class="spoiler masculine noun">un morceau</span></td></tr>
+                    <tr><td>To practice</td><td><span class="spoiler verb">pratiquer</span> / <span class="spoiler verb">s'exercer</span></td></tr>
+                    <tr><td>Music school</td><td><span class="spoiler feminine noun">une école de musique</span></td></tr>
+                    <tr><td>Pick / Plectrum</td><td><span class="spoiler masculine noun">un médiator</span></td></tr>
+                    <tr><td>Amplifier</td><td><span class="spoiler masculine noun">un amplificateur (ampli)</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic5">
+            <h2>5. Centre proposant des cours de restauration (Restaurant/Catering Courses Center)</h2>
+             <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Restaurant business / Catering</td><td><span class="spoiler feminine noun">la restauration</span></td></tr>
+                    <tr><td>Cooking</td><td><span class="spoiler feminine noun">la cuisine</span></td></tr>
+                    <tr><td>Chef</td><td><span class="spoiler masculine noun">un chef</span> / <span class="spoiler feminine noun">une cheffe</span></td></tr>
+                    <tr><td>Recipe</td><td><span class="spoiler feminine noun">une recette</span></td></tr>
+                    <tr><td>Ingredient</td><td><span class="spoiler masculine noun">un ingrédient</span></td></tr>
+                    <tr><td>Technique</td><td><span class="spoiler feminine noun">une technique</span></td></tr>
+                    <tr><td>Kitchen</td><td><span class="spoiler feminine noun">une cuisine</span></td></tr>
+                    <tr><td>Service</td><td><span class="spoiler masculine noun">le service</span></td></tr>
+                    <tr><td>Hygiene</td><td><span class="spoiler feminine noun">l'hygiène</span></td></tr>
+                    <tr><td>Pastry</td><td><span class="spoiler feminine noun">la pâtisserie</span></td></tr>
+                    <tr><td>Diploma</td><td><span class="spoiler masculine noun">un diplôme</span></td></tr>
+                    <tr><td>Internship</td><td><span class="spoiler masculine noun">un stage</span></td></tr>
+                    <tr><td>Professional</td><td><span class="spoiler adjective">professionnel</span> / <span class="spoiler adjective">professionnelle</span></td></tr>
+                    <tr><td>Menu</td><td><span class="spoiler masculine noun">un menu</span> / <span class="spoiler feminine noun">une carte</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic6">
+            <h2>6. Formation de boulangerie (Bakery Training)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Bakery (trade)</td><td><span class="spoiler feminine noun">la boulangerie</span></td></tr>
+                    <tr><td>Baker</td><td><span class="spoiler masculine noun">un boulanger</span> / <span class="spoiler feminine noun">une boulangère</span></td></tr>
+                    <tr><td>Bread</td><td><span class="spoiler masculine noun">le pain</span></td></tr>
+                    <tr><td>Pastries / Viennoiseries</td><td><span class="spoiler feminine noun">les viennoiseries</span></td></tr>
+                    <tr><td>Flour</td><td><span class="spoiler feminine noun">la farine</span></td></tr>
+                    <tr><td>Yeast</td><td><span class="spoiler feminine noun">la levure</span></td></tr>
+                    <tr><td>Dough</td><td><span class="spoiler feminine noun">la pâte</span></td></tr>
+                    <tr><td>Oven</td><td><span class="spoiler masculine noun">un four</span></td></tr>
+                    <tr><td>To knead</td><td><span class="spoiler verb">pétrir</span></td></tr>
+                    <tr><td>To bake</td><td><span class="spoiler verb">cuire (au four)</span></td></tr>
+                    <tr><td>Apprenticeship</td><td><span class="spoiler masculine noun">un apprentissage</span></td></tr>
+                    <tr><td>Artisan</td><td><span class="spoiler masculine noun">un artisan</span></td></tr>
+                    <tr><td>Croissant</td><td><span class="spoiler masculine noun">un croissant</span></td></tr>
+                    <tr><td>Baguette</td><td><span class="spoiler feminine noun">une baguette</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic7">
+            <h2>7. Agence d’apprentissage de conduite des voitures de courses (Racing Car Driving School Agency)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Racing car</td><td><span class="spoiler feminine noun">une voiture de course</span></td></tr>
+                    <tr><td>Driving</td><td><span class="spoiler feminine noun">la conduite</span></td></tr>
+                    <tr><td>Learning / Training</td><td><span class="spoiler masculine noun">l'apprentissage</span></td></tr>
+                    <tr><td>Agency</td><td><span class="spoiler feminine noun">une agence</span></td></tr>
+                    <tr><td>Track / Circuit</td><td><span class="spoiler masculine noun">un circuit</span></td></tr>
+                    <tr><td>Pilot / Driver</td><td><span class="spoiler masculine noun">un pilote</span></td></tr>
+                    <tr><td>Instructor</td><td><span class="spoiler masculine noun">un instructeur</span> / <span class="spoiler feminine noun">une instructrice</span></td></tr>
+                    <tr><td>Speed</td><td><span class="spoiler feminine noun">la vitesse</span></td></tr>
+                    <tr><td>Helmet</td><td><span class="spoiler masculine noun">un casque</span></td></tr>
+                    <tr><td>Experience / Taster session</td><td><span class="spoiler masculine noun">un stage</span> / <span class="spoiler masculine noun">un baptême</span></td></tr>
+                    <tr><td>Booking / Reservation</td><td><span class="spoiler feminine noun">une réservation</span></td></tr>
+                    <tr><td>Safety</td><td><span class="spoiler feminine noun">la sécurité</span></td></tr>
+                    <tr><td>Adrenaline</td><td><span class="spoiler feminine noun">l'adrénaline</span></td></tr>
+                    <tr><td>Price / Rate</td><td><span class="spoiler masculine noun">un tarif</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic8">
+            <h2>8. Centre qui offre des stages de pilotages de voiture buggy (Buggy Driving Experience Center)</h2>
+             <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Buggy (car)</td><td><span class="spoiler masculine noun">un buggy</span></td></tr>
+                    <tr><td>Driving experience</td><td><span class="spoiler masculine noun">un stage de pilotage</span></td></tr>
+                    <tr><td>Off-road</td><td><span class="spoiler adjective">tout-terrain</span></td></tr>
+                    <tr><td>Course / Track</td><td><span class="spoiler masculine noun">un parcours</span> / <span class="spoiler masculine noun">un terrain</span></td></tr>
+                    <tr><td>To drive / pilot</td><td><span class="spoiler verb">piloter</span></td></tr>
+                    <tr><td>Session</td><td><span class="spoiler feminine noun">une session</span></td></tr>
+                    <tr><td>Duration</td><td><span class="spoiler feminine noun">la durée</span></td></tr>
+                    <tr><td>Equipment</td><td><span class="spoiler masculine noun">l'équipement</span></td></tr>
+                    <tr><td>Guide / Monitor</td><td><span class="spoiler masculine noun">un moniteur</span> / <span class="spoiler feminine noun">une monitrice</span></td></tr>
+                    <tr><td>Group</td><td><span class="spoiler masculine noun">un groupe</span></td></tr>
+                    <tr><td>Adventure</td><td><span class="spoiler feminine noun">une aventure</span></td></tr>
+                    <tr><td>Accessible</td><td><span class="spoiler adjective">accessible</span></td></tr>
+                    <tr><td>Minimum age</td><td><span class="spoiler masculine noun">l'âge minimum</span></td></tr>
+                    <tr><td>Gift voucher</td><td><span class="spoiler masculine noun">un bon cadeau</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic9">
+            <h2>9. Appeler un chef cuisinier qui donne des cours à domiciles (Call a Chef Giving Home Cooking Classes)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                     <tr><td>Chef</td><td><span class="spoiler masculine noun">un chef cuisinier</span> / <span class="spoiler feminine noun">une cheffe cuisinière</span></td></tr>
+                     <tr><td>Home cooking class</td><td><span class="spoiler masculine noun">un cours de cuisine à domicile</span></td></tr>
+                     <tr><td>To call</td><td><span class="spoiler verb">appeler</span> / <span class="spoiler verb">téléphoner</span></td></tr>
+                     <tr><td>Information</td><td><span class="spoiler feminine noun">les informations</span> / <span class="spoiler masculine noun">les renseignements</span></td></tr>
+                     <tr><td>Availability</td><td><span class="spoiler feminine noun">la disponibilité</span></td></tr>
+                     <tr><td>Price / Rate</td><td><span class="spoiler masculine noun">le tarif</span></td></tr>
+                     <tr><td>Type of cuisine</td><td><span class="spoiler masculine noun">le type de cuisine</span></td></tr>
+                     <tr><td>Number of participants</td><td><span class="spoiler masculine noun">le nombre de participants</span></td></tr>
+                     <tr><td>Duration of the class</td><td><span class="spoiler feminine noun">la durée du cours</span></td></tr>
+                     <tr><td>Menu</td><td><span class="spoiler masculine noun">le menu</span></td></tr>
+                     <tr><td>Ingredients included?</td><td><span class="spoiler other">Ingrédients inclus ?</span></td></tr>
+                     <tr><td>Travel costs</td><td><span class="spoiler masculine noun">les frais de déplacement</span></td></tr>
+                     <tr><td>To book</td><td><span class="spoiler verb">réserver</span></td></tr>
+                     <tr><td>Special diet</td><td><span class="spoiler masculine noun">un régime alimentaire spécifique</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic10">
+            <h2>10. Les voitures de pilotage (Driving Experience Cars)</h2>
+            <!-- Similar to topic 7 & 8, focus on general driving experience terms -->
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Driving experience</td><td><span class="spoiler masculine noun">le pilotage</span> / <span class="spoiler masculine noun">un stage de conduite</span></td></tr>
+                    <tr><td>Sports car</td><td><span class="spoiler feminine noun">une voiture de sport</span></td></tr>
+                    <tr><td>Luxury car</td><td><span class="spoiler feminine noun">une voiture de luxe</span></td></tr>
+                    <tr><td>Single-seater</td><td><span class="spoiler feminine noun">une monoplace</span></td></tr>
+                    <tr><td>Track day</td><td><span class="spoiler feminine noun">une journée circuit</span></td></tr>
+                    <tr><td>Briefing</td><td><span class="spoiler masculine noun">un briefing</span></td></tr>
+                    <tr><td>Lap (of a track)</td><td><span class="spoiler masculine noun">un tour (de piste)</span></td></tr>
+                    <tr><td>Handling</td><td><span class="spoiler feminine noun">la maniabilité</span></td></tr>
+                    <tr><td>Performance</td><td><span class="spoiler feminine noun">la performance</span></td></tr>
+                    <tr><td>Co-pilot / Passenger</td><td><span class="spoiler masculine noun">un copilote</span> / <span class="spoiler masculine noun">un passager</span></td></tr>
+                    <tr><td>Driving license</td><td><span class="spoiler masculine noun">le permis de conduire</span></td></tr>
+                    <tr><td>Thrill / Sensation</td><td><span class="spoiler feminine noun">la sensation forte</span></td></tr>
+                    <tr><td>To accelerate</td><td><span class="spoiler verb">accélérer</span></td></tr>
+                    <tr><td>To brake</td><td><span class="spoiler verb">freiner</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic11">
+            <h2>11. Cuisine du monde concept d'organiser un dîner à domicile (World Cuisine - Hosting a Dinner at Home Concept)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>World cuisine</td><td><span class="spoiler feminine noun">la cuisine du monde</span></td></tr>
+                    <tr><td>Concept</td><td><span class="spoiler masculine noun">un concept</span></td></tr>
+                    <tr><td>To organize</td><td><span class="spoiler verb">organiser</span></td></tr>
+                    <tr><td>Dinner</td><td><span class="spoiler masculine noun">un dîner</span></td></tr>
+                    <tr><td>At home / Home-based</td><td><span class="spoiler preposition">à domicile</span></td></tr>
+                    <tr><td>Host</td><td><span class="spoiler masculine noun">un hôte</span> / <span class="spoiler feminine noun">une hôtesse</span></td></tr>
+                    <tr><td>Guest</td><td><span class="spoiler masculine noun">un invité</span> / <span class="spoiler feminine noun">une invitée</span></td></tr>
+                    <tr><td>Theme</td><td><span class="spoiler masculine noun">un thème</span></td></tr>
+                    <tr><td>Atmosphere / Ambiance</td><td><span class="spoiler feminine noun">une ambiance</span></td></tr>
+                    <tr><td>Discovery</td><td><span class="spoiler feminine noun">la découverte</span></td></tr>
+                    <tr><td>Sharing</td><td><span class="spoiler masculine noun">le partage</span></td></tr>
+                    <tr><td>Exotic</td><td><span class="spoiler adjective">exotique</span></td></tr>
+                    <tr><td>Booking</td><td><span class="spoiler feminine noun">la réservation</span></td></tr>
+                    <tr><td>Caterer / Private Chef</td><td><span class="spoiler masculine noun">un traiteur</span> / <span class="spoiler masculine noun">un chef à domicile</span></td></tr>
+                    <tr><td>Customized menu</td><td><span class="spoiler masculine noun">un menu personnalisé</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- ================== ACTIVITÉ VOLONTAIRE / DE BIENFAISANCE/EMPLOI ================== -->
+        <div class="topic-section" id="topic12">
+            <h2>12. Appeler une association de dons (Calling a Donation Charity)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Charity / Association</td><td><span class="spoiler feminine noun">une association</span></td></tr>
+                    <tr><td>Donation</td><td><span class="spoiler masculine noun">un don</span></td></tr>
+                    <tr><td>To donate</td><td><span class="spoiler verb">donner</span> / <span class="spoiler verb">faire un don</span></td></tr>
+                    <tr><td>Volunteer</td><td><span class="spoiler masculine noun">un bénévole</span> / <span class="spoiler feminine noun">une bénévole</span></td></tr>
+                    <tr><td>Cause</td><td><span class="spoiler feminine noun">une cause</span></td></tr>
+                    <tr><td>To support</td><td><span class="spoiler verb">soutenir</span></td></tr>
+                    <tr><td>Money</td><td><span class="spoiler masculine noun">l'argent</span></td></tr>
+                    <tr><td>Goods (clothes, food)</td><td><span class="spoiler masculine noun">des biens (vêtements, nourriture)</span></td></tr>
+                    <tr><td>Collection point</td><td><span class="spoiler masculine noun">un point de collecte</span></td></tr>
+                    <tr><td>Tax receipt</td><td><span class="spoiler masculine noun">un reçu fiscal</span></td></tr>
+                    <tr><td>Contact details</td><td><span class="spoiler feminine noun">les coordonnées</span></td></tr>
+                    <tr><td>Humanitarian</td><td><span class="spoiler adjective">humanitaire</span></td></tr>
+                    <tr><td>Need</td><td><span class="spoiler masculine noun">un besoin</span></td></tr>
+                    <tr><td>Solidarity</td><td><span class="spoiler feminine noun">la solidarité</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic13">
+            <h2>13. Appeler une association de prestation de services (y participer) (Calling a Service Provision Association (to participate))</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Service provision</td><td><span class="spoiler feminine noun">la prestation de services</span></td></tr>
+                    <tr><td>To participate</td><td><span class="spoiler verb">participer</span></td></tr>
+                    <tr><td>To get involved</td><td><span class="spoiler verb">s'impliquer</span> / <span class="spoiler verb">s'engager</span></td></tr>
+                    <tr><td>Mission / Task</td><td><span class="spoiler feminine noun">une mission</span></td></tr>
+                    <tr><td>Skills</td><td><span class="spoiler feminine noun">les compétences</span></td></tr>
+                    <tr><td>Time</td><td><span class="spoiler masculine noun">le temps</span></td></tr>
+                    <tr><td>Availability</td><td><span class="spoiler feminine noun">la disponibilité</span></td></tr>
+                    <tr><td>Field / Sector</td><td><span class="spoiler masculine noun">un domaine</span> / <span class="spoiler masculine noun">un secteur</span></td></tr>
+                    <tr><td>Beneficiary</td><td><span class="spoiler masculine noun">un bénéficiaire</span></td></tr>
+                    <tr><td>Volunteering</td><td><span class="spoiler masculine noun">le bénévolat</span></td></tr>
+                    <tr><td>Meeting</td><td><span class="spoiler feminine noun">une réunion</span></td></tr>
+                    <tr><td>Commitment</td><td><span class="spoiler masculine noun">un engagement</span></td></tr>
+                    <tr><td>Help / Assistance</td><td><span class="spoiler feminine noun">l'aide</span></td></tr>
+                    <tr><td>Local</td><td><span class="spoiler adjective">local</span> / <span class="spoiler adjective">locale</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic14">
+            <h2>14. Un jardin botanique recherche des bénévoles (Botanical Garden Seeks Volunteers)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Botanical garden</td><td><span class="spoiler masculine noun">un jardin botanique</span></td></tr>
+                    <tr><td>To seek / look for</td><td><span class="spoiler verb">rechercher</span></td></tr>
+                    <tr><td>Volunteer</td><td><span class="spoiler masculine noun">un bénévole</span> / <span class="spoiler feminine noun">une bénévole</span></td></tr>
+                    <tr><td>To work</td><td><span class="spoiler verb">travailler</span></td></tr>
+                    <tr><td>Wonderful setting</td><td><span class="spoiler masculine noun">un cadre merveilleux</span></td></tr>
+                    <tr><td>Training offered</td><td><span class="spoiler feminine noun">des formations offertes</span></td></tr>
+                    <tr><td>Possibility</td><td><span class="spoiler feminine noun">la possibilité</span></td></tr>
+                    <tr><td>To guide visitors</td><td><span class="spoiler verb">guider des visiteurs</span></td></tr>
+                    <tr><td>Gardening</td><td><span class="spoiler masculine noun">le jardinage</span></td></tr>
+                    <tr><td>Plant</td><td><span class="spoiler feminine noun">une plante</span></td></tr>
+                    <tr><td>Maintenance / Upkeep</td><td><span class="spoiler masculine noun">l'entretien</span></td></tr>
+                    <tr><td>Reception / Welcome desk</td><td><span class="spoiler masculine noun">l'accueil</span></td></tr>
+                    <tr><td>Nature</td><td><span class="spoiler feminine noun">la nature</span></td></tr>
+                    <tr><td>Team</td><td><span class="spoiler feminine noun">une équipe</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic15">
+            <h2>15. Collecte de vêtements usés, ustensiles de cuisines, et des jouets pour enfants (Collection of Used Clothes, Kitchen Utensils, and Children's Toys)</h2>
+             <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Collection</td><td><span class="spoiler feminine noun">une collecte</span></td></tr>
+                    <tr><td>Used clothes</td><td><span class="spoiler masculine noun">des vêtements usés</span></td></tr>
+                    <tr><td>Kitchen utensils</td><td><span class="spoiler masculine noun">des ustensiles de cuisine</span></td></tr>
+                    <tr><td>Children's toys</td><td><span class="spoiler masculine noun">des jouets pour enfants</span></td></tr>
+                    <tr><td>To collect</td><td><span class="spoiler verb">collecter</span> / <span class="spoiler verb">ramasser</span></td></tr>
+                    <tr><td>Drop-off point</td><td><span class="spoiler masculine noun">un point de dépôt</span></td></tr>
+                    <tr><td>Donation</td><td><span class="spoiler masculine noun">un don</span></td></tr>
+                    <tr><td>In good condition</td><td><span class="spoiler preposition">en bon état</span></td></tr>
+                    <tr><td>Solidarity event</td><td><span class="spoiler masculine noun">un événement solidaire</span></td></tr>
+                    <tr><td>To sort</td><td><span class="spoiler verb">trier</span></td></tr>
+                    <tr><td>Redistribution</td><td><span class="spoiler feminine noun">la redistribution</span></td></tr>
+                    <tr><td>People in need</td><td><span class="spoiler feminine noun">les personnes dans le besoin</span></td></tr>
+                    <tr><td>Date and time</td><td><span class="spoiler feminine noun">la date et l'heure</span></td></tr>
+                    <tr><td>Location</td><td><span class="spoiler masculine noun">le lieu</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic16">
+            <h2>16. Journée collecte de déchets sur une plage et une rivière (Waste Collection Day on a Beach and a River)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Waste collection day</td><td><span class="spoiler feminine noun">une journée de collecte de déchets</span></td></tr>
+                    <tr><td>Waste / Garbage</td><td><span class="spoiler masculine noun">les déchets</span></td></tr>
+                    <tr><td>Beach</td><td><span class="spoiler feminine noun">une plage</span></td></tr>
+                    <tr><td>River</td><td><span class="spoiler feminine noun">une rivière</span></td></tr>
+                    <tr><td>Environment</td><td><span class="spoiler masculine noun">l'environnement</span></td></tr>
+                    <tr><td>To clean</td><td><span class="spoiler verb">nettoyer</span></td></tr>
+                    <tr><td>Pollution</td><td><span class="spoiler feminine noun">la pollution</span></td></tr>
+                    <tr><td>Participant</td><td><span class="spoiler masculine noun">un participant</span> / <span class="spoiler feminine noun">une participante</span></td></tr>
+                    <tr><td>Gloves</td><td><span class="spoiler masculine noun">des gants</span></td></tr>
+                    <tr><td>Trash bag</td><td><span class="spoiler masculine noun">un sac poubelle</span></td></tr>
+                    <tr><td>Meeting point</td><td><span class="spoiler masculine noun">le point de rendez-vous</span></td></tr>
+                    <tr><td>Citizen action</td><td><span class="spoiler feminine noun">une action citoyenne</span></td></tr>
+                    <tr><td>Awareness</td><td><span class="spoiler feminine noun">la sensibilisation</span></td></tr>
+                    <tr><td>Protection</td><td><span class="spoiler feminine noun">la protection</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic17">
+            <h2>17. Cherche figurants dans un film (Looking for Extras in a Film)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To look for / Seeking</td><td><span class="spoiler verb">Cherche</span> / <span class="spoiler verb">Recherche</span></td></tr>
+                    <tr><td>Extra (in a film)</td><td><span class="spoiler masculine noun">un figurant</span> / <span class="spoiler feminine noun">une figurante</span></td></tr>
+                    <tr><td>Film / Movie</td><td><span class="spoiler masculine noun">un film</span></td></tr>
+                    <tr><td>Shooting / Filming</td><td><span class="spoiler masculine noun">le tournage</span></td></tr>
+                    <tr><td>Casting</td><td><span class="spoiler masculine noun">un casting</span></td></tr>
+                    <tr><td>Profile</td><td><span class="spoiler masculine noun">un profil</span></td></tr>
+                    <tr><td>Age range</td><td><span class="spoiler feminine noun">la tranche d'âge</span></td></tr>
+                    <tr><td>Appearance</td><td><span class="spoiler feminine noun">l'apparence</span></td></tr>
+                    <tr><td>Paid / Remunerated</td><td><span class="spoiler adjective">rémunéré</span> / <span class="spoiler adjective">rémunérée</span></td></tr>
+                    <tr><td>Date(s) of shooting</td><td><span class="spoiler feminine noun">la/les date(s) de tournage</span></td></tr>
+                    <tr><td>Location</td><td><span class="spoiler masculine noun">le lieu</span></td></tr>
+                    <tr><td>To apply</td><td><span class="spoiler verb">postuler</span></td></tr>
+                    <tr><td>Contact</td><td><span class="spoiler masculine noun">le contact</span></td></tr>
+                    <tr><td>No experience required</td><td><span class="spoiler other">Aucune expérience requise</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic18">
+            <h2>18. Invitation pour venir assister à une émission radio (Invitation to Attend a Radio Show Recording)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Invitation</td><td><span class="spoiler feminine noun">une invitation</span></td></tr>
+                    <tr><td>To come / attend</td><td><span class="spoiler verb">venir</span> / <span class="spoiler verb">assister à</span></td></tr>
+                    <tr><td>Radio show / broadcast</td><td><span class="spoiler feminine noun">une émission de radio</span></td></tr>
+                    <tr><td>Live recording</td><td><span class="spoiler masculine noun">un enregistrement en public</span></td></tr>
+                    <tr><td>Audience / Public</td><td><span class="spoiler masculine noun">le public</span></td></tr>
+                    <tr><td>Radio station</td><td><span class="spoiler feminine noun">une station de radio</span></td></tr>
+                    <tr><td>Studio</td><td><span class="spoiler masculine noun">un studio</span></td></tr>
+                    <tr><td>Host / Presenter</td><td><span class="spoiler masculine noun">un animateur</span> / <span class="spoiler feminine noun">une animatrice</span></td></tr>
+                    <tr><td>Guest</td><td><span class="spoiler masculine noun">un invité</span> / <span class="spoiler feminine noun">une invitée</span></td></tr>
+                    <tr><td>Free entry</td><td><span class="spoiler feminine noun">l'entrée gratuite</span></td></tr>
+                    <tr><td>Booking required</td><td><span class="spoiler feminine noun">la réservation obligatoire</span></td></tr>
+                    <tr><td>Date and time</td><td><span class="spoiler feminine noun">la date et l'heure</span></td></tr>
+                    <tr><td>Address</td><td><span class="spoiler feminine noun">l'adresse</span></td></tr>
+                    <tr><td>Backstage / Behind the scenes</td><td><span class="spoiler feminine noun">les coulisses</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic19">
+            <h2>19. Une annonce dans un journal à propos d'un salon d'emploi (Newspaper Ad for a Job Fair)</h2>
+             <table>
+                 <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Newspaper advertisement</td><td><span class="spoiler feminine noun">une annonce dans un journal</span></td></tr>
+                    <tr><td>Job fair</td><td><span class="spoiler masculine noun">un salon de l'emploi</span></td></tr>
+                    <tr><td>Employment / Job</td><td><span class="spoiler masculine noun">un emploi</span></td></tr>
+                    <tr><td>Sector / Industry</td><td><span class="spoiler masculine noun">un secteur</span></td></tr>
+                    <tr><td>Company / Business</td><td><span class="spoiler feminine noun">une entreprise</span></td></tr>
+                    <tr><td>Recruiter</td><td><span class="spoiler masculine noun">un recruteur</span></td></tr>
+                    <tr><td>Candidate / Applicant</td><td><span class="spoiler masculine noun">un candidat</span> / <span class="spoiler feminine noun">une candidate</span></td></tr>
+                    <tr><td>CV / Resume</td><td><span class="spoiler masculine noun">un CV (Curriculum Vitae)</span></td></tr>
+                    <tr><td>Cover letter</td><td><span class="spoiler feminine noun">une lettre de motivation</span></td></tr>
+                    <tr><td>Interview</td><td><span class="spoiler masculine noun">un entretien (d'embauche)</span></td></tr>
+                    <tr><td>Opportunity</td><td><span class="spoiler feminine noun">une opportunité</span></td></tr>
+                    <tr><td>Networking</td><td><span class="spoiler masculine noun">le réseautage</span></td></tr>
+                    <tr><td>Stand / Booth</td><td><span class="spoiler masculine noun">un stand</span></td></tr>
+                    <tr><td>Free admission</td><td><span class="spoiler feminine noun">l'entrée libre</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ================== AVENTURES / SPORTS/ CULTUREL / SCIENTIFIQUE/ LOISIRS ================== -->
+        <div class="topic-section" id="topic20">
+            <h2>20. Une aventure d’une escalade d’un immeuble ou d’une montagne (Building or Mountain Climbing Adventure)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Adventure</td><td><span class="spoiler feminine noun">une aventure</span></td></tr>
+                    <tr><td>Climbing</td><td><span class="spoiler feminine noun">l'escalade</span></td></tr>
+                    <tr><td>Building</td><td><span class="spoiler masculine noun">un immeuble</span></td></tr>
+                    <tr><td>Mountain</td><td><span class="spoiler feminine noun">une montagne</span></td></tr>
+                    <tr><td>To climb</td><td><span class="spoiler verb">escalader</span> / <span class="spoiler verb">grimper</span></td></tr>
+                    <tr><td>To inquire / ask for information</td><td><span class="spoiler verb">se renseigner</span></td></tr>
+                    <tr><td>Equipment</td><td><span class="spoiler masculine noun">l'équipement</span> / <span class="spoiler masculine noun">le matériel</span></td></tr>
+                    <tr><td>Safety harness</td><td><span class="spoiler masculine noun">un baudrier</span> / <span class="spoiler masculine noun">un harnais de sécurité</span></td></tr>
+                    <tr><td>Rope</td><td><span class="spoiler feminine noun">une corde</span></td></tr>
+                    <tr><td>Guide</td><td><span class="spoiler masculine noun">un guide</span></td></tr>
+                    <tr><td>Difficulty level</td><td><span class="spoiler masculine noun">le niveau de difficulté</span></td></tr>
+                    <tr><td>Physical condition</td><td><span class="spoiler feminine noun">la condition physique</span></td></tr>
+                    <tr><td>Booking</td><td><span class="spoiler feminine noun">la réservation</span></td></tr>
+                    <tr><td>Insurance</td><td><span class="spoiler feminine noun">une assurance</span></td></tr>
+                    <tr><td>Risk</td><td><span class="spoiler masculine noun">un risque</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic21">
+            <h2>21. Circuit karting (Go-karting Track)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Go-karting track</td><td><span class="spoiler masculine noun">un circuit de karting</span></td></tr>
+                    <tr><td>Go-kart</td><td><span class="spoiler masculine noun">un kart</span></td></tr>
+                    <tr><td>Session</td><td><span class="spoiler feminine noun">une session</span></td></tr>
+                    <tr><td>Race</td><td><span class="spoiler feminine noun">une course</span></td></tr>
+                    <tr><td>Helmet</td><td><span class="spoiler masculine noun">un casque</span></td></tr>
+                    <tr><td>Overall / Suit</td><td><span class="spoiler feminine noun">une combinaison</span></td></tr>
+                    <tr><td>Timing / Lap time</td><td><span class="spoiler masculine noun">le chronométrage</span></td></tr>
+                    <tr><td>Ranking / Standings</td><td><span class="spoiler masculine noun">le classement</span></td></tr>
+                    <tr><td>To drive</td><td><span class="spoiler verb">conduire</span> / <span class="spoiler verb">piloter</span></td></tr>
+                    <tr><td>Indoor</td><td><span class="spoiler other">en intérieur</span> / <span class="spoiler adjective">indoor</span></td></tr>
+                    <tr><td>Outdoor</td><td><span class="spoiler preposition">en extérieur</span> / <span class="spoiler adjective">outdoor</span></td></tr>
+                    <tr><td>Group rate</td><td><span class="spoiler masculine noun">un tarif de groupe</span></td></tr>
+                    <tr><td>Minimum age/height</td><td><span class="spoiler masculine noun">l'âge/la taille minimum</span></td></tr>
+                    <tr><td>Safety briefing</td><td><span class="spoiler masculine noun">le briefing de sécurité</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic22">
+            <h2>22. Aquabiking</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Aquabiking / Water cycling</td><td><span class="spoiler masculine noun">l'aquabiking</span> / <span class="spoiler masculine noun">l'aquavélo</span></td></tr>
+                    <tr><td>Pool / Swimming pool</td><td><span class="spoiler feminine noun">une piscine</span></td></tr>
+                    <tr><td>Bike / Stationary bike</td><td><span class="spoiler masculine noun">un vélo</span></td></tr>
+                    <tr><td>Session / Class</td><td><span class="spoiler feminine noun">une séance</span> / <span class="spoiler masculine noun">un cours</span></td></tr>
+                    <tr><td>Instructor</td><td><span class="spoiler masculine noun">un moniteur</span> / <span class="spoiler feminine noun">une monitrice</span></td></tr>
+                    <tr><td>Fitness</td><td><span class="spoiler masculine noun">le fitness</span> / <span class="spoiler feminine noun">la forme</span></td></tr>
+                    <tr><td>Muscle strengthening</td><td><span class="spoiler masculine noun">le renforcement musculaire</span></td></tr>
+                    <tr><td>Cardio</td><td><span class="spoiler masculine noun">le cardio</span></td></tr>
+                    <tr><td>Swimsuit</td><td><span class="spoiler masculine noun">un maillot de bain</span></td></tr>
+                    <tr><td>Towel</td><td><span class="spoiler feminine noun">une serviette</span></td></tr>
+                    <tr><td>Booking</td><td><span class="spoiler feminine noun">la réservation</span></td></tr>
+                    <tr><td>Subscription / Membership</td><td><span class="spoiler masculine noun">un abonnement</span></td></tr>
+                    <tr><td>Health benefits</td><td><span class="spoiler masculine noun">les bienfaits pour la santé</span></td></tr>
+                    <tr><td>Low impact (on joints)</td><td><span class="spoiler other">faible impact (sur les articulations)</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic23">
+            <h2>23. Nouveau sport : décalade (New Sport: Abseiling/Rappelling Down Buildings)</h2>
+            <!-- Décalade often refers specifically to rappelling down urban structures -->
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Abseiling / Rappelling (esp. urban)</td><td><span class="spoiler feminine noun">la décalade</span></td></tr>
+                    <tr><td>New sport</td><td><span class="spoiler masculine noun">un nouveau sport</span></td></tr>
+                    <tr><td>To abseil / rappel down</td><td><span class="spoiler verb">descendre en rappel</span></td></tr>
+                    <tr><td>Building facade</td><td><span class="spoiler feminine noun">une façade d'immeuble</span></td></tr>
+                    <tr><td>Bridge</td><td><span class="spoiler masculine noun">un pont</span></td></tr>
+                    <tr><td>Cliff</td><td><span class="spoiler feminine noun">une falaise</span></td></tr>
+                    <tr><td>Rope</td><td><span class="spoiler feminine noun">une corde</span></td></tr>
+                    <tr><td>Harness</td><td><span class="spoiler masculine noun">un harnais</span> / <span class="spoiler masculine noun">un baudrier</span></td></tr>
+                    <tr><td>Descender (device)</td><td><span class="spoiler masculine noun">un descendeur</span></td></tr>
+                    <tr><td>Instructor / Guide</td><td><span class="spoiler masculine noun">un moniteur</span> / <span class="spoiler masculine noun">un guide</span></td></tr>
+                    <tr><td>Safety</td><td><span class="spoiler feminine noun">la sécurité</span></td></tr>
+                    <tr><td>Vertigo / Fear of heights</td><td><span class="spoiler masculine noun">le vertige</span></td></tr>
+                    <tr><td>Adrenaline rush</td><td><span class="spoiler feminine noun">une montée d'adrénaline</span></td></tr>
+                    <tr><td>Introduction / Taster session</td><td><span class="spoiler feminine noun">une initiation</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic24">
+            <h2>24. Appeler une agence pour avoir des infos sur une annonce de balade en vélo électrique (Calling an Agency about an Electric Bike Ride Ad)</h2>
+             <table>
+                 <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Electric bike</td><td><span class="spoiler masculine noun">un vélo électrique</span> / <span class="spoiler masculine noun">un VAE (Vélo à Assistance Électrique)</span></td></tr>
+                    <tr><td>Ride / Tour</td><td><span class="spoiler feminine noun">une balade</span> / <span class="spoiler masculine noun">un tour</span></td></tr>
+                    <tr><td>Agency</td><td><span class="spoiler feminine noun">une agence</span></td></tr>
+                    <tr><td>Information</td><td><span class="spoiler feminine noun">les informations</span> / <span class="spoiler masculine noun">les renseignements</span></td></tr>
+                    <tr><td>Advertisement / Ad</td><td><span class="spoiler feminine noun">une annonce</span></td></tr>
+                    <tr><td>Route / Itinerary</td><td><span class="spoiler masculine noun">un itinéraire</span> / <span class="spoiler masculine noun">un parcours</span></td></tr>
+                    <tr><td>Duration</td><td><span class="spoiler feminine noun">la durée</span></td></tr>
+                    <tr><td>Difficulty</td><td><span class="spoiler feminine noun">la difficulté</span></td></tr>
+                    <tr><td>Price / Cost</td><td><span class="spoiler masculine noun">le prix</span> / <span class="spoiler masculine noun">le tarif</span></td></tr>
+                    <tr><td>Rental</td><td><span class="spoiler feminine noun">la location</span></td></tr>
+                    <tr><td>Guide included?</td><td><span class="spoiler other">Guide inclus ?</span></td></tr>
+                    <tr><td>Booking</td><td><span class="spoiler feminine noun">la réservation</span></td></tr>
+                    <tr><td>Availability</td><td><span class="spoiler feminine noun">la disponibilité</span></td></tr>
+                    <tr><td>Equipment provided (helmet?)</td><td><span class="spoiler masculine noun">l'équipement fourni (casque ?)</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic25">
+            <h2>25. Appeler pour visiter/participer à une verrerie (Calling to Visit/Participate in a Glassworks)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Glassworks / Glass factory</td><td><span class="spoiler feminine noun">une verrerie</span></td></tr>
+                    <tr><td>To visit</td><td><span class="spoiler verb">visiter</span></td></tr>
+                    <tr><td>To participate</td><td><span class="spoiler verb">participer</span></td></tr>
+                    <tr><td>Glassblowing</td><td><span class="spoiler masculine noun">le soufflage de verre</span></td></tr>
+                    <tr><td>Glassblower</td><td><span class="spoiler masculine noun">un souffleur de verre</span></td></tr>
+                    <tr><td>Demonstration</td><td><span class="spoiler feminine noun">une démonstration</span></td></tr>
+                    <tr><td>Workshop / Course</td><td><span class="spoiler masculine noun">un atelier</span> / <span class="spoiler masculine noun">un stage</span></td></tr>
+                    <tr><td>Opening hours</td><td><span class="spoiler masculine noun">les horaires d'ouverture</span></td></tr>
+                    <tr><td>Guided tour</td><td><span class="spoiler feminine noun">une visite guidée</span></td></tr>
+                    <tr><td>Shop / Boutique</td><td><span class="spoiler masculine noun">un magasin</span> / <span class="spoiler feminine noun">une boutique</span></td></tr>
+                    <tr><td>Handmade / Artisanal</td><td><span class="spoiler adjective">artisanal</span> / <span class="spoiler adjective">fait main</span></td></tr>
+                    <tr><td>Booking necessary?</td><td><span class="spoiler other">Réservation nécessaire ?</span></td></tr>
+                    <tr><td>Price for visit/workshop</td><td><span class="spoiler masculine noun">le prix de la visite/de l'atelier</span></td></tr>
+                    <tr><td>Access / Location</td><td><span class="spoiler masculine noun">l'accès</span> / <span class="spoiler masculine noun">la localisation</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic26">
+            <h2>26. Visite d'un champ de vigne... Appelez la compagnie. (Vineyard Visit... Call the Company)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Vineyard</td><td><span class="spoiler masculine noun">un vignoble</span> / <span class="spoiler masculine noun">un champ de vigne</span></td></tr>
+                    <tr><td>Visit / Tour</td><td><span class="spoiler feminine noun">une visite</span></td></tr>
+                    <tr><td>Company / Estate / Winery</td><td><span class="spoiler feminine noun">la compagnie</span> / <span class="spoiler masculine noun">le domaine</span> / <span class="spoiler masculine noun">le château</span></td></tr>
+                    <tr><td>To call</td><td><span class="spoiler verb">appeler</span> / <span class="spoiler verb">téléphoner</span></td></tr>
+                    <tr><td>Wine</td><td><span class="spoiler masculine noun">le vin</span></td></tr>
+                    <tr><td>Wine tasting</td><td><span class="spoiler feminine noun">une dégustation de vin</span></td></tr>
+                    <tr><td>Grape variety</td><td><span class="spoiler masculine noun">un cépage</span></td></tr>
+                    <tr><td>Harvest</td><td><span class="spoiler feminine noun">les vendanges</span></td></tr>
+                    <tr><td>Winemaking</td><td><span class="spoiler feminine noun">la vinification</span></td></tr>
+                    <tr><td>Cellar</td><td><span class="spoiler feminine noun">une cave</span> / <span class="spoiler masculine noun">un chai</span></td></tr>
+                    <tr><td>Booking</td><td><span class="spoiler feminine noun">la réservation</span></td></tr>
+                    <tr><td>Price</td><td><span class="spoiler masculine noun">le prix</span> / <span class="spoiler masculine noun">le tarif</span></td></tr>
+                    <tr><td>Opening times</td><td><span class="spoiler masculine noun">les heures d'ouverture</span></td></tr>
+                    <tr><td>To buy wine</td><td><span class="spoiler verb">acheter du vin</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic27">
+            <h2>27. Appeler pour obtenir des renseignements sur l'observatoire planétarium (Calling for Info on the Observatory Planetarium)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Observatory</td><td><span class="spoiler masculine noun">un observatoire</span></td></tr>
+                    <tr><td>Planetarium</td><td><span class="spoiler masculine noun">un planétarium</span></td></tr>
+                    <tr><td>Information / Details</td><td><span class="spoiler masculine noun">les renseignements</span> / <span class="spoiler feminine noun">les informations</span></td></tr>
+                    <tr><td>Night sky observations</td><td><span class="spoiler feminine noun">les observations nocturnes</span></td></tr>
+                    <tr><td>Sun observations</td><td><span class="spoiler feminine noun">les observations du soleil</span></td></tr>
+                    <tr><td>Telescope</td><td><span class="spoiler masculine noun">un télescope</span></td></tr>
+                    <tr><td>Show / Session</td><td><span class="spoiler feminine noun">une séance</span> / <span class="spoiler masculine noun">un spectacle</span></td></tr>
+                    <tr><td>Schedule / Program</td><td><span class="spoiler masculine noun">le programme</span> / <span class="spoiler masculine noun">les horaires</span></td></tr>
+                    <tr><td>Ticket price</td><td><span class="spoiler masculine noun">le prix du billet</span> / <span class="spoiler masculine noun">le tarif</span></td></tr>
+                    <tr><td>Booking</td><td><span class="spoiler feminine noun">la réservation</span></td></tr>
+                    <tr><td>For children / families?</td><td><span class="spoiler other">Pour les enfants / familles ?</span></td></tr>
+                    <tr><td>Special events</td><td><span class="spoiler masculine noun">les événements spéciaux</span></td></tr>
+                    <tr><td>Access / How to get there</td><td><span class="spoiler masculine noun">l'accès</span> / <span class="spoiler other">Comment s'y rendre ?</span></td></tr>
+                    <tr><td>Stars / Planets</td><td><span class="spoiler feminine noun">les étoiles</span> / <span class="spoiler feminine noun">les planètes</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic28">
+            <h2>28. Une visite d'un parc de crocodiles (Visit to a Crocodile Park)</h2>
+             <!-- Note: Topic 34 is identical -->
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Crocodile park</td><td><span class="spoiler masculine noun">un parc de crocodiles</span> / <span class="spoiler feminine noun">une ferme aux crocodiles</span></td></tr>
+                    <tr><td>Visit</td><td><span class="spoiler feminine noun">une visite</span></td></tr>
+                    <tr><td>Crocodile</td><td><span class="spoiler masculine noun">un crocodile</span></td></tr>
+                    <tr><td>Alligator</td><td><span class="spoiler masculine noun">un alligator</span></td></tr>
+                    <tr><td>Species</td><td><span class="spoiler feminine noun">une espèce</span></td></tr>
+                    <tr><td>Reptile</td><td><span class="spoiler masculine noun">un reptile</span></td></tr>
+                    <tr><td>Enclosure</td><td><span class="spoiler masculine noun">un enclos</span></td></tr>
+                    <tr><td>Feeding time</td><td><span class="spoiler masculine noun">le nourrissage</span> / <span class="spoiler feminine noun">l'heure du repas</span></td></tr>
+                    <tr><td>Guide / Keeper</td><td><span class="spoiler masculine noun">un guide</span> / <span class="spoiler masculine noun">un soigneur</span></td></tr>
+                    <tr><td>Opening hours</td><td><span class="spoiler masculine noun">les horaires d'ouverture</span></td></tr>
+                    <tr><td>Ticket price / Admission fee</td><td><span class="spoiler masculine noun">le prix d'entrée</span> / <span class="spoiler masculine noun">le tarif</span></td></tr>
+                    <tr><td>Family rate</td><td><span class="spoiler masculine noun">un tarif famille</span></td></tr>
+                    <tr><td>Safety measures</td><td><span class="spoiler feminine noun">les mesures de sécurité</span></td></tr>
+                    <tr><td>Educational</td><td><span class="spoiler adjective">éducatif</span> / <span class="spoiler adjective">pédagogique</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic29">
+            <h2>29. Participer à un salon de l’astronomie (Participating in an Astronomy Fair)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To participate</td><td><span class="spoiler verb">participer</span></td></tr>
+                    <tr><td>Astronomy fair / exhibition</td><td><span class="spoiler masculine noun">un salon de l'astronomie</span></td></tr>
+                    <tr><td>Astronomy</td><td><span class="spoiler feminine noun">l'astronomie</span></td></tr>
+                    <tr><td>Exhibitor</td><td><span class="spoiler masculine noun">un exposant</span></td></tr>
+                    <tr><td>Visitor</td><td><span class="spoiler masculine noun">un visiteur</span></td></tr>
+                    <tr><td>Conference / Lecture</td><td><span class="spoiler feminine noun">une conférence</span></td></tr>
+                    <tr><td>Workshop</td><td><span class="spoiler masculine noun">un atelier</span></td></tr>
+                    <tr><td>Equipment (telescopes, etc.)</td><td><span class="spoiler masculine noun">le matériel (télescopes, etc.)</span></td></tr>
+                    <tr><td>Planetarium</td><td><span class="spoiler masculine noun">un planétarium</span></td></tr>
+                    <tr><td>Association / Club</td><td><span class="spoiler feminine noun">une association</span> / <span class="spoiler masculine noun">un club</span></td></tr>
+                    <tr><td>Program / Schedule</td><td><span class="spoiler masculine noun">le programme</span></td></tr>
+                    <tr><td>Location / Venue</td><td><span class="spoiler masculine noun">le lieu</span></td></tr>
+                    <tr><td>Dates</td><td><span class="spoiler feminine noun">les dates</span></td></tr>
+                    <tr><td>Entrance fee</td><td><span class="spoiler masculine noun">le prix d'entrée</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic30">
+            <h2>30. Un spectacle pour un enfant dans un théâtre (A Show for a Child in a Theater)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Show / Performance</td><td><span class="spoiler masculine noun">un spectacle</span></td></tr>
+                    <tr><td>Child / Kid</td><td><span class="spoiler masculine noun">un enfant</span></td></tr>
+                    <tr><td>Theater</td><td><span class="spoiler masculine noun">un théâtre</span></td></tr>
+                    <tr><td>Puppet show</td><td><span class="spoiler masculine noun">un spectacle de marionnettes</span></td></tr>
+                    <tr><td>Magic show</td><td><span class="spoiler masculine noun">un spectacle de magie</span></td></tr>
+                    <tr><td>Clown</td><td><span class="spoiler masculine noun">un clown</span></td></tr>
+                    <tr><td>Storytelling</td><td><span class="spoiler masculine noun">un conte</span></td></tr>
+                    <tr><td>Age appropriate</td><td><span class="spoiler adjective">adapté à l'âge</span></td></tr>
+                    <tr><td>Duration</td><td><span class="spoiler feminine noun">la durée</span></td></tr>
+                    <tr><td>Schedule / Timetable</td><td><span class="spoiler masculine noun">les horaires</span> / <span class="spoiler masculine noun">la programmation</span></td></tr>
+                    <tr><td>Ticket</td><td><span class="spoiler masculine noun">un billet</span></td></tr>
+                    <tr><td>Price</td><td><span class="spoiler masculine noun">le prix</span> / <span class="spoiler masculine noun">le tarif</span></td></tr>
+                    <tr><td>Booking</td><td><span class="spoiler feminine noun">la réservation</span></td></tr>
+                    <tr><td>Family friendly</td><td><span class="spoiler adjective">familial</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic31">
+            <h2>31. Affiche d’un zoo d’éléphants (Poster for an Elephant Zoo/Sanctuary)</h2>
+            <table>
+                 <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Poster / Ad</td><td><span class="spoiler feminine noun">une affiche</span></td></tr>
+                    <tr><td>Zoo</td><td><span class="spoiler masculine noun">un zoo</span> / <span class="spoiler masculine noun">un parc zoologique</span></td></tr>
+                    <tr><td>Elephant</td><td><span class="spoiler masculine noun">un éléphant</span></td></tr>
+                    <tr><td>Sanctuary</td><td><span class="spoiler masculine noun">un sanctuaire</span></td></tr>
+                    <tr><td>Visit</td><td><span class="spoiler feminine noun">une visite</span></td></tr>
+                    <tr><td>Animal welfare</td><td><span class="spoiler masculine noun">le bien-être animal</span></td></tr>
+                    <tr><td>Conservation</td><td><span class="spoiler feminine noun">la conservation</span></td></tr>
+                    <tr><td>Species</td><td><span class="spoiler feminine noun">une espèce</span></td></tr>
+                    <tr><td>Opening hours</td><td><span class="spoiler masculine noun">les horaires d'ouverture</span></td></tr>
+                    <tr><td>Admission price</td><td><span class="spoiler masculine noun">le prix d'entrée</span></td></tr>
+                    <tr><td>Location / Address</td><td><span class="spoiler masculine noun">la localisation</span> / <span class="spoiler feminine noun">l'adresse</span></td></tr>
+                    <tr><td>Activities</td><td><span class="spoiler feminine noun">les activités</span></td></tr>
+                    <tr><td>Feeding / Care</td><td><span class="spoiler masculine noun">le nourrissage</span> / <span class="spoiler masculine noun">les soins</span></td></tr>
+                    <tr><td>Information</td><td><span class="spoiler feminine noun">les informations</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic32">
+            <h2>32. Fêter votre anniversaire dans un zoo (Celebrating Your Birthday at a Zoo)</h2>
+            <table>
+                 <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To celebrate</td><td><span class="spoiler verb">fêter</span></td></tr>
+                    <tr><td>Birthday</td><td><span class="spoiler masculine noun">un anniversaire</span></td></tr>
+                    <tr><td>Zoo</td><td><span class="spoiler masculine noun">un zoo</span></td></tr>
+                    <tr><td>Birthday package / offer</td><td><span class="spoiler feminine noun">une formule anniversaire</span></td></tr>
+                    <tr><td>Group (of children)</td><td><span class="spoiler masculine noun">un groupe (d'enfants)</span></td></tr>
+                    <tr><td>Activities</td><td><span class="spoiler feminine noun">les activités</span> / <span class="spoiler feminine noun">les animations</span></td></tr>
+                    <tr><td>Guided tour</td><td><span class="spoiler feminine noun">une visite guidée</span></td></tr>
+                    <tr><td>Workshop</td><td><span class="spoiler masculine noun">un atelier</span></td></tr>
+                    <tr><td>Birthday cake</td><td><span class="spoiler masculine noun">un gâteau d'anniversaire</span></td></tr>
+                    <tr><td>Party room / area</td><td><span class="spoiler feminine noun">une salle</span> / <span class="spoiler masculine noun">un espace réservé</span></td></tr>
+                    <tr><td>Booking</td><td><span class="spoiler feminine noun">la réservation</span></td></tr>
+                    <tr><td>Price per child</td><td><span class="spoiler masculine noun">le prix par enfant</span></td></tr>
+                    <tr><td>Minimum number of guests</td><td><span class="spoiler masculine noun">le nombre minimum d'invités</span></td></tr>
+                    <tr><td>Accompanying adults</td><td><span class="spoiler masculine noun">les adultes accompagnateurs</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic33">
+            <h2>33. Parc naturel (Nature Park)</h2>
+            <table>
+                 <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Nature park</td><td><span class="spoiler masculine noun">un parc naturel</span></td></tr>
+                    <tr><td>Hiking trail</td><td><span class="spoiler masculine noun">un sentier de randonnée</span></td></tr>
+                    <tr><td>Wildlife</td><td><span class="spoiler feminine noun">la faune</span></td></tr>
+                    <tr><td>Flora / Plants</td><td><span class="spoiler feminine noun">la flore</span></td></tr>
+                    <tr><td>Landscape</td><td><span class="spoiler masculine noun">un paysage</span></td></tr>
+                    <tr><td>Protected area</td><td><span class="spoiler feminine noun">une zone protégée</span></td></tr>
+                    <tr><td>Visitor center</td><td><span class="spoiler feminine noun">une maison du parc</span> / <span class="spoiler masculine noun">un centre d'accueil</span></td></tr>
+                    <tr><td>Map</td><td><span class="spoiler feminine noun">une carte</span></td></tr>
+                    <tr><td>Picnic area</td><td><span class="spoiler feminine noun">une aire de pique-nique</span></td></tr>
+                    <tr><td>Viewpoint</td><td><span class="spoiler masculine noun">un point de vue</span></td></tr>
+                    <tr><td>Regulations / Rules</td><td><span class="spoiler masculine noun">le règlement</span></td></tr>
+                    <tr><td>Activities (hiking, biking)</td><td><span class="spoiler feminine noun">les activités (randonnée, VTT)</span></td></tr>
+                    <tr><td>Access</td><td><span class="spoiler masculine noun">l'accès</span></td></tr>
+                    <tr><td>Free entry / Paid entry</td><td><span class="spoiler feminine noun">Entrée libre / Entrée payante</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic34">
+             <h2>34. Parc de crocodiles possédant plus de 350 crocodiles de différentes espèces (Crocodile Park with over 350 crocodiles of different species)</h2>
+             <!-- Identical to topic 28, adding specificity -->
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Crocodile park</td><td><span class="spoiler masculine noun">un parc de crocodiles</span></td></tr>
+                    <tr><td>Possessing / Having</td><td><span class="spoiler verb">possédant</span></td></tr>
+                    <tr><td>More than</td><td><span class="spoiler preposition">plus de</span></td></tr>
+                    <tr><td>Crocodile</td><td><span class="spoiler masculine noun">un crocodile</span></td></tr>
+                    <tr><td>Different species</td><td><span class="spoiler feminine noun">des espèces différentes</span></td></tr>
+                    <tr><td>Collection</td><td><span class="spoiler feminine noun">la collection</span></td></tr>
+                    <tr><td>Diversity</td><td><span class="spoiler feminine noun">la diversité</span></td></tr>
+                    <tr><td>Size</td><td><span class="spoiler feminine noun">la taille</span></td></tr>
+                    <tr><td>Origin / Habitat</td><td><span class="spoiler feminine noun">l'origine</span> / <span class="spoiler masculine noun">l'habitat</span></td></tr>
+                    <tr><td>Information panels</td><td><span class="spoiler masculine noun">les panneaux d'information</span></td></tr>
+                    <tr><td>Visit duration</td><td><span class="spoiler feminine noun">la durée de la visite</span></td></tr>
+                    <tr><td>Photography allowed?</td><td><span class="spoiler other">Photos autorisées ?</span></td></tr>
+                    <tr><td>Shop</td><td><span class="spoiler feminine noun">la boutique</span></td></tr>
+                    <tr><td>Restaurant / Cafe</td><td><span class="spoiler masculine noun">le restaurant</span> / <span class="spoiler masculine noun">le café</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic35">
+            <h2>35. Des soirées d'astronomie (Astronomy Evenings)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Astronomy evening</td><td><span class="spoiler feminine noun">une soirée d'astronomie</span></td></tr>
+                    <tr><td>Observation</td><td><span class="spoiler feminine noun">une observation</span></td></tr>
+                    <tr><td>Night sky</td><td><span class="spoiler masculine noun">le ciel nocturne</span></td></tr>
+                    <tr><td>Stars</td><td><span class="spoiler feminine noun">les étoiles</span></td></tr>
+                    <tr><td>Planets</td><td><span class="spoiler feminine noun">les planètes</span></td></tr>
+                    <tr><td>Moon</td><td><span class="spoiler feminine noun">la lune</span></td></tr>
+                    <tr><td>Constellations</td><td><span class="spoiler feminine noun">les constellations</span></td></tr>
+                    <tr><td>Telescope</td><td><span class="spoiler masculine noun">un télescope</span></td></tr>
+                    <tr><td>Binoculars</td><td><span class="spoiler feminine noun">des jumelles</span></td></tr>
+                    <tr><td>Guide / Astronomer</td><td><span class="spoiler masculine noun">un animateur</span> / <span class="spoiler masculine noun">un astronome</span></td></tr>
+                    <tr><td>Explanation / Commentary</td><td><span class="spoiler feminine noun">une explication</span> / <span class="spoiler masculine noun">un commentaire</span></td></tr>
+                    <tr><td>Date and time</td><td><span class="spoiler feminine noun">la date et l'heure</span></td></tr>
+                    <tr><td>Location (dark site)</td><td><span class="spoiler masculine noun">le lieu (site sombre)</span></td></tr>
+                    <tr><td>Booking</td><td><span class="spoiler feminine noun">la réservation</span></td></tr>
+                    <tr><td>Weather dependent</td><td><span class="spoiler adjective">dépendant de la météo</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic36">
+            <h2>36. Poser questions à un artiste qui fait des portraits (Ask Questions to a Portrait Artist)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>To ask questions</td><td><span class="spoiler verb">poser des questions</span></td></tr>
+                    <tr><td>Artist</td><td><span class="spoiler masculine noun">un artiste</span> / <span class="spoiler feminine noun">une artiste</span></td></tr>
+                    <tr><td>Portrait</td><td><span class="spoiler masculine noun">un portrait</span></td></tr>
+                    <tr><td>To make / create / paint</td><td><span class="spoiler verb">faire</span> / <span class="spoiler verb">créer</span> / <span class="spoiler verb">peindre</span></td></tr>
+                    <tr><td>Technique / Medium (oil, pencil)</td><td><span class="spoiler feminine noun">la technique</span> / <span class="spoiler masculine noun">le médium (huile, crayon)</span></td></tr>
+                    <tr><td>Style</td><td><span class="spoiler masculine noun">le style</span></td></tr>
+                    <tr><td>Commission a portrait</td><td><span class="spoiler verb">commander un portrait</span></td></tr>
+                    <tr><td>Price / Quote</td><td><span class="spoiler masculine noun">le prix</span> / <span class="spoiler masculine noun">un devis</span></td></tr>
+                    <tr><td>Sitting / Pose</td><td><span class="spoiler feminine noun">la séance de pose</span></td></tr>
+                    <tr><td>From a photo?</td><td><span class="spoiler preposition">D'après photo ?</span></td></tr>
+                    <tr><td>Size / Format</td><td><span class="spoiler feminine noun">la taille</span> / <span class="spoiler masculine noun">le format</span></td></tr>
+                    <tr><td>Delivery time / Deadline</td><td><span class="spoiler masculine noun">le délai de livraison</span></td></tr>
+                    <tr><td>Portfolio / Examples</td><td><span class="spoiler masculine noun">le portfolio</span> / <span class="spoiler masculine noun">des exemples</span></td></tr>
+                    <tr><td>Studio visit?</td><td><span class="spoiler feminine noun">Visite de l'atelier ?</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic37">
+            <h2>37. Appeler pour se renseigner sur un café où il y a 450 jeux (Calling about a Board Game Cafe with 450 Games)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Board game cafe</td><td><span class="spoiler masculine noun">un café à jeux</span> / <span class="spoiler masculine noun">un bar à jeux</span></td></tr>
+                    <tr><td>Board game</td><td><span class="spoiler masculine noun">un jeu de société</span></td></tr>
+                    <tr><td>Collection (of games)</td><td><span class="spoiler feminine noun">la collection (de jeux)</span></td></tr>
+                    <tr><td>Friendly atmosphere</td><td><span class="spoiler feminine noun">une ambiance conviviale</span></td></tr>
+                    <tr><td>Tournament</td><td><span class="spoiler masculine noun">un tournoi</span></td></tr>
+                    <tr><td>To play</td><td><span class="spoiler verb">jouer</span></td></tr>
+                    <tr><td>Game master / Explainer</td><td><span class="spoiler masculine noun">un animateur (de jeux)</span></td></tr>
+                    <tr><td>Fee / Price to play</td><td><span class="spoiler masculine noun">le tarif (pour jouer)</span></td></tr>
+                    <tr><td>Booking a table</td><td><span class="spoiler verb">réserver une table</span></td></tr>
+                    <tr><td>Opening hours</td><td><span class="spoiler masculine noun">les horaires d'ouverture</span></td></tr>
+                    <tr><td>Food and drinks menu</td><td><span class="spoiler feminine noun">la carte (boissons et nourriture)</span></td></tr>
+                    <tr><td>Minimum consumption?</td><td><span class="spoiler feminine noun">Consommation minimum ?</span></td></tr>
+                    <tr><td>Events</td><td><span class="spoiler masculine noun">les événements</span></td></tr>
+                    <tr><td>For all ages?</td><td><span class="spoiler preposition">Pour tous les âges ?</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- ================== ACHATS ================== -->
+        <div class="topic-section" id="topic38">
+            <h2>38. Un grand magasin de jouets lance des rabais très intéressants (Toy Store Sale)</h2>
+            <table>
+                 <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Large toy store</td><td><span class="spoiler masculine noun">un grand magasin de jouets</span></td></tr>
+                    <tr><td>To launch / start</td><td><span class="spoiler verb">lancer</span></td></tr>
+                    <tr><td>Discount / Sale</td><td><span class="spoiler masculine noun">un rabais</span> / <span class="spoiler feminine noun">une promotion</span> / <span class="spoiler masculine noun">des soldes</span></td></tr>
+                    <tr><td>Very interesting / attractive</td><td><span class="spoiler adjective">très intéressant</span></td></tr>
+                    <tr><td>Toy</td><td><span class="spoiler masculine noun">un jouet</span></td></tr>
+                    <tr><td>Phone number</td><td><span class="spoiler masculine noun">un numéro de téléphone</span></td></tr>
+                    <tr><td>Location not indicated</td><td><span class="spoiler masculine noun">L'emplacement n'est pas indiqué</span></td></tr>
+                    <tr><td>Address</td><td><span class="spoiler feminine noun">l'adresse</span></td></tr>
+                    <tr><td>Opening hours</td><td><span class="spoiler masculine noun">les horaires d'ouverture</span></td></tr>
+                    <tr><td>Sale duration</td><td><span class="spoiler feminine noun">la durée des rabais/promotions</span></td></tr>
+                    <tr><td>Percentage off</td><td><span class="spoiler masculine noun">le pourcentage de réduction</span></td></tr>
+                    <tr><td>Specific brands/items on sale?</td><td><span class="spoiler other">Marques/articles spécifiques en promotion ?</span></td></tr>
+                    <tr><td>Stock availability</td><td><span class="spoiler feminine noun">la disponibilité des stocks</span></td></tr>
+                    <tr><td>Parking</td><td><span class="spoiler masculine noun">le parking</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic39">
+            <h2>39. Bijoutier ou magasin qui rachète les bijoux (Jeweler or Shop Buying Back Jewelry)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Jeweler</td><td><span class="spoiler masculine noun">un bijoutier</span> / <span class="spoiler feminine noun">une bijoutière</span></td></tr>
+                    <tr><td>Shop / Store</td><td><span class="spoiler masculine noun">un magasin</span></td></tr>
+                    <tr><td>To buy back / purchase</td><td><span class="spoiler verb">racheter</span></td></tr>
+                    <tr><td>Jewelry</td><td><span class="spoiler masculine noun">les bijoux</span> (plural)</td></tr>
+                    <tr><td>Gold</td><td><span class="spoiler masculine noun">l'or</span></td></tr>
+                    <tr><td>Silver</td><td><span class="spoiler masculine noun">l'argent</span></td></tr>
+                    <tr><td>Precious stones</td><td><span class="spoiler feminine noun">les pierres précieuses</span></td></tr>
+                    <tr><td>Valuation / Appraisal</td><td><span class="spoiler feminine noun">une expertise</span> / <span class="spoiler feminine noun">une estimation</span></td></tr>
+                    <tr><td>Price offered</td><td><span class="spoiler masculine noun">le prix proposé</span></td></tr>
+                    <tr><td>Payment method</td><td><span class="spoiler masculine noun">le mode de paiement</span> (cash, transfer)</td></tr>
+                    <tr><td>ID required?</td><td><span class="spoiler other">Pièce d'identité requise ?</span></td></tr>
+                    <tr><td>Appointment needed?</td><td><span class="spoiler other">Rendez-vous nécessaire ?</span></td></tr>
+                    <tr><td>Condition of jewelry</td><td><span class="spoiler masculine noun">l'état des bijoux</span></td></tr>
+                    <tr><td>Broken jewelry accepted?</td><td><span class="spoiler other">Bijoux cassés acceptés ?</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic40">
+            <h2>40. Une brocante (Flea Market / Antique Fair)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Flea market / Car boot sale</td><td><span class="spoiler feminine noun">une brocante</span> / <span class="spoiler masculine noun">un vide-grenier</span></td></tr>
+                    <tr><td>Antique fair</td><td><span class="spoiler masculine noun">un salon des antiquaires</span></td></tr>
+                    <tr><td>Second-hand items</td><td><span class="spoiler masculine noun">des objets d'occasion</span></td></tr>
+                    <tr><td>Antique</td><td><span class="spoiler feminine noun">une antiquité</span></td></tr>
+                    <tr><td>Furniture</td><td><span class="spoiler masculine noun">des meubles</span></td></tr>
+                    <tr><td>Knick-knacks / Bric-a-brac</td><td><span class="spoiler masculine noun">bibelots</span> / <span class="spoiler feminine noun">bric-à-brac</span></td></tr>
+                    <tr><td>To bargain / haggle</td><td><span class="spoiler verb">marchander</span> / <span class="spoiler verb">négocier</span></td></tr>
+                    <tr><td>Seller / Vendor</td><td><span class="spoiler masculine noun">un vendeur</span> / <span class="spoiler masculine noun">un exposant</span></td></tr>
+                    <tr><td>Buyer</td><td><span class="spoiler masculine noun">un acheteur</span> / <span class="spoiler masculine noun">un chineur</span></td></tr>
+                    <tr><td>Stand / Stall</td><td><span class="spoiler masculine noun">un stand</span></td></tr>
+                    <tr><td>Date and location</td><td><span class="spoiler feminine noun">la date et le lieu</span></td></tr>
+                    <tr><td>Entrance fee?</td><td><span class="spoiler other">Entrée payante ?</span></td></tr>
+                    <tr><td>Early morning</td><td><span class="spoiler masculine noun">tôt le matin</span></td></tr>
+                    <tr><td>Good deal / Bargain</td><td><span class="spoiler feminine noun">une bonne affaire</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic41">
+            <h2>41. Une annonce de publicité pour petit déj bio (Advertisement for Organic Breakfast)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Advertisement / Ad</td><td><span class="spoiler feminine noun">une annonce publicitaire</span> / <span class="spoiler feminine noun">une publicité (pub)</span></td></tr>
+                    <tr><td>Breakfast</td><td><span class="spoiler masculine noun">un petit déjeuner</span></td></tr>
+                    <tr><td>Organic</td><td><span class="spoiler adjective">bio (biologique)</span></td></tr>
+                    <tr><td>Offer / Promotion</td><td><span class="spoiler feminine noun">une offre</span> / <span class="spoiler feminine noun">une promotion</span></td></tr>
+                    <tr><td>Restaurant / Cafe / Shop</td><td><span class="spoiler masculine noun">un restaurant</span> / <span class="spoiler masculine noun">un café</span> / <span class="spoiler masculine noun">un magasin</span></td></tr>
+                    <tr><td>Menu / Formula</td><td><span class="spoiler masculine noun">le menu</span> / <span class="spoiler feminine noun">la formule</span></td></tr>
+                    <tr><td>Products included</td><td><span class="spoiler masculine noun">les produits inclus</span></td></tr>
+                    <tr><td>Price</td><td><span class="spoiler masculine noun">le prix</span></td></tr>
+                    <tr><td>Availability (days, times)</td><td><span class="spoiler feminine noun">la disponibilité (jours, heures)</span></td></tr>
+                    <tr><td>Location / Address</td><td><span class="spoiler masculine noun">l'emplacement</span> / <span class="spoiler feminine noun">l'adresse</span></td></tr>
+                    <tr><td>Booking required?</td><td><span class="spoiler other">Réservation nécessaire ?</span></td></tr>
+                    <tr><td>Takeaway available?</td><td><span class="spoiler preposition">À emporter disponible ?</span></td></tr>
+                    <tr><td>Ingredients</td><td><span class="spoiler masculine noun">les ingrédients</span></td></tr>
+                    <tr><td>Healthy</td><td><span class="spoiler adjective">sain</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ================== LOUER QQCH / UN LOCATION D’UN LIEU ================== -->
+        <div class="topic-section" id="topic42">
+            <h2>42. Appeler pour une annonce de location de vélo (Calling about a Bike Rental Ad)</h2>
+             <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Bike / Bicycle</td><td><span class="spoiler masculine noun">un vélo</span></td></tr>
+                    <tr><td>Rental / Hire</td><td><span class="spoiler feminine noun">la location</span></td></tr>
+                    <tr><td>Advertisement / Ad</td><td><span class="spoiler feminine noun">une annonce</span></td></tr>
+                    <tr><td>To call</td><td><span class="spoiler verb">appeler</span></td></tr>
+                    <tr><td>Type of bike (city, mountain, electric)</td><td><span class="spoiler masculine noun">le type de vélo (ville, VTT, électrique)</span></td></tr>
+                    <tr><td>Rental rates (hourly, daily, weekly)</td><td><span class="spoiler masculine noun">les tarifs de location (heure, jour, semaine)</span></td></tr>
+                    <tr><td>Availability</td><td><span class="spoiler feminine noun">la disponibilité</span></td></tr>
+                    <tr><td>Deposit required?</td><td><span class="spoiler feminine noun">Caution demandée ?</span></td></tr>
+                    <tr><td>Accessories included (helmet, lock)</td><td><span class="spoiler masculine noun">les accessoires inclus (casque, antivol)</span></td></tr>
+                    <tr><td>Opening hours of the rental shop</td><td><span class="spoiler masculine noun">les horaires du magasin de location</span></td></tr>
+                    <tr><td>Location / Address</td><td><span class="spoiler masculine noun">l'emplacement</span> / <span class="spoiler feminine noun">l'adresse</span></td></tr>
+                    <tr><td>Booking in advance?</td><td><span class="spoiler verb">Réserver à l'avance ?</span></td></tr>
+                    <tr><td>Condition of the bikes</td><td><span class="spoiler masculine noun">l'état des vélos</span></td></tr>
+                    <tr><td>Insurance</td><td><span class="spoiler feminine noun">une assurance</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic43">
+            <h2>43. Location du bureau pour travail (Office Rental for Work)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Office rental</td><td><span class="spoiler feminine noun">la location de bureau</span></td></tr>
+                    <tr><td>Office</td><td><span class="spoiler masculine noun">un bureau</span></td></tr>
+                    <tr><td>Work / Business</td><td><span class="spoiler masculine noun">le travail</span></td></tr>
+                    <tr><td>Private office</td><td><span class="spoiler masculine noun">un bureau privé / privatif</span></td></tr>
+                    <tr><td>Shared office / Coworking space</td><td><span class="spoiler masculine noun">un bureau partagé</span> / <span class="spoiler masculine noun">un espace de coworking</span></td></tr>
+                    <tr><td>Surface area / Size (m²)</td><td><span class="spoiler feminine noun">la surface (en m²)</span></td></tr>
+                    <tr><td>Monthly rent</td><td><span class="spoiler masculine noun">le loyer mensuel</span></td></tr>
+                    <tr><td>Included services (internet, cleaning)</td><td><span class="spoiler masculine noun">les services inclus (internet, ménage)</span></td></tr>
+                    <tr><td>Lease duration / Contract</td><td><span class="spoiler feminine noun">la durée du bail</span> / <span class="spoiler masculine noun">le contrat</span></td></tr>
+                    <tr><td>Availability date</td><td><span class="spoiler feminine noun">la date de disponibilité</span></td></tr>
+                    <tr><td>To visit</td><td><span class="spoiler verb">visiter</span></td></tr>
+                    <tr><td>Location / Accessibility</td><td><span class="spoiler masculine noun">la localisation</span> / <span class="spoiler feminine noun">l'accessibilité</span></td></tr>
+                    <tr><td>Meeting room</td><td><span class="spoiler feminine noun">une salle de réunion</span></td></tr>
+                    <tr><td>Deposit / Guarantee</td><td><span class="spoiler feminine noun">la caution</span> / <span class="spoiler feminine noun">la garantie</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic44">
+            <h2>44. Location d’espace de stockage pour vieilles affaires de la maison (Storage Space Rental for Old Household Items)</h2>
+             <!-- Note: Topic 55 is similar -->
+            <table>
+                 <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Storage space rental</td><td><span class="spoiler feminine noun">la location d'espace de stockage</span></td></tr>
+                    <tr><td>Storage unit / Box</td><td><span class="spoiler masculine noun">un box (de stockage)</span> / <span class="spoiler masculine noun">un garde-meuble</span></td></tr>
+                    <tr><td>Old household items</td><td><span class="spoiler feminine noun">des vieilles affaires de la maison</span></td></tr>
+                    <tr><td>Self-storage center</td><td><span class="spoiler masculine noun">un centre de self-stockage</span></td></tr>
+                    <tr><td>Size of the unit (m³)</td><td><span class="spoiler feminine noun">la taille du box (en m³)</span></td></tr>
+                    <tr><td>Price per month</td><td><span class="spoiler masculine noun">le prix par mois</span></td></tr>
+                    <tr><td>Security (cameras, alarm)</td><td><span class="spoiler feminine noun">la sécurité (caméras, alarme)</span></td></tr>
+                    <tr><td>Access hours</td><td><span class="spoiler masculine noun">les heures d'accès</span></td></tr>
+                    <tr><td>Contract duration</td><td><span class="spoiler feminine noun">la durée du contrat</span></td></tr>
+                    <tr><td>Insurance included?</td><td><span class="spoiler other">Assurance incluse ?</span></td></tr>
+                    <tr><td>Prohibited items</td><td><span class="spoiler masculine noun">les objets interdits</span></td></tr>
+                    <tr><td>Moving supplies (boxes, tape)</td><td><span class="spoiler masculine noun">le matériel de déménagement (cartons, ruban adhésif)</span></td></tr>
+                    <tr><td>Location</td><td><span class="spoiler masculine noun">la localisation</span></td></tr>
+                    <tr><td>Availability</td><td><span class="spoiler feminine noun">la disponibilité</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic45">
+            <h2>45. Location de chambre pour étudiant (Room Rental for Student)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Room rental</td><td><span class="spoiler feminine noun">la location de chambre</span></td></tr>
+                    <tr><td>Room</td><td><span class="spoiler feminine noun">une chambre</span></td></tr>
+                    <tr><td>Student</td><td><span class="spoiler masculine noun">un étudiant</span> / <span class="spoiler feminine noun">une étudiante</span></td></tr>
+                    <tr><td>Furnished room</td><td><span class="spoiler feminine noun">une chambre meublée</span></td></tr>
+                    <tr><td>Rent (per month)</td><td><span class="spoiler masculine noun">le loyer (mensuel)</span></td></tr>
+                    <tr><td>Charges / Utilities included?</td><td><span class="spoiler feminine noun">Charges comprises ?</span> (eau, électricité, internet)</td></tr>
+                    <tr><td>Surface area / Size</td><td><span class="spoiler feminine noun">la surface</span> / <span class="spoiler feminine noun">la taille</span></td></tr>
+                    <tr><td>Location (near university?)</td><td><span class="spoiler masculine noun">la localisation (proche de l'université ?)</span></td></tr>
+                    <tr><td>Shared apartment / Colocation</td><td><span class="spoiler feminine noun">la colocation</span></td></tr>
+                    <tr><td>Roommates</td><td><span class="spoiler masculine noun">les colocataires</span></td></tr>
+                    <tr><td>Lease / Contract</td><td><span class="spoiler masculine noun">le bail</span> / <span class="spoiler masculine noun">le contrat</span></td></tr>
+                    <tr><td>Deposit</td><td><span class="spoiler feminine noun">la caution</span> / <span class="spoiler masculine noun">le dépôt de garantie</span></td></tr>
+                    <tr><td>Available from (date)</td><td><span class="spoiler adjective">Disponible à partir de (date)</span></td></tr>
+                    <tr><td>To visit</td><td><span class="spoiler verb">visiter</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic46">
+            <h2>46. Location d’une maison avec des équipements de jardinage et des vélos (House Rental with Gardening Equipment and Bikes)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>House rental</td><td><span class="spoiler feminine noun">la location d'une maison</span></td></tr>
+                    <tr><td>House</td><td><span class="spoiler feminine noun">une maison</span></td></tr>
+                    <tr><td>Gardening equipment</td><td><span class="spoiler masculine noun">des équipements de jardinage</span></td></tr>
+                    <tr><td>Bikes / Bicycles</td><td><span class="spoiler masculine noun">des vélos</span></td></tr>
+                    <tr><td>Garden</td><td><span class="spoiler masculine noun">un jardin</span></td></tr>
+                    <tr><td>Included in the rental</td><td><span class="spoiler adjective">inclus dans la location</span></td></tr>
+                    <tr><td>Holiday rental / Long term rental</td><td><span class="spoiler feminine noun">location de vacances</span> / <span class="spoiler feminine noun">location longue durée</span></td></tr>
+                    <tr><td>Number of bedrooms</td><td><span class="spoiler masculine noun">le nombre de chambres</span></td></tr>
+                    <tr><td>Price per week/month</td><td><span class="spoiler masculine noun">le prix par semaine/mois</span></td></tr>
+                    <tr><td>Availability dates</td><td><span class="spoiler feminine noun">les dates de disponibilité</span></td></tr>
+                    <tr><td>Booking</td><td><span class="spoiler feminine noun">la réservation</span></td></tr>
+                    <tr><td>Description of the house</td><td><span class="spoiler feminine noun">la description de la maison</span></td></tr>
+                    <tr><td>Photos</td><td><span class="spoiler feminine noun">des photos</span></td></tr>
+                    <tr><td>Deposit</td><td><span class="spoiler feminine noun">la caution</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic47">
+            <h2>47. Une agence qui offre un bus discothèque (Agency Offering a Party Bus)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Agency</td><td><span class="spoiler feminine noun">une agence</span></td></tr>
+                    <tr><td>Party bus / Disco bus</td><td><span class="spoiler masculine noun">un bus discothèque</span> / <span class="spoiler masculine noun">un party bus</span></td></tr>
+                    <tr><td>To offer / provide</td><td><span class="spoiler verb">offrir</span> / <span class="spoiler verb">proposer</span></td></tr>
+                    <tr><td>Rental</td><td><span class="spoiler feminine noun">la location</span></td></tr>
+                    <tr><td>Event (birthday, party)</td><td><span class="spoiler masculine noun">un événement (anniversaire, soirée)</span></td></tr>
+                    <tr><td>Capacity (number of people)</td><td><span class="spoiler feminine noun">la capacité (nombre de personnes)</span></td></tr>
+                    <tr><td>Equipment (sound system, lights)</td><td><span class="spoiler masculine noun">l'équipement (sono, lumières)</span></td></tr>
+                    <tr><td>Driver included?</td><td><span class="spoiler other">Chauffeur inclus ?</span></td></tr>
+                    <tr><td>Rental duration (hours)</td><td><span class="spoiler feminine noun">la durée de location (heures)</span></td></tr>
+                    <tr><td>Price / Quote</td><td><span class="spoiler masculine noun">le tarif</span> / <span class="spoiler masculine noun">un devis</span></td></tr>
+                    <tr><td>Booking</td><td><span class="spoiler feminine noun">la réservation</span></td></tr>
+                    <tr><td>Route / Itinerary possible?</td><td><span class="spoiler masculine noun">Itinéraire possible ?</span></td></tr>
+                    <tr><td>Drinks / Catering options?</td><td><span class="spoiler other">Options boissons / traiteur ?</span></td></tr>
+                    <tr><td>Availability</td><td><span class="spoiler feminine noun">la disponibilité</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic48">
+            <h2>48. Annonce sur les voitures de pilotage (Ad about Driving Experience Cars)</h2>
+             <!-- Similar to topic 10, focus on inquiry based on an ad -->
+            <table>
+                 <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Advertisement / Ad</td><td><span class="spoiler feminine noun">une annonce</span></td></tr>
+                    <tr><td>Driving experience cars</td><td><span class="spoiler feminine noun">les voitures de pilotage</span></td></tr>
+                    <tr><td>To ask for information</td><td><span class="spoiler verb">demander des renseignements</span></td></tr>
+                    <tr><td>Type of cars available</td><td><span class="spoiler masculine noun">le type de voitures disponibles</span></td></tr>
+                    <tr><td>Track / Circuit</td><td><span class="spoiler masculine noun">le circuit</span></td></tr>
+                    <tr><td>Price per lap / session</td><td><span class="spoiler masculine noun">le prix par tour / session</span></td></tr>
+                    <tr><td>Duration</td><td><span class="spoiler feminine noun">la durée</span></td></tr>
+                    <tr><td>Conditions (license, age)</td><td><span class="spoiler feminine noun">les conditions (permis, âge)</span></td></tr>
+                    <tr><td>Booking process</td><td><span class="spoiler masculine noun">le processus de réservation</span></td></tr>
+                    <tr><td>Availability / Schedule</td><td><span class="spoiler feminine noun">la disponibilité</span> / <span class="spoiler masculine noun">le calendrier</span></td></tr>
+                    <tr><td>Safety briefing included?</td><td><span class="spoiler other">Briefing de sécurité inclus ?</span></td></tr>
+                    <tr><td>Instructor present?</td><td><span class="spoiler other">Instructeur présent ?</span></td></tr>
+                    <tr><td>Gift vouchers available?</td><td><span class="spoiler other">Bons cadeaux disponibles ?</span></td></tr>
+                    <tr><td>Location of the track</td><td><span class="spoiler masculine noun">la localisation du circuit</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic49">
+            <h2>49. Annonce: échanger votre maison par des voyages (Ad: Exchange Your Home for Trips)</h2>
+            <!-- Similar to topic 51 -->
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Advertisement / Ad</td><td><span class="spoiler feminine noun">une annonce</span></td></tr>
+                    <tr><td>To exchange</td><td><span class="spoiler verb">échanger</span></td></tr>
+                    <tr><td>Your house / home</td><td><span class="spoiler feminine noun">votre maison</span></td></tr>
+                    <tr><td>For trips / travel</td><td><span class="spoiler preposition">par</span> / <span class="spoiler preposition">contre</span> <span class="spoiler masculine noun">des voyages</span></td></tr>
+                    <tr><td>Home exchange platform/website</td><td><span class="spoiler feminine noun">une plateforme d'échange de maisons</span></td></tr>
+                    <tr><td>How does it work?</td><td><span class="spoiler other">Comment ça marche ?</span></td></tr>
+                    <tr><td>Membership fee?</td><td><span class="spoiler masculine noun">Frais d'adhésion ?</span></td></tr>
+                    <tr><td>Points system / Direct exchange</td><td><span class="spoiler masculine noun">Système de points</span> / <span class="spoiler masculine noun">échange direct</span></td></tr>
+                    <tr><td>Destinations available</td><td><span class="spoiler feminine noun">les destinations disponibles</span></td></tr>
+                    <tr><td>Guarantees / Insurance</td><td><span class="spoiler feminine noun">les garanties</span> / <span class="spoiler feminine noun">l'assurance</span></td></tr>
+                    <tr><td>How to list my home?</td><td><span class="spoiler other">Comment inscrire ma maison ?</span></td></tr>
+                    <tr><td>Communication with other members</td><td><span class="spoiler feminine noun">la communication avec les autres membres</span></td></tr>
+                    <tr><td>Duration of exchanges</td><td><span class="spoiler feminine noun">la durée des échanges</span></td></tr>
+                    <tr><td>Simultaneous / Non-simultaneous exchange</td><td><span class="spoiler masculine noun">Échange simultané / non simultané</span></td></tr>
+                    <tr><td>Support / Customer service</td><td><span class="spoiler masculine noun">le support</span> / <span class="spoiler masculine noun">le service client</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ================== SERVICES ================== -->
+        <div class="topic-section" id="topic50">
+            <h2>50. Appeler une agence qui fait des échanges de services (Calling an Agency for Service Exchange)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Agency</td><td><span class="spoiler feminine noun">une agence</span></td></tr>
+                    <tr><td>Service exchange</td><td><span class="spoiler masculine noun">l'échange de services</span></td></tr>
+                    <tr><td>Time bank / LETS system</td><td><span class="spoiler feminine noun">une banque de temps</span> / <span class="spoiler masculine noun">un SEL (Système d'Échange Local)</span></td></tr>
+                    <tr><td>Personal assistance / care</td><td><span class="spoiler feminine noun">l'aide à la personne</span></td></tr>
+                    <tr><td>Car pooling / Ride sharing</td><td><span class="spoiler masculine noun">le covoiturage</span></td></tr>
+                    <tr><td>Gardening</td><td><span class="spoiler masculine noun">le jardinage</span></td></tr>
+                    <tr><td>DIY / Handyman services</td><td><span class="spoiler masculine noun">le bricolage</span></td></tr>
+                    <tr><td>How it works</td><td><span class="spoiler other">Comment ça fonctionne ?</span></td></tr>
+                    <tr><td>Membership / Registration</td><td><span class="spoiler feminine noun">l'adhésion</span> / <span class="spoiler feminine noun">l'inscription</span></td></tr>
+                    <tr><td>Offer a service</td><td><span class="spoiler verb">proposer un service</span></td></tr>
+                    <tr><td>Request a service</td><td><span class="spoiler verb">demander un service</span></td></tr>
+                    <tr><td>Unit of exchange (time, points)</td><td><span class="spoiler feminine noun">l'unité d'échange (temps, points)</span></td></tr>
+                    <tr><td>Geographical area covered</td><td><span class="spoiler feminine noun">la zone géographique couverte</span></td></tr>
+                    <tr><td>Contacting members</td><td><span class="spoiler verb">contacter les membres</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic51">
+            <h2>51. Echanger votre maison contre des voyages (Exchange Your Home for Trips)</h2>
+            <!-- Identical premise to topic 49, focus on the concept -->
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>To exchange</td><td><span class="spoiler verb">échanger</span></td></tr>
+                    <tr><td>Your house / home</td><td><span class="spoiler feminine noun">votre maison</span></td></tr>
+                    <tr><td>Against / For</td><td><span class="spoiler preposition">contre</span></td></tr>
+                    <tr><td>Trips / Travel</td><td><span class="spoiler masculine noun">des voyages</span></td></tr>
+                    <tr><td>Home exchange</td><td><span class="spoiler masculine noun">l'échange de maison</span></td></tr>
+                    <tr><td>Platform / Website</td><td><span class="spoiler feminine noun">une plateforme</span> / <span class="spoiler masculine noun">un site web</span></td></tr>
+                    <tr><td>Membership</td><td><span class="spoiler feminine noun">l'adhésion</span></td></tr>
+                    <tr><td>Trust / Confidence</td><td><span class="spoiler feminine noun">la confiance</span></td></tr>
+                    <tr><td>Reciprocity</td><td><span class="spoiler feminine noun">la réciprocité</span></td></tr>
+                    <tr><td>Hospitality exchange</td><td><span class="spoiler masculine noun">l'échange d'hospitalité</span></td></tr>
+                    <tr><td>Description of the property</td><td><span class="spoiler feminine noun">la description du logement</span></td></tr>
+                    <tr><td>Availability calendar</td><td><span class="spoiler masculine noun">le calendrier des disponibilités</span></td></tr>
+                    <tr><td>Reviews / Ratings</td><td><span class="spoiler masculine noun">les avis</span> / <span class="spoiler feminine noun">les évaluations</span></td></tr>
+                    <tr><td>Agreement / Contract</td><td><span class="spoiler masculine noun">un accord</span> / <span class="spoiler masculine noun">un contrat</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic52">
+            <h2>52. Une agence de décoration (Interior Design Agency)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Interior design agency</td><td><span class="spoiler feminine noun">une agence de décoration (d'intérieur)</span></td></tr>
+                    <tr><td>Interior designer</td><td><span class="spoiler masculine noun">un décorateur d'intérieur</span> / <span class="spoiler feminine noun">une décoratrice d'intérieur</span></td></tr>
+                    <tr><td>Project</td><td><span class="spoiler masculine noun">un projet</span></td></tr>
+                    <tr><td>Consultation / Advice</td><td><span class="spoiler feminine noun">une consultation</span> / <span class="spoiler masculine noun">un conseil</span></td></tr>
+                    <tr><td>Style (modern, classic)</td><td><span class="spoiler masculine noun">un style (moderne, classique)</span></td></tr>
+                    <tr><td>Colors</td><td><span class="spoiler feminine noun">les couleurs</span></td></tr>
+                    <tr><td>Furniture</td><td><span class="spoiler masculine noun">le mobilier</span> / <span class="spoiler masculine noun">les meubles</span></td></tr>
+                    <tr><td>Layout / Arrangement</td><td><span class="spoiler masculine noun">l'aménagement</span> / <span class="spoiler feminine noun">la disposition</span></td></tr>
+                    <tr><td>Quote / Estimate</td><td><span class="spoiler masculine noun">un devis</span></td></tr>
+                    <tr><td>Budget</td><td><span class="spoiler masculine noun">un budget</span></td></tr>
+                    <tr><td>Portfolio / Realizations</td><td><span class="spoiler masculine noun">le portfolio</span> / <span class="spoiler feminine noun">les réalisations</span></td></tr>
+                    <tr><td>Home staging</td><td><span class="spoiler masculine noun">le home staging</span></td></tr>
+                    <tr><td>Renovation</td><td><span class="spoiler feminine noun">la rénovation</span></td></tr>
+                    <tr><td>Materials</td><td><span class="spoiler masculine noun">les matériaux</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic53">
+            <h2>53. Société de sondage et de recherche, cherche des chiens pour un test alimentaire (Survey/Research Company Seeking Dogs for Food Test)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Survey and research company</td><td><span class="spoiler feminine noun">une société de sondage et de recherche</span></td></tr>
+                    <tr><td>To seek / look for</td><td><span class="spoiler verb">chercher</span></td></tr>
+                    <tr><td>Dogs</td><td><span class="spoiler masculine noun">des chiens</span></td></tr>
+                    <tr><td>Food test / trial</td><td><span class="spoiler masculine noun">un test alimentaire</span></td></tr>
+                    <tr><td>Pet food / Dog food</td><td><span class="spoiler feminine noun">la nourriture pour animaux</span> / <span class="spoiler feminine noun">les croquettes</span></td></tr>
+                    <tr><td>Owner / Guardian</td><td><span class="spoiler masculine noun">un propriétaire</span> / <span class="spoiler masculine noun">un maître</span></td></tr>
+                    <tr><td>Criteria (breed, age, health)</td><td><span class="spoiler masculine noun">les critères (race, âge, santé)</span></td></tr>
+                    <tr><td>Compensation / Reward</td><td><span class="spoiler feminine noun">une compensation</span> / <span class="spoiler feminine noun">une récompense</span></td></tr>
+                    <tr><td>Duration of the test</td><td><span class="spoiler feminine noun">la durée du test</span></td></tr>
+                    <tr><td>Procedure / Protocol</td><td><span class="spoiler feminine noun">la procédure</span> / <span class="spoiler masculine noun">le protocole</span></td></tr>
+                    <tr><td>Veterinary supervision?</td><td><span class="spoiler masculine noun">Suivi vétérinaire ?</span></td></tr>
+                    <tr><td>To register / sign up</td><td><span class="spoiler verb">s'inscrire</span></td></tr>
+                    <tr><td>Contact information</td><td><span class="spoiler feminine noun">les coordonnées</span></td></tr>
+                    <tr><td>Confidentiality</td><td><span class="spoiler feminine noun">la confidentialité</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic54">
+            <h2>54. Service d’un peintre de portraits (Portrait Painter's Service)</h2>
+             <!-- Similar to topic 36, focus on the service aspect -->
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Service</td><td><span class="spoiler masculine noun">un service</span></td></tr>
+                    <tr><td>Portrait painter</td><td><span class="spoiler masculine noun">un peintre de portraits</span></td></tr>
+                    <tr><td>Commission</td><td><span class="spoiler feminine noun">une commande</span></td></tr>
+                    <tr><td>Oil painting</td><td><span class="spoiler feminine noun">une peinture à l'huile</span></td></tr>
+                    <tr><td>Watercolor</td><td><span class="spoiler feminine noun">une aquarelle</span></td></tr>
+                    <tr><td>Drawing (pencil, charcoal)</td><td><span class="spoiler masculine noun">un dessin (crayon, fusain)</span></td></tr>
+                    <tr><td>Subject (person, pet)</td><td><span class="spoiler masculine noun">un sujet (personne, animal)</span></td></tr>
+                    <tr><td>Live sitting</td><td><span class="spoiler feminine noun">une pose sur le vif</span></td></tr>
+                    <tr><td>Based on photograph</td><td><span class="spoiler preposition">d'après photographie</span></td></tr>
+                    <tr><td>Size and framing options</td><td><span class="spoiler feminine noun">les options de taille et d'encadrement</span></td></tr>
+                    <tr><td>Price list / Quote</td><td><span class="spoiler feminine noun">la grille tarifaire</span> / <span class="spoiler masculine noun">un devis</span></td></tr>
+                    <tr><td>Turnaround time / Deadline</td><td><span class="spoiler masculine noun">le délai de réalisation</span></td></tr>
+                    <tr><td>Artist's portfolio</td><td><span class="spoiler masculine noun">le portfolio de l'artiste</span></td></tr>
+                    <tr><td>Contact details</td><td><span class="spoiler feminine noun">les coordonnées</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic55">
+            <h2>55. Une annonce de location d'espace de stockage pour vieux affaires de la maison (Ad for Storage Space Rental for Old Household Items)</h2>
+             <!-- Similar to topic 44, focus on inquiry based on ad -->
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Advertisement / Ad</td><td><span class="spoiler feminine noun">une annonce</span></td></tr>
+                    <tr><td>Storage space rental</td><td><span class="spoiler feminine noun">la location d'espace de stockage</span></td></tr>
+                    <tr><td>Storage unit</td><td><span class="spoiler masculine noun">un box de stockage</span></td></tr>
+                    <tr><td>Old household items</td><td><span class="spoiler feminine noun">des vieilles affaires de la maison</span></td></tr>
+                    <tr><td>To ask questions</td><td><span class="spoiler verb">poser des questions</span></td></tr>
+                    <tr><td>Available unit sizes</td><td><span class="spoiler feminine noun">les tailles de box disponibles</span></td></tr>
+                    <tr><td>Monthly cost</td><td><span class="spoiler masculine noun">le coût mensuel</span></td></tr>
+                    <tr><td>Security features</td><td><span class="spoiler feminine noun">les dispositifs de sécurité</span></td></tr>
+                    <tr><td>Access conditions</td><td><span class="spoiler feminine noun">les conditions d'accès</span></td></tr>
+                    <tr><td>Minimum rental period</td><td><span class="spoiler feminine noun">la durée minimale de location</span></td></tr>
+                    <tr><td>Insurance options</td><td><span class="spoiler feminine noun">les options d'assurance</span></td></tr>
+                    <tr><td>Location of the facility</td><td><span class="spoiler masculine noun">la localisation du centre</span></td></tr>
+                    <tr><td>Promotional offers?</td><td><span class="spoiler other">Offres promotionnelles ?</span></td></tr>
+                    <tr><td>Contact number / website</td><td><span class="spoiler masculine noun">le numéro de contact / le site web</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ================== VOYAGER ================== -->
+        <div class="topic-section" id="topic56">
+            <h2>56. Agence de transport international (International Transport Agency)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>International transport agency</td><td><span class="spoiler feminine noun">une agence de transport international</span></td></tr>
+                    <tr><td>Shipping / Freight forwarding</td><td><span class="spoiler masculine noun">l'expédition</span> / <span class="spoiler masculine noun">le transit</span></td></tr>
+                    <tr><td>Goods / Merchandise</td><td><span class="spoiler feminine noun">les marchandises</span></td></tr>
+                    <tr><td>Parcel / Package</td><td><span class="spoiler masculine noun">un colis</span></td></tr>
+                    <tr><td>Sea freight</td><td><span class="spoiler masculine noun">le transport maritime</span></td></tr>
+                    <tr><td>Air freight</td><td><span class="spoiler masculine noun">le transport aérien</span></td></tr>
+                    <tr><td>Road transport</td><td><span class="spoiler masculine noun">le transport routier</span></td></tr>
+                    <tr><td>Customs</td><td><span class="spoiler feminine noun">la douane</span></td></tr>
+                    <tr><td>Quote / Price estimate</td><td><span class="spoiler masculine noun">un devis</span></td></tr>
+                    <tr><td>Destination country</td><td><span class="spoiler masculine noun">le pays de destination</span></td></tr>
+                    <tr><td>Weight and dimensions</td><td><span class="spoiler masculine noun">le poids et les dimensions</span></td></tr>
+                    <tr><td>Delivery time</td><td><span class="spoiler masculine noun">le délai de livraison</span></td></tr>
+                    <tr><td>Insurance</td><td><span class="spoiler feminine noun">une assurance</span></td></tr>
+                    <tr><td>Tracking</td><td><span class="spoiler masculine noun">le suivi (de colis)</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic57">
+            <h2>57. Fête sur un bateau (Party on a Boat)</h2>
+            <table>
+                 <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Party / Celebration</td><td><span class="spoiler feminine noun">une fête</span></td></tr>
+                    <tr><td>Boat / Ship</td><td><span class="spoiler masculine noun">un bateau</span> / <span class="spoiler feminine noun">une péniche</span></td></tr>
+                    <tr><td>Boat rental</td><td><span class="spoiler feminine noun">la location de bateau</span></td></tr>
+                    <tr><td>Private event</td><td><span class="spoiler masculine noun">un événement privé</span></td></tr>
+                    <tr><td>Cruise / Tour</td><td><span class="spoiler feminine noun">une croisière</span></td></tr>
+                    <tr><td>Capacity (number of guests)</td><td><span class="spoiler feminine noun">la capacité (nombre d'invités)</span></td></tr>
+                    <tr><td>Catering / Food options</td><td><span class="spoiler masculine noun">le service traiteur</span> / <span class="spoiler feminine noun">les options de restauration</span></td></tr>
+                    <tr><td>Drinks / Bar</td><td><span class="spoiler feminine noun">les boissons</span> / <span class="spoiler masculine noun">le bar</span></td></tr>
+                    <tr><td>Music / DJ</td><td><span class="spoiler feminine noun">la musique</span> / <span class="spoiler masculine noun">un DJ</span></td></tr>
+                    <tr><td>Duration of the rental/cruise</td><td><span class="spoiler feminine noun">la durée de la location/croisière</span></td></tr>
+                    <tr><td>Price / Package deals</td><td><span class="spoiler masculine noun">le prix</span> / <span class="spoiler feminine noun">les formules</span></td></tr>
+                    <tr><td>Booking</td><td><span class="spoiler feminine noun">la réservation</span></td></tr>
+                    <tr><td>Departure point / Quay</td><td><span class="spoiler masculine noun">le point de départ</span> / <span class="spoiler masculine noun">le quai</span></td></tr>
+                    <tr><td>Availability</td><td><span class="spoiler feminine noun">la disponibilité</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic58">
+            <h2>58. Centre qui propose des promenades touristiques dans une ville avec des petits trains (Center Offering City Tours by Small Train)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Center / Company</td><td><span class="spoiler masculine noun">un centre</span> / <span class="spoiler feminine noun">une compagnie</span></td></tr>
+                    <tr><td>To offer / propose</td><td><span class="spoiler verb">proposer</span></td></tr>
+                    <tr><td>Tourist ride / tour</td><td><span class="spoiler feminine noun">une promenade touristique</span></td></tr>
+                    <tr><td>City</td><td><span class="spoiler feminine noun">une ville</span></td></tr>
+                    <tr><td>Small train / Tourist train</td><td><span class="spoiler masculine noun">un petit train (touristique)</span></td></tr>
+                    <tr><td>Route / Itinerary</td><td><span class="spoiler masculine noun">le parcours</span> / <span class="spoiler masculine noun">l'itinéraire</span></td></tr>
+                    <tr><td>Points of interest / Monuments</td><td><span class="spoiler masculine noun">les points d'intérêt</span> / <span class="spoiler masculine noun">les monuments</span></td></tr>
+                    <tr><td>Audio guide / Commentary</td><td><span class="spoiler masculine noun">un audioguide</span> / <span class="spoiler masculine noun">le commentaire</span></td></tr>
+                    <tr><td>Languages available</td><td><span class="spoiler feminine noun">les langues disponibles</span></td></tr>
+                    <tr><td>Duration of the tour</td><td><span class="spoiler feminine noun">la durée du tour</span></td></tr>
+                    <tr><td>Schedule / Timetable</td><td><span class="spoiler masculine noun">les horaires</span></td></tr>
+                    <tr><td>Ticket price</td><td><span class="spoiler masculine noun">le prix du billet</span></td></tr>
+                    <tr><td>Departure point</td><td><span class="spoiler masculine noun">le point de départ</span></td></tr>
+                    <tr><td>Family friendly</td><td><span class="spoiler adjective">adapté aux familles</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic59">
+            <h2>59. Un voyage culturel / archéologique organisé par le ministère de la culture (Cultural/Archaeological Trip Organized by Ministry of Culture)</h2>
+            <table>
+                 <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Trip / Journey</td><td><span class="spoiler masculine noun">un voyage</span></td></tr>
+                    <tr><td>Cultural</td><td><span class="spoiler adjective">culturel</span></td></tr>
+                    <tr><td>Archaeological</td><td><span class="spoiler adjective">archéologique</span></td></tr>
+                    <tr><td>Organized by</td><td><span class="spoiler verb">organisé par</span></td></tr>
+                    <tr><td>Ministry of Culture</td><td><span class="spoiler masculine noun">le ministère de la Culture</span></td></tr>
+                    <tr><td>To inquire / ask for information</td><td><span class="spoiler verb">se renseigner</span></td></tr>
+                    <tr><td>Destination(s)</td><td><span class="spoiler feminine noun">la/les destination(s)</span></td></tr>
+                    <tr><td>Program / Itinerary</td><td><span class="spoiler masculine noun">le programme</span> / <span class="spoiler masculine noun">l'itinéraire</span></td></tr>
+                    <tr><td>Dates</td><td><span class="spoiler feminine noun">les dates</span></td></tr>
+                    <tr><td>Price / Cost</td><td><span class="spoiler masculine noun">le prix</span> / <span class="spoiler masculine noun">le coût</span></td></tr>
+                    <tr><td>What's included (transport, accommodation, guide)</td><td><span class="spoiler other">Ce qui est inclus (transport, hébergement, guide)</span></td></tr>
+                    <tr><td>Registration / How to sign up</td><td><span class="spoiler feminine noun">l'inscription</span> / <span class="spoiler other">Comment s'inscrire ?</span></td></tr>
+                    <tr><td>Target audience (public, experts)</td><td><span class="spoiler masculine noun">le public cible (grand public, experts)</span></td></tr>
+                    <tr><td>Lectures / Guided tours</td><td><span class="spoiler feminine noun">les conférences</span> / <span class="spoiler feminine noun">les visites guidées</span></td></tr>
+                     <tr><td>Archaeological site</td><td><span class="spoiler masculine noun">un site archéologique</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ================== RESTAURATION ================== -->
+        <div class="topic-section" id="topic60">
+            <h2>60. Appeler un resto qui fait la livraison de panier "recette ingrédients " (Calling Restaurant Delivering Recipe Ingredient Baskets)</h2>
+             <table>
+                 <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Restaurant</td><td><span class="spoiler masculine noun">un restaurant (resto)</span></td></tr>
+                    <tr><td>Delivery</td><td><span class="spoiler feminine noun">la livraison</span></td></tr>
+                    <tr><td>Basket / Box</td><td><span class="spoiler masculine noun">un panier</span> / <span class="spoiler feminine noun">une box</span></td></tr>
+                    <tr><td>Recipe</td><td><span class="spoiler feminine noun">une recette</span></td></tr>
+                    <tr><td>Ingredients</td><td><span class="spoiler masculine noun">les ingrédients</span></td></tr>
+                    <tr><td>Meal kit</td><td><span class="spoiler masculine noun">un kit repas</span></td></tr>
+                    <tr><td>Launch offer</td><td><span class="spoiler feminine noun">une offre de lancement</span></td></tr>
+                    <tr><td>How does it work?</td><td><span class="spoiler other">Comment ça marche ?</span></td></tr>
+                    <tr><td>Types of recipes/baskets available</td><td><span class="spoiler masculine noun">les types de recettes/paniers disponibles</span></td></tr>
+                    <tr><td>Price per basket</td><td><span class="spoiler masculine noun">le prix par panier</span></td></tr>
+                    <tr><td>Number of servings</td><td><span class="spoiler masculine noun">le nombre de portions</span></td></tr>
+                    <tr><td>Delivery zone / area</td><td><span class="spoiler feminine noun">la zone de livraison</span></td></tr>
+                    <tr><td>Delivery days/times</td><td><span class="spoiler masculine noun">les jours/heures de livraison</span></td></tr>
+                    <tr><td>How to order</td><td><span class="spoiler other">Comment commander ?</span></td></tr>
+                     <tr><td>Subscription required?</td><td><span class="spoiler other">Abonnement requis ?</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic61">
+            <h2>61. Un restaurant qui fait la livraison (A Restaurant That Delivers)</h2>
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Restaurant</td><td><span class="spoiler masculine noun">un restaurant</span></td></tr>
+                    <tr><td>Delivery</td><td><span class="spoiler feminine noun">la livraison</span></td></tr>
+                    <tr><td>To deliver</td><td><span class="spoiler verb">livrer</span></td></tr>
+                    <tr><td>Takeaway / To go</td><td><span class="spoiler preposition">à emporter</span></td></tr>
+                    <tr><td>Menu</td><td><span class="spoiler feminine noun">la carte</span> / <span class="spoiler masculine noun">le menu</span></td></tr>
+                    <tr><td>Type of cuisine</td><td><span class="spoiler masculine noun">le type de cuisine</span></td></tr>
+                    <tr><td>To place an order</td><td><span class="spoiler verb">passer une commande</span></td></tr>
+                    <tr><td>Minimum order amount?</td><td><span class="spoiler masculine noun">Montant minimum de commande ?</span></td></tr>
+                    <tr><td>Delivery fee?</td><td><span class="spoiler masculine noun">Frais de livraison ?</span></td></tr>
+                    <tr><td>Delivery area</td><td><span class="spoiler feminine noun">la zone de livraison</span></td></tr>
+                    <tr><td>Estimated delivery time</td><td><span class="spoiler masculine noun">le délai de livraison estimé</span></td></tr>
+                    <tr><td>Payment methods (online, cash)</td><td><span class="spoiler masculine noun">les moyens de paiement (en ligne, espèces)</span></td></tr>
+                    <tr><td>Phone number / Website</td><td><span class="spoiler masculine noun">le numéro de téléphone</span> / <span class="spoiler masculine noun">le site web</span></td></tr>
+                    <tr><td>Opening hours for delivery</td><td><span class="spoiler masculine noun">les horaires de livraison</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic62">
+            <h2>62. Un café ou il y a 450 jeux, des tournois, une ambiance conviviale (A Cafe with 450 Games, Tournaments, Friendly Atmosphere)</h2>
+            <!-- Identical to topic 37 -->
+             <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cafe</td><td><span class="spoiler masculine noun">un café</span></td></tr>
+                    <tr><td>Board game</td><td><span class="spoiler masculine noun">un jeu de société</span></td></tr>
+                    <tr><td>(Board) game cafe</td><td><span class="spoiler masculine noun">un café à jeux</span> / <span class="spoiler masculine noun">un bar à jeux</span></td></tr>
+                    <tr><td>Tournament</td><td><span class="spoiler masculine noun">un tournoi</span></td></tr>
+                    <tr><td>Friendly atmosphere</td><td><span class="spoiler feminine noun">une ambiance conviviale</span></td></tr>
+                    <tr><td>Collection of games</td><td><span class="spoiler feminine noun">la collection de jeux</span></td></tr>
+                    <tr><td>Price to play / Hourly rate</td><td><span class="spoiler masculine noun">le tarif pour jouer / le prix à l'heure</span></td></tr>
+                    <tr><td>Booking recommended?</td><td><span class="spoiler other">Réservation conseillée ?</span></td></tr>
+                    <tr><td>Food and drinks menu</td><td><span class="spoiler feminine noun">la carte des boissons et de la nourriture</span></td></tr>
+                    <tr><td>Events schedule</td><td><span class="spoiler masculine noun">le calendrier des événements</span></td></tr>
+                    <tr><td>Game master available?</td><td><span class="spoiler other">Animateur de jeux disponible ?</span></td></tr>
+                    <tr><td>Opening hours</td><td><span class="spoiler masculine noun">les horaires d'ouverture</span></td></tr>
+                    <tr><td>Address</td><td><span class="spoiler feminine noun">l'adresse</span></td></tr>
+                    <tr><td>Group bookings</td><td><span class="spoiler feminine noun">les réservations de groupe</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+         <div class="topic-section" id="topic63">
+            <h2>63. Cuisine du monde concept d'organiser un dîner à domicile. (World Cuisine - Hosting a Dinner at Home Concept)</h2>
+            <!-- Identical to topic 11 -->
+            <table>
+                 <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>World cuisine</td><td><span class="spoiler feminine noun">la cuisine du monde</span></td></tr>
+                    <tr><td>Concept</td><td><span class="spoiler masculine noun">un concept</span></td></tr>
+                    <tr><td>To organize</td><td><span class="spoiler verb">organiser</span></td></tr>
+                    <tr><td>Dinner</td><td><span class="spoiler masculine noun">un dîner</span></td></tr>
+                    <tr><td>At home / Home-based</td><td><span class="spoiler preposition">à domicile</span></td></tr>
+                    <tr><td>Private chef / Caterer</td><td><span class="spoiler masculine noun">un chef à domicile</span> / <span class="spoiler masculine noun">un traiteur</span></td></tr>
+                    <tr><td>Themed dinner</td><td><span class="spoiler masculine noun">un dîner à thème</span></td></tr>
+                    <tr><td>Custom menu</td><td><span class="spoiler masculine noun">un menu sur mesure</span></td></tr>
+                    <tr><td>Price per person</td><td><span class="spoiler masculine noun">le prix par personne</span></td></tr>
+                    <tr><td>Booking process</td><td><span class="spoiler masculine noun">le processus de réservation</span></td></tr>
+                    <tr><td>Minimum/maximum guests</td><td><span class="spoiler masculine noun">Nombre minimum/maximum d'invités</span></td></tr>
+                    <tr><td>Service included (cooking, serving, cleaning?)</td><td><span class="spoiler other">Service inclus (cuisine, service, nettoyage ?)</span></td></tr>
+                    <tr><td>Dietary requirements</td><td><span class="spoiler masculine noun">les régimes alimentaires spécifiques</span></td></tr>
+                    <tr><td>Availability</td><td><span class="spoiler feminine noun">la disponibilité</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="topic-section" id="topic64">
+            <h2>64. Publicité pour un petit déjeuner bio (Advertisement for an Organic Breakfast)</h2>
+            <!-- Identical to topic 41 -->
+            <table>
+                <thead>
+                    <tr><th>English</th><th>French</th></tr>
+                </thead>
+                 <tbody>
+                    <tr><td>Advertisement / Ad</td><td><span class="spoiler feminine noun">une publicité (pub)</span></td></tr>
+                    <tr><td>Breakfast</td><td><span class="spoiler masculine noun">un petit déjeuner</span></td></tr>
+                    <tr><td>Organic</td><td><span class="spoiler adjective">bio (biologique)</span></td></tr>
+                    <tr><td>Offer / Deal</td><td><span class="spoiler feminine noun">une offre</span> / <span class="spoiler feminine noun">une formule</span></td></tr>
+                    <tr><td>Cafe / Restaurant / Shop</td><td><span class="spoiler masculine noun">un café</span> / <span class="spoiler masculine noun">un restaurant</span> / <span class="spoiler masculine noun">un magasin</span></td></tr>
+                    <tr><td>Contents of the breakfast</td><td><span class="spoiler masculine noun">le contenu du petit déjeuner</span></td></tr>
+                    <tr><td>Price</td><td><span class="spoiler masculine noun">le prix</span></td></tr>
+                    <tr><td>Serving times</td><td><span class="spoiler masculine noun">les heures de service</span></td></tr>
+                    <tr><td>Location</td><td><span class="spoiler masculine noun">l'emplacement</span> / <span class="spoiler feminine noun">l'adresse</span></td></tr>
+                    <tr><td>Eat-in / Takeaway</td><td><span class="spoiler preposition">sur place</span> / <span class="spoiler preposition">à emporter</span></td></tr>
+                    <tr><td>Fresh products</td><td><span class="spoiler masculine noun">des produits frais</span></td></tr>
+                    <tr><td>Local products?</td><td><span class="spoiler other">Produits locaux ?</span></td></tr>
+                    <tr><td>Booking needed?</td><td><span class="spoiler other">Réservation nécessaire ?</span></td></tr>
+                    <tr><td>Contact details</td><td><span class="spoiler feminine noun">les coordonnées</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div><!-- /.container -->
+
+</body>
+</html>
