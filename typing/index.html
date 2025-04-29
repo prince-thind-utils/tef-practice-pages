@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Accent Editor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 30px;
+            background-color: #f4f4f4;
+        }
+
+        .accent-buttons {
+            display: flex;
+           // grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            gap: 8px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .accent-button {
+            padding: 12px;
+            font-size: 1.3em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #e0f7fa;
+            color: #00838f;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .accent-button:hover {
+            background-color: #b2ebf2;
+        }
+
+        #word-count {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #text-area {
+            width: 80%;
+            min-height: 400px;
+            padding: 15px;
+            font-size: 1.2em;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: #333;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .control-button {
+            padding: 12px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .control-button:hover {
+            background-color: #388e3c;
+        }
+    </style>
+</head>
+<body>
+    <div id="word-count">Word Count: 0</div>
+
+    <div class="accent-buttons">
+        <button class="accent-button">à</button>
+        <button class="accent-button">â</button>
+        <button class="accent-button">æ</button>
+        <button class="accent-button">ç</button>
+        <button class="accent-button">é</button>
+        <button class="accent-button">è</button>
+        <button class="accent-button">ê</button>
+        <button class="accent-button">ë</button>
+        <button class="accent-button">î</button>
+        <button class="accent-button">ï</button>
+        <button class="accent-button">ô</button>
+        <button class="accent-button">œ</button>
+        <button class="accent-button">ù</button>
+        <button class="accent-button">û</button>
+        <button class="accent-button">ü</button>
+        <button class="accent-button">ÿ</button>
+        <button class="accent-button">€</button>
+        <button class="accent-button">"</button>
+        <button class="accent-button">«</button>
+        <button class="accent-button">»</button>
+        <button class="accent-button">–</button>
+    </div>
+
+    <textarea id="text-area"></textarea>
+
+    <div class="controls">
+        <button class="control-button" onclick="copyText()">Copy</button>
+        <button class="control-button" onclick="clearText()">Clear</button>
+    </div>
+
+    <script>
+        const textArea = document.getElementById('text-area');
+        const wordCountDisplay = document.getElementById('word-count');
+        const accentButtons = document.querySelectorAll('.accent-button');
+
+        accentButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                textArea.value += button.textContent;
+                updateWordCount();
+            });
+        });
+
+        textArea.addEventListener('input', updateWordCount);
+
+        function updateWordCount() {
+            const text = textArea.value.trim();
+            const words = text === '' ? 0 : text.split(/\s+/).length;
+            wordCountDisplay.textContent = `Word Count: ${words}`;
+        }
+
+        function copyText() {
+            textArea.select();
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            alert('Text copied to clipboard!');
+        }
+
+        function clearText() {
+            textArea.value = '';
+            updateWordCount();
+        }
+    </script>
+</body>
+</html>
