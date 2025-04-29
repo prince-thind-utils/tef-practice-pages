@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
 
         .accent-buttons {
             display: flex;
-           // grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+            /* grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); */
             gap: 8px;
             margin-bottom: 15px;
             background-color: #fff;
@@ -83,6 +84,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="word-count">Word Count: 0</div>
 
@@ -110,7 +112,7 @@
         <button class="accent-button">–</button>
     </div>
 
-    <textarea id="text-area"></textarea>
+    <textarea id="text-area" spellcheck="false"></textarea>
 
     <div class="controls">
         <button class="control-button" onclick="copyText()">Copy</button>
@@ -124,7 +126,18 @@
 
         accentButtons.forEach(button => {
             button.addEventListener('click', () => {
-                textArea.value += button.textContent;
+                const startPos = textArea.selectionStart;
+                const endPos = textArea.selectionEnd;
+                const selectedTsext = textArea.value.substring(startPos, endPos);
+                const accent = button.textContent;
+
+                const newText = textArea.value.substring(0, startPos) + accent + textArea.value.substring(endPos);
+                textArea.value = newText;
+
+                const newCursorPosition = startPos + accent.length;
+                textArea.selectionStart = newCursorPosition;
+                textArea.selectionEnd = newCursorPosition;
+
                 textArea.focus();
                 updateWordCount();
             });
@@ -151,4 +164,5 @@
         }
     </script>
 </body>
+
 </html>
