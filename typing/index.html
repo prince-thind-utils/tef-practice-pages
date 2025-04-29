@@ -125,6 +125,7 @@
         accentButtons.forEach(button => {
             button.addEventListener('click', () => {
                 textArea.value += button.textContent;
+                textArea.focus();
                 updateWordCount();
             });
         });
