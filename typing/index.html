@@ -17,14 +17,20 @@
         }
 
         .accent-buttons {
-            display: flex;
-            /* grid-template-columns: repeat(auto-fit, minmax(50px, 1fr)); */
+            display: grid;
+            grid-template-columns: repeat(16, minmax(50px, 1fr));
             gap: 8px;
-            margin-bottom: 15px;
+            margin-bottom: 1px;
             background-color: #fff;
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .accent-buttons-buttom {
+
+            margin-bottom: 15px;
+
         }
 
         .accent-button {
@@ -39,6 +45,9 @@
             text-align: center;
         }
 
+
+
+
         .accent-button:hover {
             background-color: #b2ebf2;
         }
@@ -48,6 +57,13 @@
             font-weight: bold;
             margin-bottom: 10px;
             color: #333;
+            align-self: flex-end;
+            /* Shift to the right */
+            width: 80%;
+            /* Match textarea width for alignment */
+            text-align: right;
+            /* Align text within the container */
+            position: fixed;
         }
 
         #text-area {
@@ -67,6 +83,7 @@
             display: flex;
             gap: 15px;
             margin-top: 15px;
+
         }
 
         .control-button {
@@ -177,12 +194,23 @@
         <button class="accent-button">ù</button>
         <button class="accent-button">û</button>
         <button class="accent-button">ü</button>
-        <button class="accent-button">ÿ</button>
-        <button class="accent-button">€</button>
-        <button class="accent-button">"</button>
+        <button class="accent-button">À</button>
+        <button class="accent-button">Â</button>
+        <button class="accent-button">Æ</button>
+        <button class="accent-button">Ç</button>
+        <button class="accent-button">É</button>
+        <button class="accent-button">È</button>
+        <button class="accent-button">Ê</button>
+        <button class="accent-button">Ë</button>
+        <button class="accent-button">Î</button>
+        <button class="accent-button">Ï</button>
+        <button class="accent-button">Ô</button>
+        <button class="accent-button">Œ</button>
+        <button class="accent-button">Ù</button>
+        <button class="accent-button">Û</button>
+        <button class="accent-button">Ü</button>
         <button class="accent-button">«</button>
         <button class="accent-button">»</button>
-        <button class="accent-button">–</button>
     </div>
 
     <textarea id="text-area" spellcheck="false"></textarea>
